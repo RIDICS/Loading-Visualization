@@ -1,0 +1,58 @@
+.borderless_line {
+    height: 100%;
+    width: 100%;
+    background-color: lightgray;
+    position: relative;
+}
+.borderless_line div {
+    height: 100%;
+    left: 0;
+    background-color: darkgreen;
+    animation: movement 3s ease-in-out infinite;
+    -webkit-animation: movement 3s ease-in-out infinite;
+    position: absolute;
+}
+@keyframes movement {
+    0% {
+        left: 0;
+        width: 0;
+    }
+    25% {
+        left: 0;
+        width: 100%;
+    }
+    50% {
+        left: 100%;
+        width: 0;
+    }
+    75% {
+        left: 0;
+        width: 100%;
+    }
+    100% {
+        left: 0;
+        width: 0;
+    }
+}
+@-webkit-keyframes movement {
+    0% {
+        left: 0;
+        width: 0;
+    }
+    25% {
+        left: 0;
+        width: 100%;
+    }
+    50% {
+        left: 100%;
+        width: 0;
+    }
+    75% {
+        left: 0;
+        width: 100%;
+    }
+    100% {
+        left: 0;
+        width: 0;
+    }
+}

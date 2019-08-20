@@ -16,6 +16,7 @@
     top: 3px;
     border-radius: 3px;
     animation: line_movement 2s linear infinite;
+    -webkit-animation: line_movement 2s linear infinite;
 }
 @keyframes line_movement {
     0% {
