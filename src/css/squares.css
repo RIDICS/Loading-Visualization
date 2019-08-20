@@ -61,27 +61,27 @@
     background-color: #7cfc00;
     top: 7%;
     left: 7%;
-    animation: square1move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    -webkit-animation: square1move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: square1move 2s ease-in-out infinite;
+    -webkit-animation: square1move 2s ease-in-out infinite;
 }
 .squares div:nth-child(2) {
     background-color: #32cd32;
     top: 7%;
     right: 7%;
-    animation: square2move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    -webkit-animation: square2move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: square2move 2s ease-in-out infinite;
+    -webkit-animation: square2move 2s ease-in-out infinite;
 }
 .squares div:nth-child(3) {
     background-color: #008000;
     bottom: 7%;
     right: 7%;
-    animation: square3move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    -webkit-animation: square3move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: square3move 2s ease-in-out infinite;
+    -webkit-animation: square3move 2s ease-in-out infinite;
 }
 .squares div:nth-child(4) {
     background-color: #006400;
     bottom: 7%;
     left: 7%;
-    animation: square4move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    -webkit-animation: square4move 2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: square4move 2s ease-in-out infinite;
+    -webkit-animation: square4move 2s ease-in-out infinite;
 }
