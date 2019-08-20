@@ -1,9 +1,9 @@
-.points {
+.dots {
     width: 100%;
     height: 100%;
     position: relative;
 }
-.points div{
+.dots div{
     transform: scale(1.5);
     margin: auto;
     position: absolute;
@@ -14,23 +14,23 @@
     animation: pulsate 1s ease-in-out infinite;
     -webkit-animation: pulsate 1s ease-in-out infinite;
 }
-.points div:nth-child(1) {
+.dots div:nth-child(1) {
     left: 10%;
     background-color: #00cc00;
 }
-.points div:nth-child(2) {
+.dots div:nth-child(2) {
     left: 32.5%;
     background-color: #009900;
     animation-delay: 0.1s;
     -webkit-animation-delay: 0.1s;
 }
-.points div:nth-child(3) {
+.dots div:nth-child(3) {
     left: 55%;
     background-color: #006600;
     animation-delay: 0.2s;
     -webkit-animation-delay: 0.2s;
 }
-.points div:nth-child(4) {
+.dots div:nth-child(4) {
     left: 77.5%;
     background-color: #003300;
     animation-delay: 0.3s;
