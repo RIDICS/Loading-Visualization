@@ -35,3 +35,21 @@
         left: 99%;
     }
 }
+@-webkit-keyframes line_movement {
+    0% {
+        left: 1%;
+        width: 0;
+    }
+    10% {
+        left: 1%;
+        width: 20%;
+    }
+    90% {
+        left: 79%;
+        width: 20%;
+    }
+    100% {
+        width: 0;
+        left: 99%;
+    }
+}
