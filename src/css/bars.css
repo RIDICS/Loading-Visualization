@@ -4,14 +4,12 @@
         height: 25%;
         bottom: 37.5%;
         width: 2.5%;
-        opacity: 0.5;
     }
     50% {
         top: 12.5%;
         height: 75%;
         bottom: 12.5%;
         width: 5%;
-        opacity: 1;
     }
 }
 @-webkit-keyframes bars {
@@ -20,14 +18,12 @@
         height: 25%;
         bottom: 37.5%;
         width: 2.5%;
-        opacity: 0.5;
     }
     50% {
         top: 12.5%;
         height: 75%;
         bottom: 12.5%;
         width: 5%;
-        opacity: 1;
     }
 }
 .bars {
@@ -37,31 +33,55 @@
 }
 .bars div {
     position: absolute;
-    width: 2.5%;
+    width: 10px;
     height: 40%;
     top: 30%;
     -webkit-animation: bars 1s ease-in-out infinite;
     animation: bars 1s ease-in-out infinite;
 }
 .bars div:nth-child(1) {
-    left: 15%;
-    background: #7cfc00;
-    -webkit-animation-delay: -0.6s;
-    animation-delay: -0.3s;
+    left: 12.5%;
+    background: #00ff00;
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
 }
 .bars div:nth-child(2) {
     left: 22.5%;
-    background: #32cd32;
-    -webkit-animation-delay: -0.4s;
-    animation-delay: -0.2s;
+    background: #00e500;
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
 }
 .bars div:nth-child(3) {
-    left: 30%;
-    background: #008000;
-    -webkit-animation-delay: -0.2s;
-    animation-delay: -0.1s;
+    left: 32.5%;
+    background: #00cc00;
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
 }
 .bars div:nth-child(4) {
-    left: 37.5%;
-    background: #006400;
+    left: 42.5%;
+    background: #00b200;
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+.bars div:nth-child(5) {
+    left: 52.5%;
+    background: #009900;
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+.bars div:nth-child(6) {
+    left: 62.5%;
+    background: #007f00;
+    -webkit-animation-delay: -0.2s;
+    animation-delay: -0.2s;
+}
+.bars div:nth-child(7) {
+    left: 72.5%;
+    background: #006600;
+    -webkit-animation-delay: -0.1s;
+    animation-delay: -0.1s;
+}
+.bars div:nth-child(8) {
+    left: 82.5%;
+    background: #004c00;
 }
