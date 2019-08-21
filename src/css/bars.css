@@ -33,7 +33,7 @@
 }
 .bars div {
     position: absolute;
-    width: 10px;
+    width: 5%;
     height: 40%;
     top: 30%;
     -webkit-animation: bars 1s ease-in-out infinite;

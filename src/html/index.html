@@ -7,9 +7,11 @@
         <link rel="stylesheet" type="text/css" href="../css/spinner.css"/>
         <link rel="stylesheet" type="text/css" href="../css/pulsating_dots.css"/>
         <link rel="stylesheet" type="text/css" href="../css/borderless_line.css"/>
+        <link rel="stylesheet" type="text/css" href="../css/definite_line.css">
+        <link rel="stylesheet" type="text/css" href="../css/line_end.css">
         <link rel="stylesheet" type="text/css" href="../css/nprogress.css"/>
         <script type="text/javascript" src="../javascript/nprogress.js"></script>
-        <script type="text/javascript" src="../javascript/main.js"></script>
+        <script type="text/javascript" src="../javascript/bars.js"></script>
         <title>test progress bar</title>
     </head>
     <body>
@@ -79,5 +81,24 @@
         <button onclick="NProgress.inc();">Increase</button>
         <button onclick="NProgress.done();">End</button>
         -->
+        <!-- definite progress bars -->
+        <div style="margin-top: 50px;">
+            <button onclick="progress.reset();">Reset</button>
+            <button onclick="progress.add_value(5);">Add 5</button>
+            <button onclick="progress.remove_value(5);">Remove 5</button>
+            <button onclick="progress.set_value(50);">Set 50</button>
+            <button onclick="progress.fill();">Fill</button>
+        </div>
+        <div style="width: 1000px; height: 5px; margin: 50px;">
+            <div class="definite_line">
+                <div></div>
+            </div>
+        </div>
+        <div style="width: 1000px; height: 21px; margin: 50px;">
+            <div class="line_end">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
     </body>
 </html>
