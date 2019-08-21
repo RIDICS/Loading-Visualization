@@ -55,13 +55,16 @@ progress.update_line = function() {
         } else if (width < goal) {
             width += 0.5;
             progress.line_element.style.width = width + '%';
+            progress.line_end_element.style.width = width + '%';
         } else {
             width -= 0.5;
             progress.line_element.style.width = width + '%';
+            progress.line_end_element.style.width = width + '%';
         }
     }
 };
 
 document.addEventListener("DOMContentLoaded", function(event) {
     progress.line_element = document.getElementsByClassName("definite_line")[0].firstElementChild;
+    progress.line_end_element = document.getElementsByClassName("line_end")[0].firstElementChild;
 });
