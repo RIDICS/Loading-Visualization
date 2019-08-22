@@ -1,0 +1,468 @@
+.lv-bars, .lv-circles, .lv-dots, .lv-squares {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.lv-bars.tiny, .lv-circles.tiny, .lv-dots.tiny, .lv-squares.tiny {
+  height: 20px;
+  width: 20px;
+}
+.lv-bars.sm, .lv-circles.sm, .lv-dots.sm, .lv-squares.sm {
+  height: 50px;
+  width: 50px;
+}
+.lv-bars.md, .lv-circles.md, .lv-dots.md, .lv-squares.md {
+  height: 100px;
+  width: 100px;
+}
+.lv-bars.lg, .lv-circles.lg, .lv-dots.lg, .lv-squares.lg {
+  height: 200px;
+  width: 200px;
+}
+
+.lv-bordered_line, .lv-definite_bordered_line {
+  height: 21px;
+  width: 100%;
+}
+
+.lv-line, .lv-definite_line {
+  height: 5px;
+  width: 100%;
+}
+
+.lv-bars, .lv-circles, .lv-definite_line, .lv-bordered_line, .lv-definite_bordered_line, .lv-dots, .lv-squares, .lv-line {
+  position: relative;
+}
+
+.lv-bars div, .lv-circles div, .lv-definite_line div, .lv-bordered_line div, .lv-definite_bordered_line div, .lv-dots div, .lv-squares div, .lv-line div {
+  position: absolute;
+}
+
+.lv-definite_line, .lv-line {
+  background-color: lightgray;
+}
+
+.lv-definite_line div, .lv-line div {
+  height: 100%;
+  width: 0;
+  background-color: #006600;
+}
+
+.lv-line.sm, .lv-definite_line.sm, .lv-definite_bordered_line.sm, .lv-bordered_line.sm {
+  width: 300px;
+}
+.lv-line.md, .lv-definite_line.md, .lv-definite_bordered_line.md, .lv-bordered_line.md {
+  width: 600px;
+}
+.lv-line.lg, .lv-definite_line.lg, .lv-definite_bordered_line.lg, .lv-bordered_line.lg {
+  width: 1000px;
+}
+
+/* BORDERLESS LINE ANIMATED */
+.lv-line div {
+  animation: borderless_line_animation 3s ease-in-out infinite;
+}
+
+/* DEFINITE LINE WITH BORDER */
+.lv-definite_bordered_line {
+  height: 21px;
+  border: 5px darkgreen solid;
+  border-radius: 10px;
+  vertical-align: center;
+  box-sizing: border-box;
+}
+
+.lv-definite_bordered_line div {
+  height: 100%;
+  width: 0;
+  background-color: darkgreen;
+  border-radius: 3px;
+  margin: auto;
+}
+
+/* LINE */
+.lv-bordered_line {
+  height: 21px;
+}
+
+.lv-bordered_line {
+  margin: 5px;
+  border: 5px solid darkgreen;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.lv-bordered_line div {
+  height: 5px;
+  background-color: darkgreen;
+  margin: auto;
+  left: 2px;
+  top: 3px;
+  border-radius: 3px;
+  animation: line_animation 2s linear infinite;
+}
+
+/* BARS */
+.lv-bars div {
+  width: 5%;
+  height: 40%;
+  top: 30%;
+  animation: bar_animation 1s ease-in-out infinite;
+}
+
+.lv-bars div:nth-child(1) {
+  left: 12.5%;
+  background: #00ff00;
+  animation-delay: -0.7s;
+}
+
+.lv-bars div:nth-child(2) {
+  left: 22.5%;
+  background: #00e500;
+  animation-delay: -0.6s;
+}
+
+.lv-bars div:nth-child(3) {
+  left: 32.5%;
+  background: #00cc00;
+  animation-delay: -0.5s;
+}
+
+.lv-bars div:nth-child(4) {
+  left: 42.5%;
+  background: #00b200;
+  animation-delay: -0.4s;
+}
+
+.lv-bars div:nth-child(5) {
+  left: 52.5%;
+  background: #009900;
+  animation-delay: -0.3s;
+}
+
+.lv-bars div:nth-child(6) {
+  left: 62.5%;
+  background: #007f00;
+  animation-delay: -0.2s;
+}
+
+.lv-bars div:nth-child(7) {
+  left: 72.5%;
+  background: #006600;
+  animation-delay: -0.1s;
+}
+
+.lv-bars div:nth-child(8) {
+  left: 82.5%;
+  background: #004c00;
+}
+
+/* PULSATING DOTS */
+.lv-dots div {
+  transform: scale(1.5);
+  margin: auto;
+  width: 12.5%;
+  height: 12.5%;
+  top: 43.75%;
+  border-radius: 100%;
+  animation: dots_pulsate_animation 1s ease-in-out infinite;
+}
+
+.lv-dots div:nth-child(1) {
+  left: 10%;
+  background-color: #00cc00;
+}
+
+.lv-dots div:nth-child(2) {
+  left: 32.5%;
+  background-color: #009900;
+  animation-delay: 0.1s;
+}
+
+.lv-dots div:nth-child(3) {
+  left: 55%;
+  background-color: #006600;
+  animation-delay: 0.2s;
+}
+
+.lv-dots div:nth-child(4) {
+  left: 77.5%;
+  background-color: #003300;
+  animation-delay: 0.3s;
+}
+
+/* CIRCLES */
+.lv-circles div {
+  width: 100%;
+  height: 100%;
+}
+
+.lv-circles div:before {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  width: 15%;
+  height: 15%;
+  border-radius: 100%;
+  background-color: darkgreen;
+  animation: dots_fading_animation 1.2s infinite ease-in-out both;
+}
+
+.lv-circles div:nth-child(2) {
+  transform: rotate(30deg);
+}
+
+.lv-circles div:nth-child(2):before {
+  animation-delay: 0.1s;
+}
+
+.lv-circles div:nth-child(3) {
+  transform: rotate(60deg);
+}
+
+.lv-circles div:nth-child(3):before {
+  animation-delay: 0.2s;
+}
+
+.lv-circles div:nth-child(4) {
+  transform: rotate(90deg);
+}
+
+.lv-circles div:nth-child(4):before {
+  animation-delay: 0.3s;
+}
+
+.lv-circles div:nth-child(5) {
+  transform: rotate(120deg);
+}
+
+.lv-circles div:nth-child(5):before {
+  animation-delay: 0.4s;
+}
+
+.lv-circles div:nth-child(6) {
+  transform: rotate(150deg);
+}
+
+.lv-circles div:nth-child(6):before {
+  animation-delay: 0.5s;
+}
+
+.lv-circles div:nth-child(7) {
+  transform: rotate(180deg);
+}
+
+.lv-circles div:nth-child(7):before {
+  animation-delay: 0.6s;
+}
+
+.lv-circles div:nth-child(8) {
+  transform: rotate(210deg);
+}
+
+.lv-circles div:nth-child(8):before {
+  animation-delay: 0.7s;
+}
+
+.lv-circles div:nth-child(9) {
+  transform: rotate(240deg);
+}
+
+.lv-circles div:nth-child(9):before {
+  animation-delay: 0.8s;
+}
+
+.lv-circles div:nth-child(10) {
+  transform: rotate(270deg);
+}
+
+.lv-circles div:nth-child(10):before {
+  animation-delay: 0.9s;
+}
+
+.lv-circles div:nth-child(11) {
+  transform: rotate(300deg);
+}
+
+.lv-circles div:nth-child(11):before {
+  animation-delay: 1s;
+}
+
+.lv-circles div:nth-child(12) {
+  transform: rotate(330deg);
+}
+
+.lv-circles div:nth-child(12):before {
+  animation-delay: 1.1s;
+}
+
+/* SQUARES */
+.lv-squares div {
+  width: 40%;
+  height: 40%;
+  border-radius: 10%;
+}
+
+/* top left corner */
+.lv-squares div:nth-child(1) {
+  background-color: #7cfc00;
+  top: 7%;
+  left: 7%;
+  animation: square1_move 2s ease-in-out infinite;
+}
+
+/* top right corner */
+.lv-squares div:nth-child(3) {
+  background-color: #32cd32;
+  top: 7%;
+  right: 7%;
+  animation: square2_move 2s ease-in-out infinite;
+}
+
+/* bottom right corner */
+.lv-squares div:nth-child(2) {
+  background-color: #008000;
+  bottom: 7%;
+  right: 7%;
+  animation: square3_move 2s ease-in-out infinite;
+}
+
+/* bottom left corner */
+.lv-squares div:nth-child(4) {
+  background-color: #006400;
+  bottom: 7%;
+  left: 7%;
+  animation: square4_move 2s ease-in-out infinite;
+}
+
+/* animations */
+@keyframes dots_fading_animation {
+  0%, 100% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+}
+@keyframes square1_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(116%, 0);
+  }
+  50% {
+    transform: translate(116%, 116%);
+  }
+  75% {
+    transform: translate(0, 116%);
+  }
+}
+@keyframes square2_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 116%);
+  }
+  50% {
+    transform: translate(-116%, 116%);
+  }
+  75% {
+    transform: translate(-116%, 0);
+  }
+}
+@keyframes square3_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-116%, 0);
+  }
+  50% {
+    transform: translate(-116%, -116%);
+  }
+  75% {
+    transform: translate(0, -116%);
+  }
+}
+@keyframes square4_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -116%);
+  }
+  50% {
+    transform: translate(116%, -116%);
+  }
+  75% {
+    transform: translate(116%, 0);
+  }
+}
+@keyframes dots_pulsate_animation {
+  0% {
+    transform: scale(1.5);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+@keyframes borderless_line_animation {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  25% {
+    left: 0;
+    width: 100%;
+  }
+  50% {
+    left: 100%;
+    width: 0;
+  }
+  75% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 0;
+    width: 0;
+  }
+}
+@keyframes line_animation {
+  0% {
+    left: 1%;
+    width: 0;
+  }
+  10% {
+    left: 1%;
+    width: 20%;
+  }
+  90% {
+    left: 79%;
+    width: 20%;
+  }
+  100% {
+    width: 0;
+    left: 99%;
+  }
+}
+@keyframes bar_animation {
+  0%, 100% {
+    top: 37.5%;
+    height: 25%;
+    bottom: 37.5%;
+    width: 2.5%;
+  }
+  50% {
+    top: 12.5%;
+    height: 75%;
+    bottom: 12.5%;
+    width: 5%;
+  }
+}
+/*# sourceMappingURL=main.css.map */

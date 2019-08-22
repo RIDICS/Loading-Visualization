@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     init();
-    progress.line_element = document.getElementsByClassName("definite_line")[0].firstElementChild;
-    progress.line_end_element = document.getElementsByClassName("line_end")[0].firstElementChild;
+    progress.line_element = document.getElementsByClassName("lv-definite_line")[0].firstElementChild;
+    progress.line_end_element = document.getElementsByClassName("lv-definite_bordered_line")[0].firstElementChild;
 });
 // fills all spinners with appropriate number of divs
 function init() {
     // list of all possible objects with the number of divs that are supposed to be in them
     let objects = {
-        "bars": 8,
-        "squares": 4,
-        "line": 1,
-        "circles": 12,
-        "borderless_line": 1,
-        "dots": 4,
-        "definite_line": 1,
-        "line_end": 1
+        "lv-bars": 8,
+        "lv-squares": 4,
+        "lv-bordered_line": 1,
+        "lv-circles": 12,
+        "lv-line": 1,
+        "lv-dots": 4,
+        "lv-definite_line": 1,
+        "lv-definite_bordered_line": 1
     };
     // iterates through everything and adds specified number of divs
     for(let key in objects) {
