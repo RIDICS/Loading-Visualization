@@ -1,29 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="../dist/main.css">
         <script type="text/javascript" src="main.js"></script>
         <title>test progress bar</title>
     </head>
     <body>
         <!-- waving lines -->
-        <div class="bars lg m-lg"></div>
+        <div class="lv-bars lg mid mtop-1"></div>
         <!-- spinning squares -->
-        <div class="squares"></div>
-        <!-- infinite loading bar -->
-        <div class="line"></div>
+        <div class="lv-squares lg mtop-3 fast"></div>
+        <!-- infinite bordered loading bar -->
+        <div class="lv-bordered_line sm mtop-2 right"></div>
         <!-- infinite spinner -->
-        <div class="circles"></div>
-        <!-- book loading bar -->
-        <div class="borderless_line"></div>
+        <div class="lv-circles tiny mid mtop-3"></div>
+        <!-- infinite loading bar -->
+        <div class="lv-line lg mtop-2 mbot-3"></div>
         <!-- pulsating dots -->
-        <div class="dots"></div>
-        <!--
-        <button onclick="NProgress.start();">Start</button>
-        <button onclick="NProgress.set(0.2);">Set 0.2</button>
-        <button onclick="NProgress.inc();">Increase</button>
-        <button onclick="NProgress.done();">End</button>
-        -->
+        <div class="lv-dots tiny right"></div>
         <!-- definite progress bars -->
         <div style="margin-top: 50px;">
             <button onclick="progress.reset();">Reset</button>
@@ -32,7 +26,7 @@
             <button onclick="progress.set_value(50);">Set 50</button>
             <button onclick="progress.fill();">Fill</button>
         </div>
-        <div class="definite_line"></div>
-        <div class="line_end"></div>
+        <div class="lv-definite_line sm mtop-3 mid"></div>
+        <div class="lv-definite_bordered_line mtop-3"></div>
     </body>
 </html>

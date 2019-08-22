@@ -1,11 +1,55 @@
+/* for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter*/
+/* how much will the color lighten; when x = 0, all parts will be the same color */
+/* 0 <= x <= 14 */
+/* 0 <= x <= 33 */
+/* 0 <= x <= 33 */
+.mid {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.mtop-1 {
+  margin-top: 10px;
+}
+
+.mtop-2 {
+  margin-top: 30px;
+}
+
+.mtop-3 {
+  margin-top: 50px;
+}
+
+.mbot-1 {
+  margin-bottom: 10px;
+}
+
+.mbot-2 {
+  margin-bottom: 30px;
+}
+
+.mbot-3 {
+  margin-bottom: 50px;
+}
+
 .lv-bars, .lv-circles, .lv-dots, .lv-squares {
   height: 100%;
   width: 100%;
   position: relative;
 }
 .lv-bars.tiny, .lv-circles.tiny, .lv-dots.tiny, .lv-squares.tiny {
-  height: 20px;
-  width: 20px;
+  height: 30px;
+  width: 30px;
 }
 .lv-bars.sm, .lv-circles.sm, .lv-dots.sm, .lv-squares.sm {
   height: 50px;
@@ -45,7 +89,14 @@
 .lv-definite_line div, .lv-line div {
   height: 100%;
   width: 0;
-  background-color: #006600;
+}
+
+.lv-definite_line div {
+  background-color: #004c00;
+}
+
+.lv-line div {
+  background-color: #000000;
 }
 
 .lv-line.sm, .lv-definite_line.sm, .lv-definite_bordered_line.sm, .lv-bordered_line.sm {
@@ -66,7 +117,7 @@
 /* DEFINITE LINE WITH BORDER */
 .lv-definite_bordered_line {
   height: 21px;
-  border: 5px darkgreen solid;
+  border: 5px #ff0000 solid;
   border-radius: 10px;
   vertical-align: center;
   box-sizing: border-box;
@@ -75,9 +126,8 @@
 .lv-definite_bordered_line div {
   height: 100%;
   width: 0;
-  background-color: darkgreen;
+  background-color: #ff0000;
   border-radius: 3px;
-  margin: auto;
 }
 
 /* LINE */
@@ -86,16 +136,14 @@
 }
 
 .lv-bordered_line {
-  margin: 5px;
-  border: 5px solid darkgreen;
+  border: 5px solid #14c100;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
 .lv-bordered_line div {
   height: 5px;
-  background-color: darkgreen;
-  margin: auto;
+  background-color: #14c100;
   left: 2px;
   top: 3px;
   border-radius: 3px;
@@ -112,55 +160,54 @@
 
 .lv-bars div:nth-child(1) {
   left: 12.5%;
-  background: #00ff00;
+  background: #da00d4;
   animation-delay: -0.7s;
 }
 
 .lv-bars div:nth-child(2) {
   left: 22.5%;
-  background: #00e500;
+  background: #c500c0;
   animation-delay: -0.6s;
 }
 
 .lv-bars div:nth-child(3) {
   left: 32.5%;
-  background: #00cc00;
+  background: #b100ac;
   animation-delay: -0.5s;
 }
 
 .lv-bars div:nth-child(4) {
   left: 42.5%;
-  background: #00b200;
+  background: #9d0098;
   animation-delay: -0.4s;
 }
 
 .lv-bars div:nth-child(5) {
   left: 52.5%;
-  background: #009900;
+  background: #880085;
   animation-delay: -0.3s;
 }
 
 .lv-bars div:nth-child(6) {
   left: 62.5%;
-  background: #007f00;
+  background: #740071;
   animation-delay: -0.2s;
 }
 
 .lv-bars div:nth-child(7) {
   left: 72.5%;
-  background: #006600;
+  background: #5f005d;
   animation-delay: -0.1s;
 }
 
 .lv-bars div:nth-child(8) {
   left: 82.5%;
-  background: #004c00;
+  background: #4b0049;
 }
 
 /* PULSATING DOTS */
 .lv-dots div {
   transform: scale(1.5);
-  margin: auto;
   width: 12.5%;
   height: 12.5%;
   top: 43.75%;
@@ -170,24 +217,24 @@
 
 .lv-dots div:nth-child(1) {
   left: 10%;
-  background-color: #00cc00;
+  background-color: #00e500;
 }
 
 .lv-dots div:nth-child(2) {
   left: 32.5%;
-  background-color: #009900;
+  background-color: #00b200;
   animation-delay: 0.1s;
 }
 
 .lv-dots div:nth-child(3) {
   left: 55%;
-  background-color: #006600;
+  background-color: #007f00;
   animation-delay: 0.2s;
 }
 
 .lv-dots div:nth-child(4) {
   left: 77.5%;
-  background-color: #003300;
+  background-color: #004c00;
   animation-delay: 0.3s;
 }
 
@@ -204,7 +251,7 @@
   width: 15%;
   height: 15%;
   border-radius: 100%;
-  background-color: darkgreen;
+  background-color: #ae8300;
   animation: dots_fading_animation 1.2s infinite ease-in-out both;
 }
 
@@ -305,7 +352,7 @@
 
 /* top left corner */
 .lv-squares div:nth-child(1) {
-  background-color: #7cfc00;
+  background-color: #0012e4;
   top: 7%;
   left: 7%;
   animation: square1_move 2s ease-in-out infinite;
@@ -313,7 +360,7 @@
 
 /* top right corner */
 .lv-squares div:nth-child(3) {
-  background-color: #32cd32;
+  background-color: #000eb1;
   top: 7%;
   right: 7%;
   animation: square2_move 2s ease-in-out infinite;
@@ -321,7 +368,7 @@
 
 /* bottom right corner */
 .lv-squares div:nth-child(2) {
-  background-color: #008000;
+  background-color: #000a7e;
   bottom: 7%;
   right: 7%;
   animation: square3_move 2s ease-in-out infinite;
@@ -329,7 +376,7 @@
 
 /* bottom left corner */
 .lv-squares div:nth-child(4) {
-  background-color: #006400;
+  background-color: #00064b;
   bottom: 7%;
   left: 7%;
   animation: square4_move 2s ease-in-out infinite;
