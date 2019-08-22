@@ -1,3 +1,4 @@
+// setting colors
 $line_background: lightgray;
 $line_color: #000000;
 $bordered_line_color: #14c100;
@@ -5,16 +6,17 @@ $definite_line_color: #004c00;
 $definite_bordered_line_color: #ff0000;
 $circles_color: #ae8300;
 
-/* for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter*/
+// for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
 $bars_color: #4b0049;
 $squares_color: #00064b;
 $dots_color: #004c00;
 
-/* how much will the color lighten; when x = 0, all parts will be the same color */
-$bars_scale: 4; /* 0 <= x <= 14 */
-$squares_scale: 10; /* 0 <= x <= 33 */
-$dots_scale: 10; /* 0 <= x <= 33 */
+// how much will the color lighten; when x = 0, all parts will be the same color
+$bars_scale: 4;  //0 <= x <= 14
+$squares_scale: 10;  // 0 <= x <= 33
+$dots_scale: 10;  // 0 <= x <= 33
 
+// positioning utilities
 .mid {
     margin-left: auto;
     margin-right: auto;
@@ -45,7 +47,7 @@ $dots_scale: 10; /* 0 <= x <= 33 */
 .mbot-3 {
     margin-bottom: 50px;
 }
-
+// setting and sizing of non-line elements
 .lv-bars, .lv-circles, .lv-dots, .lv-squares {
     height: 100%;
     width: 100%;
@@ -95,6 +97,7 @@ $dots_scale: 10; /* 0 <= x <= 33 */
 .lv-line div {
     background-color: $line_color;
 }
+// sizing of lines
 .lv-line, .lv-definite_line, .lv-definite_bordered_line, .lv-bordered_line {
     &.sm {
         width: 300px;
