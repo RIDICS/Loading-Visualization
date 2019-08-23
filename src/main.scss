@@ -5,6 +5,9 @@ $bordered_line_color: #14c100;
 $definite_line_color: #004c00;
 $definite_bordered_line_color: #ff0000;
 $circles_color: #ae8300;
+$spinner_shadow: grey;
+$spinner: darkgrey;
+$spinner_thickness: 20px;
 
 // for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
 $bars_color: #4b0049;
@@ -49,10 +52,9 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // setting and sizing of non-line elements
-.lv-bars, .lv-circles, .lv-dots, .lv-squares {
+.lv-bars, .lv-circles, .lv-dots, .lv-squares, .lv-definite_circle, .lv-spinner {
     height: 100%;
     width: 100%;
-    position: relative;
     &.tiny {
         height: 30px;
         width: 30px;
@@ -78,10 +80,10 @@ $dots_scale: 10;  // 0 <= x <= 33
     height: 5px;
     width: 100%;
 }
-.lv-bars, .lv-circles, .lv-definite_line, .lv-bordered_line, .lv-definite_bordered_line, .lv-dots, .lv-squares, .lv-line {
+.lv-bars, .lv-circles, .lv-definite_line, .lv-bordered_line, .lv-definite_bordered_line, .lv-dots, .lv-squares, .lv-line, .lv-spinner {
     position: relative;
 }
-.lv-bars div, .lv-circles div, .lv-definite_line div, .lv-bordered_line div, .lv-definite_bordered_line div, .lv-dots div, .lv-squares div, .lv-line div {
+.lv-bars div, .lv-circles div, .lv-definite_line div, .lv-bordered_line div, .lv-definite_bordered_line div, .lv-dots div, .lv-squares div, .lv-line div, .lv-definite_circle div, .lv-spinner div {
     position: absolute;
 }
 
@@ -111,6 +113,40 @@ $dots_scale: 10;  // 0 <= x <= 33
     }
 }
 
+// INDEFINITE CIRCLE
+.lv-spinner div {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    border: 10px solid $spinner_shadow;
+    border-top: 10px solid $spinner;
+    border-radius: 50%;
+    animation: spinner 2s ease-in-out infinite;
+}
+
+// DEFINITE CIRCLE
+.lv-definite_circle {
+    border-radius: 50%;
+    border: 3px solid blue;
+    overflow: hidden;
+}
+.lv-definite_circle div{
+    border-radius: 50%;
+    height: inherit;
+    width: inherit;
+    background-color: blue;
+    clip-path: circle(0%);
+    animation: test 3s infinite;
+}
+@keyframes test {
+    0% {
+        clip-path: circle(0%);
+    }
+    100% {
+        clip-path: circle(100%);
+    }
+}
+
 /* BORDERLESS LINE ANIMATED */
 .lv-line div {
     animation: line_animation 3s ease-in-out infinite;
@@ -120,7 +156,7 @@ $dots_scale: 10;  // 0 <= x <= 33
 .lv-definite_bordered_line {
     border: 5px $definite_bordered_line_color solid;
 }
-.lv-definite_bordered_line div{
+.lv-definite_bordered_line div {
     margin-left: 2px;
     height: 5px;
     max-width: 99%;
@@ -204,7 +240,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     width: 12.5%;
     height: 12.5%;
     top: 43.75%;
-    border-radius: 100%;
+    border-radius: 50%;
     animation: dots_pulsate_animation 1s ease-in-out infinite;
 }
 .lv-dots div:nth-child(1) {
@@ -239,7 +275,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     margin: 0 auto;
     width: 15%;
     height: 15%;
-    border-radius: 100%;
+    border-radius: 50%;
     background-color: $circles_color;
     animation: dots_fading_animation 1.2s infinite ease-in-out both;
 }
@@ -347,6 +383,17 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 /* animations */
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
 @keyframes dots_fading_animation{
     0%, 100% {
         opacity: 0;
