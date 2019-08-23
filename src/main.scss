@@ -1,17 +1,18 @@
 // setting colors
-$line_background: lightgray;
-$line_color: #000000;
-$bordered_line_color: #14c100;
-$definite_line_color: #004c00;
-$definite_bordered_line_color: #ff0000;
-$circles_color: #ae8300;
-$spinner_shadow: darkgrey;
-$spinner_color: #343a40;
+$line_background: lightgray; // color of the bar when it's empty
+$line_color: #000000; // color of the bar when it has some progress
+$bordered_line_color: #14c100; // color of border and line of bordered indefinite bar
+$definite_line_background: lightgray; // color of the bar when it's empty
+$definite_line_color: #004c00; // color of definite bar when it has some progress
+$definite_bordered_line_color: #ff0000; // color of border and line of bordered definite bar
+$circles_color: #ae8300; // color of darkest dot, the animation is based on fading the color
+$spinner_shadow: darkgrey; // base color of the spinner
+$spinner_color: #343a40; // color of the moving part of the spinner
 
 // for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
-$bars_color: #4b0049;
-$squares_color: #00064b;
-$dots_color: #004c00;
+$bars_color: #4b0049; // color of the darkest bar
+$squares_color: #00064b; // color of the darkest square
+$dots_color: #004c00; // color of the darkest pulsating dot
 
 // how much will the color lighten; when x = 0, all parts will be the same color
 $bars_scale: 4;  //0 <= x <= 14
@@ -211,9 +212,9 @@ $dots_scale: 10;  // 0 <= x <= 33
     border: 5px $definite_bordered_line_color solid;
 }
 .lv-definite_bordered_line div {
-    margin-left: 2px;
-    height: 5px;
+    margin-left: 0.5%;
     max-width: 99%;
+    height: 5px;
     top: 3px;
     width: 0;
     background-color: $definite_bordered_line_color;

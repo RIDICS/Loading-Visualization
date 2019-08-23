@@ -212,9 +212,9 @@
 }
 
 .lv-definite_bordered_line div {
-  margin-left: 2px;
-  height: 5px;
+  margin-left: 0.5%;
   max-width: 99%;
+  height: 5px;
   top: 3px;
   width: 0;
   background-color: #ff0000;
