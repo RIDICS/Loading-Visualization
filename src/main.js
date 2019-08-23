@@ -23,8 +23,11 @@ function complete_divs() {
     for(let key in objects) {
         let objectsOfClass = document.getElementsByClassName(key);
         for(let i = 0; i < objectsOfClass.length; i += 1) {
-            for(let n = 0; n < objects[key]; n += 1) {
-                objectsOfClass.item(i).appendChild(document.createElement("DIV"));
+            // condition if the div is empty <=> new; otherwise the divs are not added
+            if (!objectsOfClass.item(i).hasChildNodes()) {
+                for (let n = 0; n < objects[key]; n += 1) {
+                    objectsOfClass.item(i).appendChild(document.createElement("DIV"));
+                }
             }
         }
     }

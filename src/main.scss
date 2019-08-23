@@ -47,6 +47,7 @@ $dots_scale: 10;  // 0 <= x <= 33
 .mbot-3 {
     margin-bottom: 50px;
 }
+
 // setting and sizing of non-line elements
 .lv-bars, .lv-circles, .lv-dots, .lv-squares {
     height: 100%;
@@ -112,32 +113,32 @@ $dots_scale: 10;  // 0 <= x <= 33
 
 /* BORDERLESS LINE ANIMATED */
 .lv-line div {
-    animation: borderless_line_animation 3s ease-in-out infinite;
+    animation: line_animation 3s ease-in-out infinite;
 }
 
 /* DEFINITE LINE WITH BORDER */
 .lv-definite_bordered_line {
-    height: 21px;
     border: 5px $definite_bordered_line_color solid;
-    border-radius: 10px;
-    vertical-align: center;
-    box-sizing: border-box;
 }
 .lv-definite_bordered_line div{
-    height: 100%;
+    margin-left: 2px;
+    height: 5px;
+    max-width: 99%;
+    top: 3px;
     width: 0;
     background-color: $definite_bordered_line_color;
     border-radius: 3px;
 }
 
-/* LINE */
-.lv-bordered_line {
+.lv-definite_bordered_line, .lv-bordered_line {
     height: 21px;
-}
-.lv-bordered_line {
-    border: 5px solid $bordered_line_color;
     border-radius: 10px;
     box-sizing: border-box;
+}
+
+/* LINE */
+.lv-bordered_line {
+    border: 5px solid $bordered_line_color;
 }
 .lv-bordered_line div {
     height: 5px;
@@ -145,7 +146,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     left: 2px;
     top: 3px;
     border-radius: 3px;
-    animation: line_animation 2s linear infinite;
+    animation: bordered_line_animation 2s linear infinite;
 }
 
 /* BARS */
@@ -389,7 +390,7 @@ $dots_scale: 10;  // 0 <= x <= 33
         transform: scale(1.5);
     }
 }
-@keyframes borderless_line_animation {
+@keyframes line_animation {
     0% {
         left: 0;
         width: 0;
@@ -411,7 +412,7 @@ $dots_scale: 10;  // 0 <= x <= 33
         width: 0;
     }
 }
-@keyframes line_animation {
+@keyframes bordered_line_animation {
     0% {
         left: 1%;
         width: 0;
