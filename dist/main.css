@@ -57,6 +57,10 @@
   height: 200px;
   width: 200px;
 }
+.lv-bars.lg, .lv-circles.lg, .lv-dots.lg, .lv-squares.lg, .lv-definite_circle.lg, .lv-spinner.lg {
+  height: 200px;
+  width: 200px;
+}
 
 .lv-bordered_line, .lv-definite_bordered_line {
   height: 21px;
@@ -107,10 +111,71 @@
   height: inherit;
   width: inherit;
   box-sizing: border-box;
-  border: 10px solid grey;
-  border-top: 10px solid darkgrey;
+  border: 10px solid darkgrey;
+  border-top: 10px solid #343a40;
   border-radius: 50%;
   animation: spinner 2s ease-in-out infinite;
+}
+
+.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label] {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.lv-spinner[data-label]:after, .lv-circles[data-label]:after {
+  content: attr(data-label);
+  vertical-align: middle;
+  display: inline-block;
+  text-wrap: normal;
+  padding: 40% 0 40% 0;
+  overflow: hidden;
+}
+
+.lv-bars[data-label]:after, .lv-squares[data-label]:after, .lv-dots[data-label]:after {
+  content: attr(data-label);
+  display: inline-block;
+  text-wrap: normal;
+  margin-top: 100%;
+  overflow: hidden;
+}
+
+.lv-bordered_line[data-label]:after, .lv-line[data-label]:after {
+  content: attr(data-label);
+  display: block;
+  padding-top: 20px;
+  overflow: hidden;
+}
+
+.lv-dots[data-label]:after {
+  margin-top: 65%;
+}
+
+.lv-bars[data-label]:after {
+  color: #4b0049;
+}
+
+.lv-squares[data-label]:after {
+  color: #00064b;
+}
+
+.lv-bordered_line[data-label]:after {
+  color: #14c100;
+}
+
+.lv-circles[data-label]:after {
+  color: #ae8300;
+}
+
+.lv-line[data-label]:after {
+  color: #000000;
+}
+
+.lv-dots[data-label]:after {
+  color: #004c00;
+}
+
+.lv-spinner[data-label]:after {
+  color: #343a40;
 }
 
 .lv-definite_circle {
@@ -234,8 +299,8 @@
 /* PULSATING DOTS */
 .lv-dots div {
   transform: scale(1.5);
-  width: 12.5%;
-  height: 12.5%;
+  width: 19%;
+  height: 19%;
   top: 43.75%;
   border-radius: 50%;
   animation: dots_pulsate_animation 1s ease-in-out infinite;
@@ -486,13 +551,13 @@
 }
 @keyframes dots_pulsate_animation {
   0% {
-    transform: scale(1.5);
+    transform: scale(1);
   }
   50% {
     transform: scale(0);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1);
   }
 }
 @keyframes line_animation {

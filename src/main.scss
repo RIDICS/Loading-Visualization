@@ -5,9 +5,8 @@ $bordered_line_color: #14c100;
 $definite_line_color: #004c00;
 $definite_bordered_line_color: #ff0000;
 $circles_color: #ae8300;
-$spinner_shadow: grey;
-$spinner: darkgrey;
-$spinner_thickness: 20px;
+$spinner_shadow: darkgrey;
+$spinner_color: #343a40;
 
 // for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
 $bars_color: #4b0049;
@@ -71,6 +70,10 @@ $dots_scale: 10;  // 0 <= x <= 33
         height: 200px;
         width: 200px;
     }
+    &.lg {
+        height: 200px;
+        width: 200px;
+    }
 }
 .lv-bordered_line, .lv-definite_bordered_line{
     height: 21px;
@@ -119,9 +122,60 @@ $dots_scale: 10;  // 0 <= x <= 33
     width: inherit;
     box-sizing: border-box;
     border: 10px solid $spinner_shadow;
-    border-top: 10px solid $spinner;
+    border-top: 10px solid $spinner_color;
     border-radius: 50%;
     animation: spinner 2s ease-in-out infinite;
+}
+
+// LABELS
+.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label] {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.lv-spinner[data-label]:after, .lv-circles[data-label]:after {
+    content: attr(data-label);
+    vertical-align: middle;
+    display: inline-block;
+    text-wrap: normal;
+    padding: 40% 0 40% 0;
+    overflow: hidden;
+}
+.lv-bars[data-label]:after, .lv-squares[data-label]:after, .lv-dots[data-label]:after {
+    content: attr(data-label);
+    display: inline-block;
+    text-wrap: normal;
+    margin-top: 100%;
+    overflow: hidden;
+}
+.lv-bordered_line[data-label]:after, .lv-line[data-label]:after {
+    content: attr(data-label);
+    display: block;
+    padding-top: 20px;
+    overflow: hidden;
+}
+.lv-dots[data-label]:after {
+    margin-top: 65%;
+}
+.lv-bars[data-label]:after {
+    color: $bars_color;
+}
+.lv-squares[data-label]:after {
+    color: $squares_color;
+}
+.lv-bordered_line[data-label]:after {
+    color: $bordered_line_color;
+}
+.lv-circles[data-label]:after {
+    color: $circles_color;
+}
+.lv-line[data-label]:after {
+    color: $line_color;
+}
+.lv-dots[data-label]:after {
+    color: $dots_color;
+}
+.lv-spinner[data-label]:after {
+    color: $spinner_color;
 }
 
 // DEFINITE CIRCLE
@@ -237,8 +291,8 @@ $dots_scale: 10;  // 0 <= x <= 33
 /* PULSATING DOTS */
 .lv-dots div {
     transform: scale(1.5);
-    width: 12.5%;
-    height: 12.5%;
+    width: 19%;
+    height: 19%;
     top: 43.75%;
     border-radius: 50%;
     animation: dots_pulsate_animation 1s ease-in-out infinite;
@@ -428,13 +482,13 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 @keyframes dots_pulsate_animation {
     0% {
-        transform: scale(1.5);
+        transform: scale(1);
     }
     50% {
         transform: scale(0);
     }
     100% {
-        transform: scale(1.5);
+        transform: scale(1);
     }
 }
 @keyframes line_animation {
