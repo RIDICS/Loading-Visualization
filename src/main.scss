@@ -8,6 +8,8 @@ $definite_bordered_line_color: #ff0000; // color of border and line of bordered 
 $circles_color: #ae8300; // color of darkest dot, the animation is based on fading the color
 $spinner_shadow: darkgrey; // base color of the spinner
 $spinner_color: #343a40; // color of the moving part of the spinner
+$definite_circle_background: darkgrey; // base color of the spinner
+$definite_circle_color: #343a40; // color of the moving part of the spinner
 
 // for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
 $bars_color: #4b0049; // color of the darkest bar
@@ -180,26 +182,22 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // DEFINITE CIRCLE
-.lv-definite_circle {
-    border-radius: 50%;
-    border: 3px solid blue;
-    overflow: hidden;
-}
-.lv-definite_circle div{
-    border-radius: 50%;
+.lv-definite_circle div:nth-child(1) {
     height: inherit;
     width: inherit;
-    background-color: blue;
-    clip-path: circle(0%);
-    animation: test 3s infinite;
+    box-sizing: border-box;
+    transform: rotate(45deg);
+    border: 10px solid $definite_circle_background;
+    border-radius: 50%;
 }
-@keyframes test {
-    0% {
-        clip-path: circle(0%);
-    }
-    100% {
-        clip-path: circle(100%);
-    }
+.lv-definite_circle div:nth-child(2) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    transform: rotate(45deg);
+    border: 10px solid transparent;
+    border-top: 10px solid $definite_circle_color;
+    border-radius: 50%;
 }
 
 /* BORDERLESS LINE ANIMATED */

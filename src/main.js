@@ -4,6 +4,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // saving references of determinate loading bars into attributes of class progress
     progress.line_element = document.getElementsByClassName("lv-definite_line")[0].firstElementChild;
     progress.line_end_element = document.getElementsByClassName("lv-definite_bordered_line")[0].firstElementChild;
+    progress.circle_background = document.getElementsByClassName("lv-definite_circle")[0].firstElementChild;
+    progress.circle_spinner = document.getElementsByClassName("lv-definite_circle")[0].lastElementChild;
+    console.log(progress.circle_background, progress.circle_spinner);
 });
 
 // fills all spinners with appropriate number of divs
@@ -18,7 +21,7 @@ function complete_divs() {
         "lv-dots": 4,
         "lv-definite_line": 1,
         "lv-definite_bordered_line": 1,
-        "lv-definite_circle": 1,
+        "lv-definite_circle": 2,
         "lv-spinner": 1
     };
     // iterates through everything and adds specified number of divs
@@ -61,6 +64,7 @@ progress.add_value = function(n) {
         transfer();
         progress.current_value += n;
         progress.update_line();
+        progress.update_circle();
     }
 };
 
@@ -89,6 +93,29 @@ progress.fill = function() {
     transfer();
     progress.current_value = progress.max_value;
     progress.update_line();
+    progress.update_circle();
+};
+
+progress.update_circle = function() {
+    let length = Math.round((progress.previous_value / progress.max_value) * 360);
+    let goal = Math.round((progress.current_value / progress.max_value) * 360);
+    let id = setInterval(frame, 10);
+    let offset = 45;
+    function frame() {
+        if (length === goal) {
+            clearInterval(id);
+        } else {
+            if (length === 45) {
+                progress.circle_background.style.borderTopColor = "#343a40";
+            } else if (length === 135) {
+                progress.circle_background.style.borderRightColor = "#343a40";
+            } else if (length === 225) {
+                progress.circle_background.style.borderBottomColor = "#343a40";
+            }
+            length += 0.5;
+            progress.circle_spinner.style.transform = "rotate(" + (offset + length).toString() + "deg)";
+        }
+    }
 };
 
 // handles animating changes of progress bars
