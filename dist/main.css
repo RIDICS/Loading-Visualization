@@ -182,8 +182,18 @@
   height: inherit;
   width: inherit;
   box-sizing: border-box;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   border: 10px solid darkgrey;
+  border-radius: 50%;
+}
+
+.lv-definite_circle div:nth-child(3) {
+  height: inherit;
+  width: inherit;
+  box-sizing: border-box;
+  transform: rotate(-45deg);
+  border: 10px solid transparent;
+  border-top: 10px solid #343a40;
   border-radius: 50%;
 }
 
@@ -191,10 +201,11 @@
   height: inherit;
   width: inherit;
   box-sizing: border-box;
-  transform: rotate(45deg);
+  transform: rotate(-45deg);
   border: 10px solid transparent;
-  border-top: 10px solid #343a40;
+  border-top: 10px solid darkgrey;
   border-radius: 50%;
+  z-index: 10;
 }
 
 /* BORDERLESS LINE ANIMATED */

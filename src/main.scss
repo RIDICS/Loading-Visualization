@@ -186,18 +186,31 @@ $dots_scale: 10;  // 0 <= x <= 33
     height: inherit;
     width: inherit;
     box-sizing: border-box;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     border: 10px solid $definite_circle_background;
+    border-radius: 50%;
+}
+.lv-definite_circle div:nth-child(3) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    border: 10px solid transparent;
+    border-top: 10px solid $definite_circle_color;
     border-radius: 50%;
 }
 .lv-definite_circle div:nth-child(2) {
     height: inherit;
     width: inherit;
     box-sizing: border-box;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     border: 10px solid transparent;
-    border-top: 10px solid $definite_circle_color;
+    border-top: 10px solid $definite_circle_background;
     border-radius: 50%;
+    z-index: 10;
+}
+.lv-definite_circle div:nth-child(4) {
+
 }
 
 /* BORDERLESS LINE ANIMATED */
