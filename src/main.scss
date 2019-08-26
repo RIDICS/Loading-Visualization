@@ -159,7 +159,6 @@ $dots_scale: 10;  // 0 <= x <= 33
     white-space: normal;
     padding: 40% 0 40% 0;
 }
-
 .lv-bars[data-label].tiny:after,  .lv-squares[data-label].tiny:after, .lv-circles[data-label].tiny:after, .lv-dots[data-label].tiny:after, .lv-spinner[data-label].tiny:after, .lv-definite_circle[data-label].tiny:after {
     padding: 0 120%;
     margin-top: 20%;
@@ -218,6 +217,10 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // DEFINITE CIRCLE
+.lv-definite_circle {
+    height: 100%;
+    width: 100%;
+}
 .lv-definite_circle div:nth-child(1) {
     height: inherit;
     width: inherit;
@@ -244,6 +247,15 @@ $dots_scale: 10;  // 0 <= x <= 33
     border-top: 10px solid $definite_circle_background;
     border-radius: 50%;
     z-index: 10;
+}
+.lv-definite_circle div:nth-child(4) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 15% 0 10% 0;
+    color: $definite_circle_color;
+    line-height: 200%;
 }
 
 /* BORDERLESS LINE ANIMATED */

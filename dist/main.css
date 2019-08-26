@@ -224,6 +224,11 @@
   color: #004c00;
 }
 
+.lv-definite_circle {
+  height: 100%;
+  width: 100%;
+}
+
 .lv-definite_circle div:nth-child(1) {
   height: inherit;
   width: inherit;
@@ -252,6 +257,16 @@
   border-top: 10px solid darkgrey;
   border-radius: 50%;
   z-index: 10;
+}
+
+.lv-definite_circle div:nth-child(4) {
+  height: inherit;
+  width: inherit;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 15% 0 10% 0;
+  color: #343a40;
+  line-height: 200%;
 }
 
 /* BORDERLESS LINE ANIMATED */

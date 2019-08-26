@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     progress.circle_background = progress.circle_divs[0];
     progress.circle_spinner = progress.circle_divs[2];
     progress.circle_overlay = progress.circle_divs[1];
+    progress.circle_percentage = progress.circle_divs[3];
     // loading colours currently used on definite circle
     progress.circle_background_color = window.getComputedStyle(progress.circle_overlay).borderTopColor;
     progress.circle_spinner_color = window.getComputedStyle(progress.circle_spinner).borderTopColor;
@@ -25,7 +26,7 @@ function complete_divs() {
         "lv-dots": 4,
         "lv-definite_line": 1,
         "lv-definite_bordered_line": 1,
-        "lv-definite_circle": 3,
+        "lv-definite_circle": 4,
         "lv-spinner": 1
     };
     // iterates through everything and adds specified number of divs
@@ -105,27 +106,29 @@ progress.reset_circle = function() {
     progress.circle_background.style.borderColor = progress.circle_background_color;
     progress.circle_overlay.style.borderTopColor = progress.circle_background_color;
     progress.circle_spinner.style.transform = "rotate(-45deg)";
+    progress.circle_percentage.innerHTML = "0%";
 };
 
 progress.update_circle = function() {
-    let length = Math.round((progress.previous_value / progress.max_value) * 360);
+    let deg = Math.round((progress.previous_value / progress.max_value) * 360);
     let goal = Math.round((progress.current_value / progress.max_value) * 360);
     let id = setInterval(frame, 3);
     let offset = -45;
     function frame() {
-        if (length === goal) {
+        if (deg === goal) {
             clearInterval(id);
         } else {
-            if (length === 90) {
+            if (deg === 90) {
                 progress.circle_background.style.borderRightColor = progress.circle_spinner_color;
                 progress.circle_overlay.style.borderTopColor = "transparent";
-            } else if (length === 180) {
+            } else if (deg === 180) {
                 progress.circle_background.style.borderBottomColor = progress.circle_spinner_color;
-            } else if (length === 270) {
+            } else if (deg === 270) {
                 progress.circle_background.style.borderLeftColor = progress.circle_spinner_color;
             }
-            length += 0.5;
-            progress.circle_spinner.style.transform = "rotate(" + (offset + length).toString() + "deg)";
+            deg += 0.5;
+            progress.circle_spinner.style.transform = "rotate(" + (offset + deg).toString() + "deg)";
+            progress.circle_percentage.innerHTML = (Math.round((deg / 360) * 100)).toString() + '%';
         }
     }
 };
