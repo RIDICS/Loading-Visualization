@@ -52,6 +52,24 @@ $dots_scale: 10;  // 0 <= x <= 33
 .mbot-3 {
     margin-bottom: 50px;
 }
+.mleft-1 {
+    margin-left: 10px;
+}
+.mleft-2 {
+    margin-left: 30px;
+}
+.mleft-3 {
+    margin-left: 50px;
+}
+.mright-1 {
+    margin-right: 10px;
+}
+.mright-2 {
+    margin-right: 30px;
+}
+.mright-3 {
+    margin-right: 50px;
+}
 
 // setting and sizing of non-line elements
 .lv-bars, .lv-circles, .lv-dots, .lv-squares, .lv-definite_circle, .lv-spinner {
@@ -127,23 +145,33 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // LABELS
-.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label], .lv-definite_circle[data-label], .lv-definite_bordered_line[data-label], .lv-definite_line[data-label] {
+*[data-label] {
     text-align: center;
+}
+.lv-spinner[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label], .lv-definite_bordered_line[data-label], .lv-definite_line[data-label] {
     margin-bottom: 30px;
+
 }
 .lv-spinner[data-label]:after, .lv-circles[data-label]:after, .lv-definite_circle[data-label]:after {
     content: attr(data-label);
-    vertical-align: middle;
     display: inline-block;
-    text-wrap: normal;
+    overflow-wrap: break-word;
+    white-space: normal;
     padding: 40% 0 40% 0;
-    overflow: hidden;
 }
+
+.lv-bars[data-label].tiny:after,  .lv-squares[data-label].tiny:after, .lv-circles[data-label].tiny:after, .lv-dots[data-label].tiny:after, .lv-spinner[data-label].tiny:after, .lv-definite_circle[data-label].tiny:after {
+    padding: 0 120%;
+    margin-top: 20%;
+}
+.lv-bars[data-label].sm:after, .lv-squares[data-label].sm:after, .lv-circles[data-label].sm:after, .lv-dots[data-label].sm:after, .lv-spinner[data-label].sm:after, .lv-definite_circle[data-label].sm:after {
+    padding: 0 120%;
+    margin-top: 35%;
+}
+
 .lv-bars[data-label]:after, .lv-squares[data-label]:after, .lv-dots[data-label]:after {
     content: attr(data-label);
     display: inline-block;
-    text-wrap: normal;
-    margin-top: 100%;
     overflow: hidden;
 }
 .lv-bordered_line[data-label]:after, .lv-line[data-label]:after, .lv-definite_bordered_line[data-label]:after, .lv-definite_line[data-label]:after {
@@ -151,6 +179,9 @@ $dots_scale: 10;  // 0 <= x <= 33
     display: block;
     padding-top: 20px;
     overflow: hidden;
+}
+.lv-squares[data-label]:after, .lv-bars[data-label]:after {
+    margin-top: 100%;
 }
 .lv-dots[data-label]:after {
     margin-top: 65%;
@@ -301,10 +332,8 @@ $dots_scale: 10;  // 0 <= x <= 33
     background: $bars_color;
 }
 
-
 /* PULSATING DOTS */
 .lv-dots div {
-    transform: scale(1.5);
     width: 19%;
     height: 19%;
     top: 43.75%;
@@ -330,7 +359,6 @@ $dots_scale: 10;  // 0 <= x <= 33
     background-color: $dots_color;
     animation-delay: 0.3s;
 }
-
 
 /* CIRCLES */
 .lv-circles div {
