@@ -17,7 +17,7 @@ $squares_color: #00064b; // color of the darkest square
 $dots_color: #004c00; // color of the darkest pulsating dot
 
 // how much will the color lighten; when x = 0, all parts will be the same color
-$bars_scale: 4;  //0 <= x <= 14
+$bars_scale: 5;  //0 <= x <= 14
 $squares_scale: 10;  // 0 <= x <= 33
 $dots_scale: 10;  // 0 <= x <= 33
 
@@ -68,10 +68,6 @@ $dots_scale: 10;  // 0 <= x <= 33
     &.md {
         height: 100px;
         width: 100px;
-    }
-    &.lg {
-        height: 200px;
-        width: 200px;
     }
     &.lg {
         height: 200px;
@@ -131,11 +127,11 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // LABELS
-.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label] {
+.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label], .lv-definite_circle[data-label], .lv-definite_bordered_line[data-label], .lv-definite_line[data-label] {
     text-align: center;
     margin-bottom: 30px;
 }
-.lv-spinner[data-label]:after, .lv-circles[data-label]:after {
+.lv-spinner[data-label]:after, .lv-circles[data-label]:after, .lv-definite_circle[data-label]:after {
     content: attr(data-label);
     vertical-align: middle;
     display: inline-block;
@@ -150,7 +146,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     margin-top: 100%;
     overflow: hidden;
 }
-.lv-bordered_line[data-label]:after, .lv-line[data-label]:after {
+.lv-bordered_line[data-label]:after, .lv-line[data-label]:after, .lv-definite_bordered_line[data-label]:after, .lv-definite_line[data-label]:after {
     content: attr(data-label);
     display: block;
     padding-top: 20px;
@@ -179,6 +175,15 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 .lv-spinner[data-label]:after {
     color: $spinner_color;
+}
+.lv-definite_circle[data-label]:after {
+    color: $definite_circle_color;
+}
+.lv-definite_bordered_line[data-label]:after {
+    color: $definite_bordered_line_color;
+}
+.lv-definite_line[data-label]:after {
+    color: $definite_line_color;
 }
 
 // DEFINITE CIRCLE

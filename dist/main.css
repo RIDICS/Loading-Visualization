@@ -57,10 +57,6 @@
   height: 200px;
   width: 200px;
 }
-.lv-bars.lg, .lv-circles.lg, .lv-dots.lg, .lv-squares.lg, .lv-definite_circle.lg, .lv-spinner.lg {
-  height: 200px;
-  width: 200px;
-}
 
 .lv-bordered_line, .lv-definite_bordered_line {
   height: 21px;
@@ -117,12 +113,12 @@
   animation: spinner 2s ease-in-out infinite;
 }
 
-.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label] {
+.lv-spinner[data-label], .lv-circles[data-label], .lv-bars[data-label], .lv-squares[data-label], .lv-dots[data-label], .lv-line[data-label], .lv-bordered_line[data-label], .lv-definite_circle[data-label], .lv-definite_bordered_line[data-label], .lv-definite_line[data-label] {
   text-align: center;
   margin-bottom: 30px;
 }
 
-.lv-spinner[data-label]:after, .lv-circles[data-label]:after {
+.lv-spinner[data-label]:after, .lv-circles[data-label]:after, .lv-definite_circle[data-label]:after {
   content: attr(data-label);
   vertical-align: middle;
   display: inline-block;
@@ -139,7 +135,7 @@
   overflow: hidden;
 }
 
-.lv-bordered_line[data-label]:after, .lv-line[data-label]:after {
+.lv-bordered_line[data-label]:after, .lv-line[data-label]:after, .lv-definite_bordered_line[data-label]:after, .lv-definite_line[data-label]:after {
   content: attr(data-label);
   display: block;
   padding-top: 20px;
@@ -176,6 +172,18 @@
 
 .lv-spinner[data-label]:after {
   color: #343a40;
+}
+
+.lv-definite_circle[data-label]:after {
+  color: #343a40;
+}
+
+.lv-definite_bordered_line[data-label]:after {
+  color: #ff0000;
+}
+
+.lv-definite_line[data-label]:after {
+  color: #004c00;
 }
 
 .lv-definite_circle div:nth-child(1) {
@@ -258,43 +266,43 @@
 
 .lv-bars div:nth-child(1) {
   left: 12.5%;
-  background: #da00d4;
+  background: #fe00f7;
   animation-delay: -0.7s;
 }
 
 .lv-bars div:nth-child(2) {
   left: 22.5%;
-  background: #c500c0;
+  background: #e400de;
   animation-delay: -0.6s;
 }
 
 .lv-bars div:nth-child(3) {
   left: 32.5%;
-  background: #b100ac;
+  background: #cb00c5;
   animation-delay: -0.5s;
 }
 
 .lv-bars div:nth-child(4) {
   left: 42.5%;
-  background: #9d0098;
+  background: #b100ac;
   animation-delay: -0.4s;
 }
 
 .lv-bars div:nth-child(5) {
   left: 52.5%;
-  background: #880085;
+  background: #980093;
   animation-delay: -0.3s;
 }
 
 .lv-bars div:nth-child(6) {
   left: 62.5%;
-  background: #740071;
+  background: #7e007b;
   animation-delay: -0.2s;
 }
 
 .lv-bars div:nth-child(7) {
   left: 72.5%;
-  background: #5f005d;
+  background: #650062;
   animation-delay: -0.1s;
 }
 

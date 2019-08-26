@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     progress.circle_background = progress.circle_divs[0];
     progress.circle_spinner = progress.circle_divs[2];
     progress.circle_overlay = progress.circle_divs[1];
+    // loading colours currently used on definite circle
     progress.circle_background_color = window.getComputedStyle(progress.circle_overlay).borderTopColor;
     progress.circle_spinner_color = window.getComputedStyle(progress.circle_spinner).borderTopColor;
 });
@@ -103,6 +104,7 @@ progress.fill = function() {
 progress.reset_circle = function() {
     progress.circle_background.style.borderColor = progress.circle_background_color;
     progress.circle_overlay.style.borderTopColor = progress.circle_background_color;
+    progress.circle_spinner.style.transform = "rotate(-45deg)";
 };
 
 progress.update_circle = function() {
