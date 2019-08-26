@@ -8,7 +8,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     progress.circle_background = progress.circle_divs[0];
     progress.circle_spinner = progress.circle_divs[2];
     progress.circle_overlay = progress.circle_divs[1];
-    console.log(document.getElementsByClassName("lv-definite_circle")[0].children);
+    progress.circle_background_color = window.getComputedStyle(progress.circle_overlay).borderTopColor;
+    progress.circle_spinner_color = window.getComputedStyle(progress.circle_spinner).borderTopColor;
 });
 
 // fills all spinners with appropriate number of divs
@@ -100,8 +101,8 @@ progress.fill = function() {
 };
 
 progress.reset_circle = function() {
-    progress.circle_background.style.borderColor = "darkgrey";
-    progress.circle_overlay.style.borderTopColor = "darkgrey";
+    progress.circle_background.style.borderColor = progress.circle_background_color;
+    progress.circle_overlay.style.borderTopColor = progress.circle_background_color;
 };
 
 progress.update_circle = function() {
@@ -114,12 +115,12 @@ progress.update_circle = function() {
             clearInterval(id);
         } else {
             if (length === 90) {
-                progress.circle_background.style.borderRightColor = "#343a40";
+                progress.circle_background.style.borderRightColor = progress.circle_spinner_color;
                 progress.circle_overlay.style.borderTopColor = "transparent";
             } else if (length === 180) {
-                progress.circle_background.style.borderBottomColor = "#343a40";
+                progress.circle_background.style.borderBottomColor = progress.circle_spinner_color;
             } else if (length === 270) {
-                progress.circle_background.style.borderLeftColor = "#343a40";
+                progress.circle_background.style.borderLeftColor = progress.circle_spinner_color;
             }
             length += 0.5;
             progress.circle_spinner.style.transform = "rotate(" + (offset + length).toString() + "deg)";
