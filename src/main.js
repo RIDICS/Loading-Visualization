@@ -46,6 +46,11 @@ function complete_divs() {
     }
 }
 
+function add() {
+    let child = document.createElement("DIV");
+    child.className = "lv-spinner mid lg mtop-3";
+    document.getElementById("container").appendChild(child);
+}
 // saves current value as previous for future update
 function transfer() {
     progress.previous_value = progress.current_value;
@@ -57,6 +62,23 @@ let progress = {
     previous_value: 0,
     current_value: 0,
 };
+
+// automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
+const targetNode = document;
+const config = {childList: true, subtree: true};
+const callback = function(mutationList, observer) {
+    for (let mutation of mutationList) {
+        if (mutation.type === "childList") {
+            try {
+                if (mutation.addedNodes[0].classList.length > 0) {
+                    complete_divs();
+                }
+            } catch {}
+        }
+    }
+};
+const observer = new MutationObserver(callback);
+observer.observe(targetNode, config);
 
 // resets all loading bars
 progress.reset = function() {
