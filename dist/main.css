@@ -136,17 +136,31 @@
   background-color: lightgray;
 }
 
-.lv-definite_line div, .lv-line div {
+.lv-definite_line div:nth-child(1), .lv-line div {
   height: 100%;
   width: 0;
 }
 
-.lv-definite_line div {
+.lv-definite_line div:nth-child(1) {
   background-color: #004c00;
+}
+
+.lv-definite_line div:nth-child(2) {
+  color: #004c00;
 }
 
 .lv-line div {
   background-color: #000000;
+}
+
+.lv-definite_line div:nth-child(2), .lv-definite_bordered_line div:nth-child(2) {
+  left: 103%;
+  top: -5px;
+  visibility: hidden;
+}
+
+.lv-definite_bordered_line[data-percentage=true] div:nth-child(2), .lv-definite_line[data-percentage=true] div:nth-child(2) {
+  visibility: visible;
 }
 
 .lv-line.sm, .lv-definite_line.sm, .lv-definite_bordered_line.sm, .lv-bordered_line.sm {
@@ -318,7 +332,7 @@
   border: 5px #ff0000 solid;
 }
 
-.lv-definite_bordered_line div {
+.lv-definite_bordered_line div:nth-child(1) {
   margin-left: 0.5%;
   max-width: 99%;
   height: 5px;
@@ -326,6 +340,10 @@
   width: 0;
   background-color: #ff0000;
   border-radius: 3px;
+}
+
+.lv-definite_bordered_line div:nth-child(2) {
+  color: #ff0000;
 }
 
 .lv-definite_bordered_line, .lv-bordered_line {

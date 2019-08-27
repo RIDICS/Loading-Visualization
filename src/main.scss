@@ -134,15 +134,26 @@ $dots_scale: 10;  // 0 <= x <= 33
 .lv-definite_line, .lv-line {
     background-color: $line_background;
 }
-.lv-definite_line div, .lv-line div {
+.lv-definite_line div:nth-child(1), .lv-line div {
     height: 100%;
     width: 0;
 }
-.lv-definite_line div {
+.lv-definite_line div:nth-child(1) {
     background-color: $definite_line_color;
+}
+.lv-definite_line div:nth-child(2) {
+    color: $definite_line_color;
 }
 .lv-line div {
     background-color: $line_color;
+}
+.lv-definite_line div:nth-child(2), .lv-definite_bordered_line div:nth-child(2) {
+    left: 103%;
+    top: -5px;
+    visibility: hidden;
+}
+.lv-definite_bordered_line[data-percentage="true"] div:nth-child(2), .lv-definit_line[data-percentage="true"] div:nth-child(2) {
+     visibility: visible;
 }
 // sizing of lines
 .lv-line, .lv-definite_line, .lv-definite_bordered_line, .lv-bordered_line {
@@ -295,7 +306,7 @@ $dots_scale: 10;  // 0 <= x <= 33
 .lv-definite_bordered_line {
     border: 5px $definite_bordered_line_color solid;
 }
-.lv-definite_bordered_line div {
+.lv-definite_bordered_line div:nth-child(1) {
     margin-left: 0.5%;
     max-width: 99%;
     height: 5px;
@@ -304,7 +315,9 @@ $dots_scale: 10;  // 0 <= x <= 33
     background-color: $definite_bordered_line_color;
     border-radius: 3px;
 }
-
+.lv-definite_bordered_line div:nth-child(2) {
+    color: $definite_bordered_line_color;
+}
 .lv-definite_bordered_line, .lv-bordered_line {
     height: 21px;
     border-radius: 10px;

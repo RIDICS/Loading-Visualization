@@ -4,6 +4,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // saving references of determinate loading bars into attributes of class progress
     progress.line_element = document.getElementsByClassName("lv-definite_line")[0].firstElementChild;
     progress.line_end_element = document.getElementsByClassName("lv-definite_bordered_line")[0].firstElementChild;
+    progress.line_percentage = document.getElementsByClassName("lv-definite_line")[0].lastElementChild;
+    progress.line_end_percentage = document.getElementsByClassName("lv-definite_bordered_line")[0].lastElementChild;
     progress.circle_divs = document.getElementsByClassName("lv-definite_circle")[0].children;
     progress.circle_background = progress.circle_divs[0];
     progress.circle_spinner = progress.circle_divs[2];
@@ -24,8 +26,8 @@ function complete_divs() {
         "lv-circles": 12,
         "lv-line": 1,
         "lv-dots": 4,
-        "lv-definite_line": 1,
-        "lv-definite_bordered_line": 1,
+        "lv-definite_line": 2,
+        "lv-definite_bordered_line": 2,
         "lv-definite_circle": 4,
         "lv-spinner": 1
     };
@@ -149,12 +151,14 @@ progress.update_line = function() {
         } else if (width < goal) {
             width += 0.5;
             progress.line_element.style.width = width + '%';
-            progress.line_end_element.style.width = width + '%';
+            progress.line_end_element.style.width = width + '%'
         // decreasing the bar's width
         } else {
             width -= 0.5;
             progress.line_element.style.width = width + '%';
             progress.line_end_element.style.width = width + '%';
         }
+        progress.line_end_percentage.innerHTML = Math.round(width).toString();
+        progress.line_percentage.innerHTML = Math.round(width).toString();
     }
 };
