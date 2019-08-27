@@ -106,7 +106,7 @@ progress.reset_circle = function() {
     progress.circle_background.style.borderColor = progress.circle_background_color;
     progress.circle_overlay.style.borderTopColor = progress.circle_background_color;
     progress.circle_spinner.style.transform = "rotate(-45deg)";
-    progress.circle_percentage.innerHTML = "0%";
+    progress.circle_percentage.innerHTML = "0";
 };
 
 progress.update_circle = function() {
@@ -128,7 +128,7 @@ progress.update_circle = function() {
             }
             deg += 0.5;
             progress.circle_spinner.style.transform = "rotate(" + (offset + deg).toString() + "deg)";
-            progress.circle_percentage.innerHTML = (Math.round((deg / 360) * 100)).toString() + '%';
+            progress.circle_percentage.innerHTML = (Math.round((deg / 360) * 100)).toString();
         }
     }
 };
