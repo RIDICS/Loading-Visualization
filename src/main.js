@@ -67,15 +67,24 @@ let progress = {
 const targetNode = document;
 const config = {childList: true, subtree: true};
 const callback = function(mutationList, observer) {
-    for (let mutation of mutationList) {
+    // for (let mutation of mutationList) {
+    //     if (mutation.type === "childList") {
+    //         try {
+    //             if (mutation.addedNodes[0].classList.length > 0) {
+    //                 complete_divs();
+    //             }
+    //         } catch (error) {}
+    //     }
+    // }
+    mutationList.forEach(function(mutation) {
         if (mutation.type === "childList") {
             try {
                 if (mutation.addedNodes[0].classList.length > 0) {
                     complete_divs();
                 }
-            } catch (error){}
+            } catch (error) {}
         }
-    }
+    });
 };
 const observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
