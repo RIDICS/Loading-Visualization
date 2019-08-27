@@ -2,16 +2,16 @@
 document.addEventListener("DOMContentLoaded", function(event) {
     complete_divs();
     // saving references of determinate loading bars into attributes of class progress
-    progress.line_element = document.getElementsByClassName("lv-definite_line")[0].firstElementChild;
-    progress.line_end_element = document.getElementsByClassName("lv-definite_bordered_line")[0].firstElementChild;
-    progress.line_percentage = document.getElementsByClassName("lv-definite_line")[0].lastElementChild;
-    progress.line_end_percentage = document.getElementsByClassName("lv-definite_bordered_line")[0].lastElementChild;
-    progress.circle_divs = document.getElementsByClassName("lv-definite_circle")[0].children;
+    progress.line_element = document.getElementsByClassName("lv-determinate_line")[0].firstElementChild;
+    progress.line_end_element = document.getElementsByClassName("lv-determinate_bordered_line")[0].firstElementChild;
+    progress.line_percentage = document.getElementsByClassName("lv-determinate_line")[0].lastElementChild;
+    progress.line_end_percentage = document.getElementsByClassName("lv-determinate_bordered_line")[0].lastElementChild;
+    progress.circle_divs = document.getElementsByClassName("lv-determinate_circle")[0].children;
     progress.circle_background = progress.circle_divs[0];
     progress.circle_spinner = progress.circle_divs[2];
     progress.circle_overlay = progress.circle_divs[1];
     progress.circle_percentage = progress.circle_divs[3];
-    // loading colours currently used on definite circle
+    // loading colours currently used on determinate circle
     progress.circle_background_color = window.getComputedStyle(progress.circle_overlay).borderTopColor;
     progress.circle_spinner_color = window.getComputedStyle(progress.circle_spinner).borderTopColor;
 });
@@ -26,9 +26,9 @@ function complete_divs() {
         "lv-circles": 12,
         "lv-line": 1,
         "lv-dots": 4,
-        "lv-definite_line": 2,
-        "lv-definite_bordered_line": 2,
-        "lv-definite_circle": 4,
+        "lv-determinate_line": 2,
+        "lv-determinate_bordered_line": 2,
+        "lv-determinate_circle": 4,
         "lv-spinner": 1
     };
     // iterates through everything and adds specified number of divs
