@@ -154,7 +154,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     top: -5px;
     visibility: hidden;
 }
-.lv-determinate_bordered_line[data-percentage="true"] div:nth-child(2), .lv-definit_line[data-percentage="true"] div:nth-child(2) {
+.lv-determinate_bordered_line[data-percentage="true"] div:nth-child(2), .lv-determinate_line[data-percentage="true"] div:nth-child(2) {
      visibility: visible;
 }
 // sizing of lines
