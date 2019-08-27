@@ -29,7 +29,8 @@ function complete_divs() {
         "lv-determinate_line": 2,
         "lv-determinate_bordered_line": 2,
         "lv-determinate_circle": 4,
-        "lv-spinner": 1
+        "lv-spinner": 1,
+        "lv-dashed": 1
     };
     // iterates through everything and adds specified number of divs
     for(let key in objects) {

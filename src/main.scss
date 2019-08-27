@@ -4,12 +4,14 @@ $line_color: #000000; // color of the bar when it has some progress
 $bordered_line_color: #14c100; // color of border and line of bordered indeterminate bar
 $determinate_line_background: lightgray; // color of the bar when it's empty
 $determinate_line_color: #004c00; // color of determinate bar when it has some progress
-$determinate_bordered_line_color: #ff0000; // color of border and line of bordered determinate bar
+$determinate_bordered_line_border: #F39C12; // color of border of bordered determinate bar
+$determinate_bordered_line_color: #3498DB; // color of line of bordered determinate bar
 $circles_color: #ae8300; // color of darkest dot, the animation is based on fading the color
 $spinner_shadow: darkgrey; // base color of the spinner
 $spinner_color: #343a40; // color of the moving part of the spinner
 $determinate_circle_background: darkgrey; // base color of the spinner
 $determinate_circle_color: #343a40; // color of the moving part of the spinner
+$dashed_color: #138D75;
 
 // for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
 $bars_color: #4b0049; // color of the darkest bar
@@ -96,7 +98,7 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 
 // setting and sizing of non-line elements
-.lv-bars, .lv-circles, .lv-dots, .lv-squares, .lv-determinate_circle, .lv-spinner {
+.lv-bars, .lv-circles, .lv-dots, .lv-squares, .lv-determinate_circle, .lv-spinner, .lv-dashed {
     height: 100%;
     width: 100%;
     &.tiny {
@@ -117,8 +119,7 @@ $dots_scale: 10;  // 0 <= x <= 33
     }
 }
 // setting of line elements
-.lv-bordered_line, .lv-determinate_bordered_line{
-    height: 21px;
+.lv-bordered_line, .lv-determinate_bordered_line {
     width: 100%;
 }
 .lv-line, .lv-determinate_line {
@@ -126,10 +127,10 @@ $dots_scale: 10;  // 0 <= x <= 33
     width: 100%;
 }
 // basic settings of all elements created with more than one div
-.lv-bars, .lv-circles, .lv-determinate_line, .lv-bordered_line, .lv-determinate_bordered_line, .lv-dots, .lv-squares, .lv-line, .lv-spinner, .lv-determinate_circle {
+.lv-bars, .lv-circles, .lv-determinate_line, .lv-bordered_line, .lv-determinate_bordered_line, .lv-dots, .lv-squares, .lv-line, .lv-spinner, .lv-determinate_circle, .lv-dashed {
     position: relative;
 }
-.lv-bars div, .lv-circles div, .lv-determinate_line div, .lv-bordered_line div, .lv-determinate_bordered_line div, .lv-dots div, .lv-squares div, .lv-line div, .lv-determinate_circle div, .lv-spinner div {
+.lv-bars div, .lv-circles div, .lv-determinate_line div, .lv-bordered_line div, .lv-determinate_bordered_line div, .lv-dots div, .lv-squares div, .lv-line div, .lv-determinate_circle div, .lv-spinner div, .lv-dashed div {
     position: absolute;
 }
 // colors and percentages of lines
@@ -185,17 +186,17 @@ $dots_scale: 10;  // 0 <= x <= 33
 *[data-label] {
     text-align: center;
 }
-.lv-spinner[data-label]:after, .lv-circles[data-label]:after, .lv-determinate_circle[data-label]:after {
+.lv-spinner[data-label]:after, .lv-circles[data-label]:after, .lv-determinate_circle[data-label]:after, .lv-dashed[data-label]:after {
     content: attr(data-label);
     display: inline-block;
     padding: 40% 0 40% 0;
     overflow: hidden;
 }
-.lv-bars[data-label].tiny:after,  .lv-squares[data-label].tiny:after, .lv-circles[data-label].tiny:after, .lv-dots[data-label].tiny:after, .lv-spinner[data-label].tiny:after, .lv-determinate_circle[data-label].tiny:after {
+.lv-bars[data-label].tiny:after,  .lv-squares[data-label].tiny:after, .lv-circles[data-label].tiny:after, .lv-dots[data-label].tiny:after, .lv-spinner[data-label].tiny:after, .lv-determinate_circle[data-label].tiny:after, .lv-dashed[data-label].tiny:after {
     padding: 0 120%;
     margin-top: 20%;
 }
-.lv-bars[data-label].sm:after, .lv-squares[data-label].sm:after, .lv-circles[data-label].sm:after, .lv-dots[data-label].sm:after, .lv-spinner[data-label].sm:after, .lv-determinate_circle[data-label].sm:after {
+.lv-bars[data-label].sm:after, .lv-squares[data-label].sm:after, .lv-circles[data-label].sm:after, .lv-dots[data-label].sm:after, .lv-spinner[data-label].sm:after, .lv-determinate_circle[data-label].sm:after, .lv-dashed[data-label].sm:after {
     padding: 0 120%;
     margin-top: 35%;
 }
@@ -247,6 +248,9 @@ $dots_scale: 10;  // 0 <= x <= 33
 }
 .lv-determinate_line[data-label]:after {
     color: $determinate_line_color;
+}
+.lv-dashed[data-label]:after {
+    color: $dashed_color;
 }
 
 // DETERMINATE CIRCLE
@@ -303,24 +307,28 @@ $dots_scale: 10;  // 0 <= x <= 33
 .lv-determinate_circle[data-percentage="true"].tiny div:nth-child(4) {
     visibility: hidden;
 }
-
+// DASHED
+.lv-dashed div {
+    border: 12px dashed $dashed_color;
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    animation: dashed_animation 3s  ease-in-out infinite;
+}
 /* BORDERLESS LINE ANIMATED */
 .lv-line div {
     animation: line_animation 3s ease-in-out infinite;
 }
 
-/* determinate LINE WITH BORDER */
+/* DETERMINATE LINE WITH BORDER */
 .lv-determinate_bordered_line {
-    border: 5px $determinate_bordered_line_color solid;
+    border: 5px $determinate_bordered_line_border solid;
 }
 .lv-determinate_bordered_line div:nth-child(1) {
-    margin-left: 0.5%;
-    max-width: 99%;
-    height: 5px;
-    top: 3px;
+    height: 11px;
     width: 0;
     background-color: $determinate_bordered_line_color;
-    border-radius: 3px;
+    border-radius: 10px;
 }
 .lv-determinate_bordered_line div:nth-child(2) {
     color: $determinate_bordered_line_color;
@@ -330,7 +338,6 @@ $dots_scale: 10;  // 0 <= x <= 33
     border-radius: 10px;
     box-sizing: border-box;
 }
-
 /* LINE */
 .lv-bordered_line {
     border: 5px solid $bordered_line_color;
@@ -645,5 +652,22 @@ $dots_scale: 10;  // 0 <= x <= 33
         height: 75%;
         bottom: 12.5%;
         width: 5%;
+    }
+}
+@keyframes dashed_animation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }
