@@ -73,7 +73,7 @@ const callback = function(mutationList, observer) {
                 if (mutation.addedNodes[0].classList.length > 0) {
                     complete_divs();
                 }
-            } catch {}
+            } catch (error){}
         }
     }
 };
