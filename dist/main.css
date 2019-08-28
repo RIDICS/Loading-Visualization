@@ -152,9 +152,15 @@
   background-color: #000000;
 }
 
-.lv-determinate_line div:nth-child(2), .lv-determinate_bordered_line div:nth-child(2) {
+.lv-determinate_line div:nth-child(2) {
+  left: 101%;
+  top: -6px;
+  visibility: hidden;
+}
+
+.lv-determinate_bordered_line div:nth-child(2) {
   left: 103%;
-  top: -5px;
+  top: -3px;
   visibility: hidden;
 }
 

@@ -1,43 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" type="text/css" href="../dist/main.css">
-        <script type="text/javascript" src="main.js"></script>
-        <title>test progress bar</title>
-    </head>
-    <body style="background-color: lightblue; padding: 50px;">
-    <div id="container">
-        <!-- waving lines -->
-        <div class="lv-bars mid lg mtop-1" data-label="BARS"></div>
-        <!-- spinning squares -->
-        <div class="lv-squares lg right mtop-3 mbot-5" data-label="SQUARES"></div>
-        <!-- infinite bordered loading bar -->
-        <div class="lv-bordered_line lg mtop-2 right" data-label="BORDERED LINE"></div>
-        <!-- infinite spinner -->
-        <div class="lv-circles lg mid mtop-3" data-label="CIRCLES"></div>
-        <!-- infinite loading bar -->
-        <div class="lv-line lg mtop-3 mbot-3" data-label="LINE"></div>
-        <!-- pulsating dots -->
-        <div class="lv-dots lg left" data-label="DOTS"></div>
-        <!-- partial spinner -->
-        <div class="lv-spinner lg mtop-3 mid" data-label="SPINNER"></div>
-        <!-- dashed spinner -->
-        <div class="lv-dashed sm mtop-3 right mright-5" data-label="DASHED"></div>
-        <!-- buttons until input of values is provided -->
-        <div style="margin-top: 50px;">
-            <button onclick="progress.reset();">Reset</button>
-            <button onclick="progress.add_value(5);">Add 5</button>
-            <button onclick="progress.remove_value(5);">Remove 5</button>
-            <button onclick="progress.set_value(50);">Set 50</button>
-            <button onclick="progress.fill();">Fill</button>
-        </div>
-        <!-- determinate progress bars -->
-        <div class="lv-determinate_line mtop-3 mid" data-label="DETERMINATE LINE" data-percentage="true"></div>
-        <div class="lv-determinate_bordered_line sm mtop-3 mid" data-label="DETERMINATE BORDERED LINE"></div>
-        <div class="lv-determinate_circle lg mtop-3 left" data-label="DETERMINATE CIRCLE" data-percentage="true"></div>
-        <div style="margin-top: 50px;">
+<head>
+    <link rel="stylesheet" type="text/css" href="../dist/main.css">
+    <script type="text/javascript" src="main.js"></script>
+    <title>test progress bar</title>
+</head>
+<body style="background-color: lightblue; padding: 50px;">
+<div id="container">
+    <!-- waving lines -->
+    <div class="lv-bars mid lg mtop-1" data-label="BARS"></div>
+    <!-- spinning squares -->
+    <div class="lv-squares lg right mtop-3 mbot-5" data-label="SQUARES"></div>
+    <!-- infinite bordered loading bar -->
+    <div class="lv-bordered_line lg mtop-2 right" data-label="BORDERED LINE"></div>
+    <!-- infinite spinner -->
+    <div class="lv-circles lg mid mtop-3" data-label="CIRCLES"></div>
+    <!-- infinite loading bar -->
+    <div class="lv-line lg mtop-3 mbot-3" data-label="LINE"></div>
+    <!-- pulsating dots -->
+    <div class="lv-dots lg left" data-label="DOTS"></div>
+    <!-- partial spinner -->
+    <div class="lv-spinner lg mtop-3 mid" data-label="SPINNER"></div>
+    <!-- dashed spinner -->
+    <div class="lv-dashed sm mtop-3 right mright-5" data-label="DASHED"></div>
+    <!-- buttons until input of values is provided -->
+    <div style="margin-top: 50px;">
+        <button onclick="progress.reset();">Reset</button>
+        <button onclick="progress.add_value(10);">Add 10</button>
+        <button onclick="progress.remove_value(7);">Remove 7</button>
+        <button onclick="progress.set_value(50);">Set 50</button>
+        <button onclick="progress.fill();">Fill</button>
+    </div>
+    <!-- determinate progress bars -->
+    <div class="lv-determinate_line mtop-3 mid" data-label="DETERMINATE LINE" data-percentage="true"></div>
+    <div class="lv-determinate_bordered_line sm mtop-3 mid" data-label="DETERMINATE BORDERED LINE" data-percentage="true"></div>
+    <div class="lv-determinate_circle lg mtop-3 left" data-label="DETERMINATE CIRCLE" data-percentage="true"></div>
+    <div style="margin-top: 50px;">
         <button onclick="add();">add</button>
-        </div>
-        </div>
-    </body>
+    </div>
+</div>
+</body>
 </html>
