@@ -1,14 +1,5 @@
-// waits for all elements to load so they can be read/modified
-document.addEventListener("DOMContentLoaded", function(event) {
-    complete_divs();
-    // saving references of determinate loading bars into attributes of class progress
-    progress.line_element = document.getElementsByClassName("lv-determinate_line")[0];
-    progress.line_end_element = document.getElementsByClassName("lv-determinate_bordered_line")[0];
-    progress.circle = document.getElementsByClassName("lv-determinate_circle")[0];
-});
-
 // fills all spinners with appropriate number of divs
-function complete_divs() {
+function lvCompleteDivs() {
     // list of all possible objects with the number of divs that are supposed to be in them
     let objects = {
         "lv-bars": 8,
@@ -37,43 +28,8 @@ function complete_divs() {
     }
 }
 
-// automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
-const config = {childList: true, subtree: true};
-// defining what to do on change of DOM - child mutation
-const callback = function(mutationList, observer) {
-    mutationList.forEach(function(mutation) {
-        if (mutation.type === "childList") {
-            try {
-                if (mutation.addedNodes[0].classList.length > 0) {
-                    // filling the node with divs when it is empty
-                    complete_divs();
-                }
-            } catch (error) {}
-        }
-    });
-};
-// initializing the observer and starting observation
-const observer = new MutationObserver(callback);
-observer.observe(document, config);
-
-
-
-// help class and function to demonstrate
-let progress = {
-    max_value: 200,
-    previous_value: 0,
-    current_value: 0,
-};
-function add() {
-    let child = document.createElement("DIV");
-    child.className = "lv-spinner mid lg mtop-3";
-    document.getElementById("container").appendChild(child);
-}
-
-
-
 // extends or shortens any BAR specified as a first argument
-const lvUpdateBar = function(barElement, newValue, maxValue) {
+ function lvUpdateBar(barElement, newValue, maxValue) {
     // getting current width of line from the page
     let currentWidth = parseInt(barElement.firstElementChild.style.width);
     // protective condition for empty line
@@ -93,12 +49,12 @@ const lvUpdateBar = function(barElement, newValue, maxValue) {
         }
         barElement.firstElementChild.style.width = currentWidth + "%";
         // updating the percentage
-        barElement.lastElementChild.innerHTML = currentWidth;
+        barElement.lastElementChild.innerHTML = Math.round(currentWidth).toString();
     }
-};
+}
 
 // controls change of any CIRCLE bar specified as first argument
-const lvUpdateCircle = function(circleElement, newValue, maxValue) {
+function lvUpdateCircle(circleElement, newValue, maxValue) {
     let rotationOffset = -45; // initial rotation of the spinning div in css
     // separating individual parts of the circle
     let background = circleElement.children[0];
@@ -152,68 +108,41 @@ const lvUpdateCircle = function(circleElement, newValue, maxValue) {
             percentage.innerHTML = (Math.round((currentAngle / 360) * 100)).toString();
         }
     }
-};
-
-// saves current value as previous for future update
-function transfer() {
-    progress.previous_value = progress.current_value;
 }
 
-// resets all loading bars
-progress.reset = function() {
-    progress.previous_value = 0;
-    progress.current_value = 0;
-    lvUpdateCircle(progress.circle, 0, progress.max_value);
-    lvUpdateBar(progress.line_element, 0, progress.max_value);
-};
+// resets specified element
+function lvReset(type, element, maxValue) {
+    if (type === "bar") {
+        lvUpdateBar(element, 0, maxValue);
+    } else if (type === "circle") {
+        lvUpdateCircle(element, 0, maxValue);
+    }
+}
 
 // fills whole loading bar
-progress.fill = function() {
-    transfer();
-    progress.current_value = progress.max_value;
-    lvUpdateBar(progress.line_element, progress.max_value, progress.max_value);
-    lvUpdateCircle(progress.circle, progress.max_value, progress.max_value);
-};
-
-// adds specified value to loading bars
-progress.add_value = function(n) {
-    // check if adding will not overflow maximum value
-    if (progress.current_value + n <= progress.max_value) {
-        progress.current_value += n;
-    } else {
-        progress.current_value = progress.max_value;
+function lvFill(type, element, maxValue) {
+    if (type === "bar") {
+        lvUpdateBar(element, maxValue, maxValue);
+    } else if (type === "circle") {
+        lvUpdateCircle(element, maxValue, maxValue);
     }
-    transfer();
-    lvUpdateBar(progress.line_element, progress.current_value, progress.max_value);
-    lvUpdateCircle(progress.circle, progress.current_value, progress.max_value);
+}
+
+// automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
+const config = {childList: true, subtree: true};
+// defining what to do on change of DOM - child mutation
+const callback = function(mutationList, observer) {
+    mutationList.forEach(function(mutation) {
+        if (mutation.type === "childList") {
+            try {
+                if (mutation.addedNodes[0].classList.length > 0) {
+                    // filling the node with divs when it is empty
+                    lvCompleteDivs();
+                }
+            } catch (error) {}
+        }
+    });
 };
-
-// removes specified value from loading bars
-progress.remove_value = function(n) {
-    // check if removing will not lower value under zero
-    if (progress.current_value - n >= 0) {
-        progress.current_value -= n;
-    } else {
-        progress.current_value = 0;
-
-    }
-    transfer();
-    lvUpdateBar(progress.line_element, progress.current_value, progress.max_value);
-    lvUpdateCircle(progress.circle, progress.current_value, progress.max_value);
-};
-
-// sets value of loading bars to specified number
-progress.set_value = function(n) {
-    // check if value is between zero and maximum
-    if (n >= 0 && n <= progress.max_value) {
-        transfer();
-        progress.current_value = n;
-        lvUpdateCircle(progress.circle, progress.current_value, progress.max_value);
-        lvUpdateBar(progress.line_element, progress.current_value, progress.max_value);
-    }
-};
-
-
-
-
-
+// initializing the observer and starting observation
+const observer = new MutationObserver(callback);
+observer.observe(document, config);
