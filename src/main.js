@@ -152,6 +152,15 @@ function lvFill(type, element, maxValue) {
     }
 }
 
+// adds value to loading bar
+function lvAdd(type, element, addValue, maxValue) {
+    if (type === "bar") {
+        lvUpdateBar('add', element, addValue, maxValue);
+    } else if (type === "circle") {
+        lvUpdateCircle('add', element, addValue, maxValue);
+    }
+}
+
 // automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
 const config = {childList: true, subtree: true};
 // defining what to do on change of DOM - child mutation

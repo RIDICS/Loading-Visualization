@@ -7,10 +7,9 @@
     <script>
         let line, borderedLine, circle;
         document.addEventListener("DOMContentLoaded", function(event) {
-            line = document.getElementsByClassName("lv-determinate_line")[0];
-            borderedLine = document.getElementsByClassName("lv-determinate_bordered_line")[0];
-            circle = document.getElementsByClassName("lv-determinate_circle")[0];
-            console.log(circle);
+        line = document.getElementsByClassName("lv-determinate_line")[0];
+        borderedLine = document.getElementsByClassName("lv-determinate_bordered_line")[0];
+        circle = document.getElementsByClassName("lv-determinate_circle")[0];
         });
         let max = 200;
     </script>
@@ -36,8 +35,8 @@
     <!-- buttons until input of values is provided -->
     <div style="margin-top: 50px;">
         <button onclick="lvReset('bar', line, max); lvReset('bar', borderedLine, max); lvReset('circle', circle, max);">Reset</button>
-        <button onclick="lvUpdateBar('add', line, 10, max); lvUpdateBar('add', borderedLine, 10, max); lvUpdateCircle('add', circle, 10, max)">Add 10</button>
-        <button onclick="lvUpdateBar('add', line, -7, max); lvUpdateBar('add', borderedLine, -7, max); lvUpdateCircle('add', circle, -7, max)">Remove 7</button>
+        <button onclick="lvAdd('bar', line, 10, max); lvAdd('bar', borderedLine, 10, max); lvAdd('circle', circle, 10, max)">Add 10</button>
+        <button onclick="lvAdd('bar', line, -7, max); lvAdd('bar', borderedLine, -7, max); lvAdd('circle', circle, -7, max)">Remove 7</button>
         <button onclick="lvFill('circle', circle, max);lvFill('bar', line, max);lvFill('bar', borderedLine, max);">Fill</button>
     </div>
     <!-- determinate progress bars -->
