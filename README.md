@@ -128,3 +128,45 @@ This additional parameter adds a percentage counter to an element. It is configu
 as a `<div>` attribute. This inserts a counter either inside or next to an element based on its shape or automatically
 turns it off if the element is too small. If the argument is omitted or set to *false* the percentage counter will not 
 be shown.
+
+## Controlling the determinate bars
+
+There are two basic functions: `lvUpdateBar`, which can handle changes in linear elements (*determinate 2-3*), and `lvUpdateCircle`,
+which can handle changes in circular elements (*determinate 1*).
+
+```javascript
+lvUpdateBar(type, barElement, newValue, maxValue);
+lvUpdateCircle(type, circleElement, newValue, maxValue);
+```
+* `type` ... `add` (add value to current value) or `set` (set bar to some value)
+* `barElement` / `circleElement` ... element in DOM, on which should be applied the change (easiest selection by `id`)
+* `newValue` ... value to add or set
+* `maxValue` ... value that represents 100%
+
+Then there are few predefined functions to make things easier: `lvReset`, which resets the loading to zero, `lvFill`, 
+which fills the whole loading to 100%, and `lvAdd`, which handles addition or deletion.
+
+```javascript
+lvReset(type, element, maxValue);
+```
+* `type` ... `bar` or `circle` depending on the element to change
+* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
+* `maxValue` ... value that represents 100%
+
+```javascript
+lvFill(type, element, maxValue);
+```
+* `type` ... `bar` or `circle` depending on the element to change
+* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
+* `maxValue` ... value that represents 100%
+
+```javascript
+lvAdd(type, element, addValue, maxValue))
+```
+* `type` ... `bar` or `circle` depending on the element to change
+* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
+* `addValue` ... any real number to add or remove from present value (add ... positive numbers, remove ... negative numbers)
+* `maxValue` ... value that represents 100%
+
+The library has automatic detections of changes in DOM and it allows elements to be added dynamically using Javascript
+or another mean.
