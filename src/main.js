@@ -29,7 +29,7 @@ function lvCompleteDivs() {
 }
 
 // extends or shortens any BAR specified as a first argument
- function lvUpdateBar(barElement, newValue, maxValue) {
+ function lvUpdateBar(type, barElement, newValue, maxValue) {
     // getting current width of line from the page
     let currentWidth = parseInt(barElement.firstElementChild.style.width);
     // protective condition for empty line
@@ -37,7 +37,19 @@ function lvCompleteDivs() {
         currentWidth = 0;
     }
     // end point of the animation
-    let goalWidth = Math.round((newValue / maxValue) * 100);
+    let goalWidth;
+    if (type === "add") {
+        goalWidth = currentWidth + Math.round((newValue / maxValue) * 100);
+    } else if (type === "set") {
+        goalWidth = Math.round((newValue / maxValue) * 100);
+    }
+    // prevent overflow from both sides
+    if (goalWidth > 100) {
+        goalWidth = 100;
+    }
+    if (goalWidth < 0) {
+        goalWidth = 0;
+    }
     let animation = setInterval(frame, 5);
     function frame() {
         if (currentWidth === goalWidth) { // stopping animation when end point is reached
@@ -54,7 +66,7 @@ function lvCompleteDivs() {
 }
 
 // controls change of any CIRCLE bar specified as first argument
-function lvUpdateCircle(circleElement, newValue, maxValue) {
+function lvUpdateCircle(type, circleElement, newValue, maxValue) {
     let rotationOffset = -45; // initial rotation of the spinning div in css
     // separating individual parts of the circle
     let background = circleElement.children[0];
@@ -75,7 +87,19 @@ function lvUpdateCircle(circleElement, newValue, maxValue) {
         currentAngle += 360;
     }
     // end point of the animation
-    let goalAngle = Math.round((newValue / maxValue) * 360);
+    let goalAngle;
+    if (type === "add") {
+        goalAngle = currentAngle + Math.round((newValue / maxValue) * 360);
+    } else if (type === "set") {
+        goalAngle = Math.round((newValue / maxValue) * 360);
+    }
+    // prevent overflow to both sides
+    if (goalAngle > 360) {
+        goalAngle = 360;
+    }
+    if (goalAngle < 0) {
+        goalAngle = 0;
+    }
     let id = setInterval(frame, 3);
     function frame() {
         if (currentAngle === goalAngle) { // stopping the animation when end point is reached
@@ -113,18 +137,18 @@ function lvUpdateCircle(circleElement, newValue, maxValue) {
 // resets specified element
 function lvReset(type, element, maxValue) {
     if (type === "bar") {
-        lvUpdateBar(element, 0, maxValue);
+        lvUpdateBar('set', element, 0, maxValue);
     } else if (type === "circle") {
-        lvUpdateCircle(element, 0, maxValue);
+        lvUpdateCircle('set', element, 0, maxValue);
     }
 }
 
 // fills whole loading bar
 function lvFill(type, element, maxValue) {
     if (type === "bar") {
-        lvUpdateBar(element, maxValue, maxValue);
+        lvUpdateBar('set', element, maxValue, maxValue);
     } else if (type === "circle") {
-        lvUpdateCircle(element, maxValue, maxValue);
+        lvUpdateCircle('set', element, maxValue, maxValue);
     }
 }
 

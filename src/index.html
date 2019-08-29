@@ -8,12 +8,11 @@
         let line, borderedLine, circle;
         document.addEventListener("DOMContentLoaded", function(event) {
             line = document.getElementsByClassName("lv-determinate_line")[0];
-            console.log(line);
             borderedLine = document.getElementsByClassName("lv-determinate_bordered_line")[0];
             circle = document.getElementsByClassName("lv-determinate_circle")[0];
+            console.log(circle);
         });
         let max = 200;
-        let current = 0;
     </script>
 </head>
 <body style="background-color: lightblue; padding: 50px;">
@@ -36,10 +35,10 @@
     <div class="lv-dashed sm mtop-3 right mright-5" data-label="DASHED"></div>
     <!-- buttons until input of values is provided -->
     <div style="margin-top: 50px;">
-        <button onclick="lvReset('bar', line, max); lvReset('bar', borderedLine, max); lvReset('circle', circle, max); current = 0;">Reset</button>
-        <button onclick="current += 10; lvUpdateBar(line, current, max); lvUpdateBar(borderedLine, current, max); lvUpdateCircle(circle, current, max)">Add 10</button>
-        <button onclick="current -= 7; lvUpdateBar(line, current, max); lvUpdateBar(borderedLine, current, max); lvUpdateCircle(circle, current, max)">Remove 7</button>
-        <button onclick="current = max; lvFill('circle', circle, max);lvFill('bar', line, max);lvFill('bar', borderedLine, max);">Fill</button>
+        <button onclick="lvReset('bar', line, max); lvReset('bar', borderedLine, max); lvReset('circle', circle, max);">Reset</button>
+        <button onclick="lvUpdateBar('add', line, 10, max); lvUpdateBar('add', borderedLine, 10, max); lvUpdateCircle('add', circle, 10, max)">Add 10</button>
+        <button onclick="lvUpdateBar('add', line, -7, max); lvUpdateBar('add', borderedLine, -7, max); lvUpdateCircle('add', circle, -7, max)">Remove 7</button>
+        <button onclick="lvFill('circle', circle, max);lvFill('bar', line, max);lvFill('bar', borderedLine, max);">Fill</button>
     </div>
     <!-- determinate progress bars -->
     <div class="lv-determinate_line mtop-3 mid" data-label="DETERMINATE LINE" data-percentage="true"></div>
