@@ -51,3 +51,80 @@ Each scale variable has a range in which its value has to be to work properly. I
 scale and all parts of the element will have the same color as defined in the color variable. The higher the number, 
 the bigger the difference between colors of the two next parts.
 
+## Usage
+
+### Basics
+
+An element is inserted into HTML content with `<div class="name_of_element"></div>` and can be expanded with optional
+parameters. There are 8 indeterminate spinners and bars:
+
+1. `lv-bars`
+2. `lv-squares`
+3. `lv-circles`
+4. `lv-dots`
+5. `lv-spinner`
+6. `lv-dashed`
+7. `lv-line`
+8. `lv-bordered_line`
+
+and 3 determinate spinners and bars:
+
+1. `lv-determinate_circle`
+2. `lv-determinate_line`
+3. `lv-determinate_bordered_line`
+
+Examples can be see in the DEMO web page.
+
+### Sizing
+
+There are multiple predefined sizes for each element type, which can be added to class parameter of the `div`. If there is none specified, the element will occupy whole 
+space of his container. In this case it is important that for elements *1-6 indeterminate and 1 determinate* the
+container should be square, so it is not deformed.
+
+The predefined sizes for elements *1-6 indeterminate and 1 determinate* are:
+
+* `lg` -> 200x200px
+* `md` -> 100x100px
+* `sm` -> 50x50px
+* `tiny` -> 30x30px
+
+For *7-8 indeterminate and 2-3 determinate* is predefined only width, height is variable: 
+
+* `lg` -> 1000px
+* `md` -> 600px
+* `sm` -> 300px
+
+There should be always up to one sizing parameter per element.
+
+### Positioning
+
+There are predefined parameters for positioning the element inside its container. They can be also put inside the class
+argument of the `div`.
+
+There are relative parameters:
+
+* `left` -> align the element on the left side
+* `mid` -> align the element to the middle
+* `right` -> align the element on the right side
+
+And there are absolute parameters:
+
+* `mtop-{1-5}` -> add space on top side of the element {10-30-50-80-100px}
+* `mright-{1-5}` -> add space on the right side of the element {10-30-50-80-100px}
+* `mbot-{1-5}` -> add space on the bottom side of the element {10-30-50-80-100px}
+* `mleft-{1-5}` -> add space on the left side of the element {10-30-50-80-100px}
+
+Relative and absolute parameters cannot be used together, but there can be multiple absolutes in one class.
+
+### Labels
+
+This additional parameter adds a label to an element. It is configured by adding `data-label="label_text"` as a `<div>`
+attribute. This inserts *label_text* either below, inside or next to an element based on its size. This can be added both to 
+determinate and indeterminate elements.
+
+### Percentage
+
+This additional parameter adds a percentage counter to an element. It is configured by adding `data-percentage="true"`
+as a `<div>` attribute. This inserts a counter either inside or next to an element based on its shape or automatically
+turns it off if the element is too small. If the argument is omitted or set to *false* the percentage counter will not 
+be shown.
