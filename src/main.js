@@ -23,6 +23,9 @@ function lvCompleteDivs() {
                 for (let n = 0; n < objects[key]; n += 1) {
                     objectsOfClass.item(i).appendChild(document.createElement("DIV"));
                 }
+                if (objectsOfClass.item(i).className.includes("lv-determinate_circle") || objectsOfClass.item(i).className.includes("lv-determinate_line") || objectsOfClass.item(i).className.includes("lv-determinate_bordered_line")) {
+                    objectsOfClass.item(i).lastElementChild.innerHTML = "0";
+                }
             }
         }
     }
