@@ -43,11 +43,15 @@ $(document).ready(function() {
     $("#finite").unbind().click(function(event) {
         resetInfinite();
         $("#infinite_container").attr("hidden", true);
+        $("#infinite").removeClass("active");
+        $("#finite").addClass("active");
         $("#finite_container").attr("hidden", false);
     });
     $("#infinite").unbind().click(function(event) {
         resetFinite();
         $("#finite_container").attr("hidden", true);
+        $("#finite").removeClass("active");
+        $("#infinite").addClass("active");
         $("#infinite_container").attr("hidden", false);
     });
     let spinners = document.getElementsByClassName("lv-determinate_circle");
