@@ -13,6 +13,11 @@ const taskNames = {
     main: "main"
 };
 
+gulp.task('copy', function() {
+    return gulp.src('src/main.js')
+        .pipe(gulp.dest('dist/'));
+});
+
 gulp.task(taskNames.compileSass, done => {
     gulp.src(paths.sass)
         .pipe(sourcemaps.init())
@@ -22,4 +27,4 @@ gulp.task(taskNames.compileSass, done => {
     done();
 }); 
 
-gulp.task("default", gulp.series(taskNames.compileSass));
+gulp.task("default", gulp.series(taskNames.compileSass, 'copy'));
