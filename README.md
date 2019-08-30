@@ -152,8 +152,8 @@ There are two basic functions: `lvUpdateBar`, which can handle changes in linear
 which can handle changes in circular elements (*determinate 1*).
 
 ```javascript
-lvUpdateBar(type, barElement, newValue, maxValue);
-lvUpdateCircle(type, circleElement, newValue, maxValue);
+lv.updateBar(type, barElement, newValue, maxValue);
+lv.updateCircle(type, circleElement, newValue, maxValue);
 ```
 * `type` ... `add` (add value to current value) or `set` (set bar to some value)
 * `barElement` / `circleElement` ... element in DOM, on which should be applied the change (easiest selection by `id`)
@@ -164,21 +164,21 @@ Then there are few predefined functions to make things easier: `lvReset`, which 
 which fills the whole loading to 100%, and `lvAdd`, which handles addition or deletion.
 
 ```javascript
-lvReset(type, element, maxValue);
+lv.reset(type, element, maxValue);
 ```
 * `type` ... `bar` or `circle` depending on the element to change
 * `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
 * `maxValue` ... value that represents 100%
 
 ```javascript
-lvFill(type, element, maxValue);
+lv.fill(type, element, maxValue);
 ```
 * `type` ... `bar` or `circle` depending on the element to change
 * `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
 * `maxValue` ... value that represents 100%
 
 ```javascript
-lvAdd(type, element, addValue, maxValue))
+lv.add(type, element, addValue, maxValue))
 ```
 * `type` ... `bar` or `circle` depending on the element to change
 * `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)

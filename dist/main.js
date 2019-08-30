@@ -1,5 +1,6 @@
+function lv(){}
 // fills all spinners with appropriate number of divs
-function lvCompleteDivs() {
+lv.completeDivs = function() {
     // list of all possible objects with the number of divs that are supposed to be in them
     let objects = {
         "lv-bars": 8,
@@ -29,10 +30,10 @@ function lvCompleteDivs() {
             }
         }
     }
-}
+};// lv.lvCompleteDivs();
 
 // extends or shortens any BAR specified as a first argument
- function lvUpdateBar(type, barElement, newValue, maxValue) {
+lv.updateBar = function(type, barElement, newValue, maxValue) {
     // getting current width of line from the page
     let currentWidth = parseInt(barElement.firstElementChild.style.width);
     // protective condition for empty line
@@ -66,10 +67,10 @@ function lvCompleteDivs() {
         // updating the percentage
         barElement.lastElementChild.innerHTML = Math.round(currentWidth).toString();
     }
-}
+};
 
 // controls change of any CIRCLE bar specified as first argument
-function lvUpdateCircle(type, circleElement, newValue, maxValue) {
+lv.updateCircle = function(type, circleElement, newValue, maxValue) {
     let rotationOffset = -45; // initial rotation of the spinning div in css
     // separating individual parts of the circle
     let background = circleElement.children[0];
@@ -135,50 +136,50 @@ function lvUpdateCircle(type, circleElement, newValue, maxValue) {
             percentage.innerHTML = (Math.round((currentAngle / 360) * 100)).toString();
         }
     }
-}
+};
 
 // resets specified element
-function lvReset(type, element, maxValue) {
+lv.reset = function(type, element, maxValue) {
     if (type === "bar") {
-        lvUpdateBar('set', element, 0, maxValue);
+        lv.updateBar('set', element, 0, maxValue);
     } else if (type === "circle") {
-        lvUpdateCircle('set', element, 0, maxValue);
+        lv.updateCircle('set', element, 0, maxValue);
     }
-}
+};
 
 // fills whole loading bar
-function lvFill(type, element, maxValue) {
+lv.fill = function(type, element, maxValue) {
     if (type === "bar") {
-        lvUpdateBar('set', element, maxValue, maxValue);
+        lv.updateBar('set', element, maxValue, maxValue);
     } else if (type === "circle") {
-        lvUpdateCircle('set', element, maxValue, maxValue);
+        lv.updateCircle('set', element, maxValue, maxValue);
     }
-}
+};
 
 // adds value to loading bar
-function lvAdd(type, element, addValue, maxValue) {
+lv.add = function(type, element, addValue, maxValue) {
     if (type === "bar") {
-        lvUpdateBar('add', element, addValue, maxValue);
+        lv.updateBar('add', element, addValue, maxValue);
     } else if (type === "circle") {
-        lvUpdateCircle('add', element, addValue, maxValue);
+        lv.updateCircle('add', element, addValue, maxValue);
     }
-}
+};
 
 // automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
-const config = {childList: true, subtree: true};
+lv.config = {childList: true, subtree: true};
 // defining what to do on change of DOM - child mutation
-const callback = function(mutationList, observer) {
+lv.callback = function(mutationList, observer) {
     mutationList.forEach(function(mutation) {
         if (mutation.type === "childList") {
             try {
                 if (mutation.addedNodes[0].classList.length > 0) {
                     // filling the node with divs when it is empty
-                    lvCompleteDivs();
+                    lv.completeDivs();
                 }
             } catch (error) {}
         }
     });
 };
 // initializing the observer and starting observation
-const observer = new MutationObserver(callback);
-observer.observe(document, config);
+lv.observer = new MutationObserver(lv.callback);
+lv.observer.observe(document, lv.config);
