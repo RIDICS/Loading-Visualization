@@ -1,7 +1,9 @@
 # Loading-Visualization
 
 A CSS and JavaScript library for inserting animated both determinate and indeterminate loading bars and spinners
-directly into HTML code.
+directly into HTML code. The goal of this library is simple usage with a lot of variability. So for inserting spinner
+into the page is used one line of code, specifically inserting `div` with class names that specify its properties. 
+The library also offers JavaScript tools to manipulate with determinate loading bars and color settings.
 
 ## Demo
 
