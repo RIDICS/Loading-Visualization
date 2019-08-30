@@ -7,6 +7,7 @@ The library also provides JavaScript tools to manipulate with determinate loadin
 
 ## Installation
 
+This library is available at *GitHub* or at *npm*.
 There are two files necessary for the library to function properly and have all its functionality - **main.css** and
 **main.js**. They are both located in the `dist/` directory and they need to be linked in the html file.
 
