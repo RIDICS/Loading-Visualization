@@ -129,6 +129,15 @@ as a `<div>` attribute. This inserts a counter either inside or next to an eleme
 turns it off if the element is too small. If the argument is omitted or set to *false* the percentage counter will not 
 be shown.
 
+### Example usage
+
+This can be inserted anywhere in the body of the document.
+
+```html
+<div class="lv-bars lg mid mtop-5 mbot-3" data-label="Loading..."></div>
+<div class="lv-determinate_circle md right mtop-5 mbot-1" data-label="Loading..." data-percentage="true"></div>
+```
+
 ## Controlling the determinate bars
 
 There are two basic functions: `lvUpdateBar`, which can handle changes in linear elements (*determinate 2-3*), and `lvUpdateCircle`,
