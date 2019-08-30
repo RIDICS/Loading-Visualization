@@ -5,6 +5,12 @@ directly into HTML code. The goal of this library is simple usage with a lot of 
 into the page is used one line of code, specifically inserting `div` with class names that specify its properties. 
 The library also provides JavaScript tools to manipulate with determinate loading bars and color settings.
 
+## Installation
+
+There are two files necessary for the library to function properly and have all its functionality - **main.css** and
+**main.js**. They are both located in the `dist/` directory and they need to be linked in the html file.
+
+
 ## Demo
 
 [DEMO web page with usage examples](https://ridics.github.io/Loading-Visualization)
@@ -105,16 +111,16 @@ argument of the `div`.
 
 There are relative parameters:
 
-* `left` -> align the element on the left side
-* `mid` -> align the element to the middle
-* `right` -> align the element on the right side
+* `lv-left` -> align the element on the left side
+* `lv-mid` -> align the element to the middle
+* `lv-right` -> align the element on the right side
 
 And there are absolute parameters:
 
-* `mtop-{1-5}` -> add space on top side of the element {10-30-50-80-100px}
-* `mright-{1-5}` -> add space on the right side of the element {10-30-50-80-100px}
-* `mbot-{1-5}` -> add space on the bottom side of the element {10-30-50-80-100px}
-* `mleft-{1-5}` -> add space on the left side of the element {10-30-50-80-100px}
+* `lvt-{1-5}` -> add space on top side of the element {10-30-50-80-100px}
+* `lvr-{1-5}` -> add space on the right side of the element {10-30-50-80-100px}
+* `lvb-{1-5}` -> add space on the bottom side of the element {10-30-50-80-100px}
+* `lvl-{1-5}` -> add space on the left side of the element {10-30-50-80-100px}
 
 Relative and absolute parameters cannot be used together, but there can be multiple absolutes in one class.
 
@@ -136,8 +142,8 @@ be shown.
 This can be inserted anywhere in the body of the document.
 
 ```html
-<div class="lv-bars lg mid mtop-5 mbot-3" data-label="Loading..."></div>
-<div class="lv-determinate_circle md right mtop-5 mbot-1" data-label="Loading..." data-percentage="true"></div>
+<div class="lv-bars lg lv-mid lvt-5 lvb-3" data-label="Loading..."></div>
+<div class="lv-determinate_circle md lv-right lvt-5 lvb-1" data-label="Loading..." data-percentage="true"></div>
 ```
 
 ## Controlling the determinate bars
