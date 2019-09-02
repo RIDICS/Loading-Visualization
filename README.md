@@ -62,7 +62,7 @@ the bigger the difference between colors of the two next parts.
 
 ## Usage
 
-### Basics
+### Initialization
 
 An element is inserted into HTML content with `<div class="name_of_element"></div>` and can be expanded with optional
 parameters. There are 8 indeterminate spinners and bars:
@@ -83,6 +83,20 @@ and 3 determinate spinners and bars:
 3. `lv-determinate_bordered_line`
 
 Examples can be see in the DEMO web page.
+
+### Updating determinate loading
+
+To update progress on any determinate loading bar the specific element needs to be selected. The easiest way to do this 
+is to add some id to the element in html and then use JavaScript function `document.getElementById("id")` to select it.
+Then the selected element is passed as argument to the function which is supposed to update the element as described in
+the last part.
+
+### Ending animation
+
+There is no function to stop the movement of the indeterminate loading bars provided, the only way to stop them is to remove
+them from the html code or hide them using.
+
+The determinate loading bars are not moving unless being updated, but they need to be also removed from html to end.
 
 ### Sizing
 
