@@ -152,6 +152,15 @@ as a `<div>` attribute. This inserts a counter either inside or next to an eleme
 turns it off if the element is too small. If the argument is omitted or set to *false* the percentage counter will not 
 be shown.
 
+### Changing labels and percentages
+
+Labels can be changed even after element was added to html and shown on page. It can be done with JavaScript function 
+`.setAttribute("data-label", "new_label");` applied on selected element. Item can be selected by multiple ways, the 
+easiest is by id - `document.getElementById("id");`.
+
+The same applies on percentages but the `data-percentage` label has only two possible outcomes. When it contains `true`,
+percentages are shown, when it contains everything else or nothing, percentages are hidden.
+
 ### Example usage
 
 This can be inserted anywhere in the body of the document.
