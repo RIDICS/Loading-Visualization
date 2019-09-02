@@ -93,10 +93,10 @@ the last part.
 
 ### Ending animation
 
-There is no function to stop the movement of the indeterminate loading bars provided, the only way to stop them is to remove
-them from the html code or hide them using.
+There is no function to stop the movement of the indeterminate loading bars provided, the only way to stop the movement is to remove
+them from the html code or hide them.
 
-The determinate loading bars are not moving unless being updated, but they need to be also removed from html to end.
+The determinate loading bars are not moving unless being updated, but they need to be also removed from html to disappear.
 
 ### Sizing
 
@@ -159,7 +159,7 @@ Labels can be changed even after element was added to html and shown on page. It
 easiest is by id - `document.getElementById("id");`.
 
 The same applies on percentages but the `data-percentage` label has only two possible outcomes. When it contains `true`,
-percentages are shown, when it contains everything else or nothing, percentages are hidden.
+percentages are shown, when it contains anything else or nothing, percentages are hidden.
 
 ### Example usage
 
