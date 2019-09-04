@@ -400,6 +400,7 @@ $dots_scale: 10; // 0 <= x <= 33
         color: $dots_color;
     }
     div {
+        -webkit-transform: perspective(1000px);
         width: 19%;
         height: 19%;
         top: 43.75%;
