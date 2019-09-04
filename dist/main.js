@@ -30,7 +30,7 @@ lv.completeDivs = function() {
             }
         }
     }
-};// lv.lvCompleteDivs();
+};
 
 // extends or shortens any BAR specified as a first argument
 lv.updateBar = function(type, barElement, newValue, maxValue) {

@@ -378,6 +378,9 @@
   color: #0B5345;
 }
 .lv-dots div {
+  backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: perspective(1000px);
   width: 19%;
   height: 19%;
   top: 43.75%;
