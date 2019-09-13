@@ -26,6 +26,9 @@ function resetFinite() {
     }
 }
 $(document).ready(function() {
+    let loader = new lv();
+    loader.initLoaderAll();
+    loader.startObserving();
     for (let element of infinite) {
         $("#" + element + "_button").unbind().click(function(event) {
             event.preventDefault();
