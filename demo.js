@@ -27,8 +27,12 @@ function resetFinite() {
 }
 $(document).ready(function() {
     let loader = new lv();
-    loader.initLoaderAll();
+    //loader.initLoaderAll();
     loader.startObserving();
+    let element = document.createElement("DIV");
+    element.classList.add("lv-determinate_circle");
+    element.classList.add("lg");
+    document.body.appendChild(element);
     for (let element of infinite) {
         $("#" + element + "_button").unbind().click(function(event) {
             event.preventDefault();
