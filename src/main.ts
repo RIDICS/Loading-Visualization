@@ -1,6 +1,8 @@
 class lv {
+    /**
+     * iterates through all elements and calls function create on them
+     */
     public initLoaderAll(): void {
-        // iterates through everything and adds specified number of divs
         let divs = document.getElementsByTagName("DIV");
         for (let i = 0; i < divs.length; i++) {
             if (!divs[i].hasChildNodes()) {
@@ -9,7 +11,12 @@ class lv {
         }
     }
 
-    public static getModifyingClasses(classList: DOMTokenList, notIncludingClass: string): string[] {
+    /**
+     * returns list of non-main classes (every except the one that specifies the element)
+     * @param classList
+     * @param notIncludingClass
+     */
+    private static getModifyingClasses(classList: DOMTokenList, notIncludingClass: string): string[] {
         let modifyingClasses: string[] = [];
         for (let i = 0; i < classList.length; i++) {
             if (classList[i] != notIncludingClass) {
@@ -19,9 +26,12 @@ class lv {
         return modifyingClasses;
     }
 
+    /**
+     * decides type of passed element and returns its object
+     * @param element
+     */
     public static create(element: HTMLDivElement): lv.ElementBase {
         let classes: DOMTokenList = element.classList;
-        let modifyingClasses: string[] = [];
         for (let i = 0; i < classes.length; i++) {
             switch (classes[i]) {
                 case "lv-bars":
@@ -50,8 +60,12 @@ class lv {
         }
         return null;
     }
-    // automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
-    // defining what to do on change of DOM - child mutation
+
+    /**
+     * observes for changes in DOM and creates new element's objects
+     * @param mutationList
+     * @param observer
+     */
     private callback(mutationList, observer: MutationObserver): void {
         for (let i = 0; i < mutationList.length; i++) {
             if (mutationList[i].type === "childList") {
@@ -81,6 +95,10 @@ namespace lv {
         divCount: number;
         className: string;
     }
+
+    /**
+     * specifies functions same for all elements
+     */
     export abstract class ElementBase {
         
         protected element: HTMLDivElement;
@@ -97,24 +115,44 @@ namespace lv {
             this.element.style.display = "none";
         }
 
+        /**
+         * updates determinate element
+         * @param type
+         * @param newValue
+         * @param maxValue
+         */
         public abstract update(type: string, newValue: number, maxValue: number): void;
 
-        // resets specified element
+        /**
+         * resets determinate element to 0
+         * @param maxValue
+         */
         public reset(maxValue: number): void {
                 this.update('set', 0, maxValue);
         }
 
-        // fills whole loading bar
+        /**
+         * sets determinate element to 100%
+         * @param maxValue
+         */
         public fill(maxValue: number): void {
                 this.update('set', maxValue, maxValue);
         }
 
-        // adds value to loading bar
+        /**
+         * adds positive or negative value to a determinate element
+         * @param addValue
+         * @param maxValue
+         */
         public add(addValue: number, maxValue: number): void {
                 this.update('add', addValue, maxValue);
         }
 
-        // fills all spinners with appropriate number of divs
+        /**
+         * initializes an element
+         * @param loaderElement
+         * @param description
+         */
         public initLoader(loaderElement: HTMLDivElement, description: IDescription): void {
             // manual addition on specified object
             if (!loaderElement.hasChildNodes()) {
@@ -122,6 +160,12 @@ namespace lv {
             }
         }
 
+        /**
+         * fills element with appropriate number of divs
+         * @param element
+         * @param elementClass
+         * @param divNumber
+         */
         private fillElement(element: HTMLElement, elementClass: string, divNumber: number): void {
             for (let i = 0; i < divNumber; i += 1) {
                 element.appendChild(document.createElement("DIV"));
@@ -135,9 +179,18 @@ namespace lv {
         };
     }
 
+    /**
+     * class for linear elements
+     */
     export class Bar extends ElementBase {
         private divCount: IDictionary = {};
 
+        /**
+         * creates linear element
+         * @param element
+         * @param barType
+         * @param classes
+         */
         constructor(element: HTMLDivElement, barType: BarType, classes: string[] = null) {
             super(element);
             this.divCount[BarType.Line] = {className: "lv-line", divCount: 1};
@@ -150,6 +203,12 @@ namespace lv {
             }
         }
 
+        /**
+         * type specific update function for linear element
+         * @param type
+         * @param newValue
+         * @param maxValue
+         */
         update(type: string, newValue: number, maxValue: number): void {
             // getting current width of line from the page
             let line: HTMLDivElement = <HTMLDivElement>this.element.firstElementChild;
@@ -189,10 +248,20 @@ namespace lv {
         }
 
     }
+
+    /**
+     * class for square or circular elements
+     */
     export class Circle extends ElementBase {
 
         private divCount: IDictionary = {};
 
+        /**
+         * creates square or circular element
+         * @param element
+         * @param circleType
+         * @param classes
+         */
         constructor(element: HTMLDivElement, circleType: CircleType, classes: string[] = null) {
             super(element);
             this.divCount[CircleType.Bars] = {className: "lv-bars", divCount: 8};
@@ -208,6 +277,12 @@ namespace lv {
             }
         }
 
+        /**
+         * type specific update function for non-linear elements
+         * @param type
+         * @param newValue
+         * @param maxValue
+         */
         update(type: string, newValue: number, maxValue: number): void {
             let rotationOffset: number = -45; // initial rotation of the spinning div in css
             // separating individual parts of the circle
@@ -277,12 +352,20 @@ namespace lv {
         }
 
     }
+
+    /**
+     * list of linear elements
+     */
     export enum BarType {
         Line,
         BorderedLine,
         DeterminateLine,
         DeterminateBorderedLine,
     }
+
+    /**
+     * list of non-linear elements
+     */
     export enum CircleType {
         Bars,
         Squares,

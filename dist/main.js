@@ -15,8 +15,10 @@ var lv = /** @class */ (function () {
     function lv() {
         this.observer = new MutationObserver(this.callback);
     }
+    /**
+     * iterates through all elements and calls function create on them
+     */
     lv.prototype.initLoaderAll = function () {
-        // iterates through everything and adds specified number of divs
         var divs = document.getElementsByTagName("DIV");
         for (var i = 0; i < divs.length; i++) {
             if (!divs[i].hasChildNodes()) {
@@ -24,6 +26,11 @@ var lv = /** @class */ (function () {
             }
         }
     };
+    /**
+     * returns list of non-main classes (every except the one that specifies the element)
+     * @param classList
+     * @param notIncludingClass
+     */
     lv.getModifyingClasses = function (classList, notIncludingClass) {
         var modifyingClasses = [];
         for (var i = 0; i < classList.length; i++) {
@@ -33,9 +40,12 @@ var lv = /** @class */ (function () {
         }
         return modifyingClasses;
     };
+    /**
+     * decides type of passed element and returns its object
+     * @param element
+     */
     lv.create = function (element) {
         var classes = element.classList;
-        var modifyingClasses = [];
         for (var i = 0; i < classes.length; i++) {
             switch (classes[i]) {
                 case "lv-bars":
@@ -64,8 +74,11 @@ var lv = /** @class */ (function () {
         }
         return null;
     };
-    // automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
-    // defining what to do on change of DOM - child mutation
+    /**
+     * observes for changes in DOM and creates new element's objects
+     * @param mutationList
+     * @param observer
+     */
     lv.prototype.callback = function (mutationList, observer) {
         for (var i = 0; i < mutationList.length; i++) {
             if (mutationList[i].type === "childList") {
@@ -86,6 +99,9 @@ var lv = /** @class */ (function () {
     return lv;
 }());
 (function (lv) {
+    /**
+     * specifies functions same for all elements
+     */
     var ElementBase = /** @class */ (function () {
         function ElementBase(element) {
             this.element = element;
@@ -96,25 +112,45 @@ var lv = /** @class */ (function () {
         ElementBase.prototype.hide = function () {
             this.element.style.display = "none";
         };
-        // resets specified element
+        /**
+         * resets determinate element to 0
+         * @param maxValue
+         */
         ElementBase.prototype.reset = function (maxValue) {
             this.update('set', 0, maxValue);
         };
-        // fills whole loading bar
+        /**
+         * sets determinate element to 100%
+         * @param maxValue
+         */
         ElementBase.prototype.fill = function (maxValue) {
             this.update('set', maxValue, maxValue);
         };
-        // adds value to loading bar
+        /**
+         * adds positive or negative value to a determinate element
+         * @param addValue
+         * @param maxValue
+         */
         ElementBase.prototype.add = function (addValue, maxValue) {
             this.update('add', addValue, maxValue);
         };
-        // fills all spinners with appropriate number of divs
+        /**
+         * initializes an element
+         * @param loaderElement
+         * @param description
+         */
         ElementBase.prototype.initLoader = function (loaderElement, description) {
             // manual addition on specified object
             if (!loaderElement.hasChildNodes()) {
                 this.fillElement(loaderElement, description.className, description.divCount);
             }
         };
+        /**
+         * fills element with appropriate number of divs
+         * @param element
+         * @param elementClass
+         * @param divNumber
+         */
         ElementBase.prototype.fillElement = function (element, elementClass, divNumber) {
             for (var i = 0; i < divNumber; i += 1) {
                 element.appendChild(document.createElement("DIV"));
@@ -130,8 +166,17 @@ var lv = /** @class */ (function () {
         return ElementBase;
     }());
     lv.ElementBase = ElementBase;
+    /**
+     * class for linear elements
+     */
     var Bar = /** @class */ (function (_super) {
         __extends(Bar, _super);
+        /**
+         * creates linear element
+         * @param element
+         * @param barType
+         * @param classes
+         */
         function Bar(element, barType, classes) {
             if (classes === void 0) { classes = null; }
             var _this = _super.call(this, element) || this;
@@ -146,6 +191,12 @@ var lv = /** @class */ (function () {
             }
             return _this;
         }
+        /**
+         * type specific update function for linear element
+         * @param type
+         * @param newValue
+         * @param maxValue
+         */
         Bar.prototype.update = function (type, newValue, maxValue) {
             // getting current width of line from the page
             var line = this.element.firstElementChild;
@@ -189,8 +240,17 @@ var lv = /** @class */ (function () {
         return Bar;
     }(ElementBase));
     lv.Bar = Bar;
+    /**
+     * class for square or circular elements
+     */
     var Circle = /** @class */ (function (_super) {
         __extends(Circle, _super);
+        /**
+         * creates square or circular element
+         * @param element
+         * @param circleType
+         * @param classes
+         */
         function Circle(element, circleType, classes) {
             if (classes === void 0) { classes = null; }
             var _this = _super.call(this, element) || this;
@@ -208,6 +268,12 @@ var lv = /** @class */ (function () {
             }
             return _this;
         }
+        /**
+         * type specific update function for non-linear elements
+         * @param type
+         * @param newValue
+         * @param maxValue
+         */
         Circle.prototype.update = function (type, newValue, maxValue) {
             var rotationOffset = -45; // initial rotation of the spinning div in css
             // separating individual parts of the circle
@@ -285,6 +351,9 @@ var lv = /** @class */ (function () {
         return Circle;
     }(ElementBase));
     lv.Circle = Circle;
+    /**
+     * list of linear elements
+     */
     var BarType;
     (function (BarType) {
         BarType[BarType["Line"] = 0] = "Line";
@@ -292,6 +361,9 @@ var lv = /** @class */ (function () {
         BarType[BarType["DeterminateLine"] = 2] = "DeterminateLine";
         BarType[BarType["DeterminateBorderedLine"] = 3] = "DeterminateBorderedLine";
     })(BarType = lv.BarType || (lv.BarType = {}));
+    /**
+     * list of non-linear elements
+     */
     var CircleType;
     (function (CircleType) {
         CircleType[CircleType["Bars"] = 0] = "Bars";

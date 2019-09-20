@@ -40,15 +40,14 @@ const tsResult = () => {
 
 gulp.task('build:ts:dts',
 	() => tsResult().dts
-		.pipe(concat(config.dtsBundle))
 		.pipe(gulp.dest(config.dist))
 );
 
-gulp.task('build:js',
+gulp.task('build:ts',
 	() => tsResult().js
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(config.dist))
 );
 
 
-gulp.task('default', gulp.parallel('build:js', 'compile:sass'));
+gulp.task('default', gulp.parallel('build:ts', 'compile:sass', 'build:ts:dts'));
