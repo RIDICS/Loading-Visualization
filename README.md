@@ -60,12 +60,17 @@ Each scale variable has a range in which its value has to be to work properly. I
 scale and all parts of the element will have the same color as defined in the color variable. The higher the number, 
 the bigger the difference between colors of the two next parts.
 
-## Usage
+## Creating elements
 
-### Initialization
+### Element basics
 
-An element is inserted into HTML content with `<div class="name_of_element"></div>` and can be expanded with optional
-parameters. There are 8 indeterminate spinners and bars:
+An element is inserted into HTML content with `<div class="name_of_element"></div>` and can be specified more with some 
+optional parameters (more below).
+
+There are two types of elements - **determinate**, which show progress and range from 0 to 100%, and **indeterminate**,
+which do not represent any value and move infinitely until they are removed or hidden.
+
+There are 8 indeterminate bars and spinners:
 
 1. `lv-bars`
 2. `lv-squares`
@@ -76,27 +81,63 @@ parameters. There are 8 indeterminate spinners and bars:
 7. `lv-line`
 8. `lv-bordered_line`
 
-and 3 determinate spinners and bars:
+and 3 determinate bars and spinners:
 
 1. `lv-determinate_circle`
 2. `lv-determinate_line`
 3. `lv-determinate_bordered_line`
 
-Examples can be see in the DEMO web page.
+Examples can be seen in the [DEMO](https://ridics.github.io/Loading-Visualization) web page.
 
-### Updating determinate loading
+There are more possible ways to insert them into the page. One is inserting the code directly to HTML. Another one is to
+insert it into HTML with JavaScript or JQuery.
 
-To update progress on any determinate loading bar the specific element needs to be selected. The easiest way to do this 
-is to add some id to the element in html and then use JavaScript function `document.getElementById("id")` to select it.
-Then the selected element is passed as argument to the function which is supposed to update the element as described in
-the last part.
+### Initialization
 
-### Ending animation
+After an element is inserted into the HTML code, it has to be initialized.
 
-There is no function to stop the movement of the indeterminate loading bars provided, the only way to stop the movement is to remove
-them from the html code or hide them.
+#### Automatic initialization
 
-The determinate loading bars are not moving unless being updated, but they need to be also removed from html to disappear.
+This library provides method to automatically initialize new elements. This can be done by following commands:
+
+```javascript
+let loader = new lv();
+loader.startObserving();
+```
+
+These two lines start an observer, which watches for newly created elements and automatically initializes them. However,
+if there already are some not initialized elements in the HTML code before starting the observer, the command should be 
+a little different:
+
+```javascript
+let loader = new lv();
+loader.initLoaderAll();
+loader.startObserving();
+```
+
+After setting this up all new elements are automatically initialized and shown.
+
+#### Manual initialization
+
+If the automatic initialization is not set up, it has to be done manually for each element separately. To achieve this, 
+it is necessary to select an element to initialize and pass it as a parameter to a **create** function. If hide and show
+and other functions will be used in the future, it is also necessary to assign the create function response to a variable.
+If not, just calling the **create** function is enough. Example manual initialization could look like this:
+
+```javascript
+// with assignment to variable
+let element = lv.create(document.getElementById("element_id"));
+// without assignment to variable
+lv.create(document.getElementById("element_id"));
+``` 
+
+If JQuery is used to select the element, it is necessary to add `[0]` next to it, because JQuery returns finds as a collection
+and not as element, so the element would not be initialized.
+
+```javascript
+// using JQuery
+let element = lv.create($("#element_id")[0]);
+```
 
 ### Sizing
 
@@ -170,44 +211,59 @@ This can be inserted anywhere in the body of the document.
 <div class="lv-determinate_circle md lv-right lvt-5 lvb-1" data-label="Loading..." data-percentage="true"></div>
 ```
 
-## Controlling the determinate bars
+## Control of elements
 
-There are two basic functions: `lvUpdateBar`, which can handle changes in linear elements (*determinate 2-3*), and `lvUpdateCircle`,
-which can handle changes in circular elements (*determinate 1*).
-
-```javascript
-lv.updateBar(type, barElement, newValue, maxValue);
-lv.updateCircle(type, circleElement, newValue, maxValue);
-```
-* `type` ... `add` (add value to current value) or `set` (set bar to some value)
-* `barElement` / `circleElement` ... element in DOM, on which should be applied the change (easiest selection by `id`)
-* `newValue` ... value to add or set
-* `maxValue` ... value that represents 100%
-
-Then there are few predefined functions to make things easier: `lvReset`, which resets the loading to zero, `lvFill`, 
-which fills the whole loading to 100%, and `lvAdd`, which handles addition or deletion.
+All types of elements have their `hide` and `show` functions. However, to use them it is necessary to assign them to a variable
+as described in the *initialization* section.
 
 ```javascript
-lv.reset(type, element, maxValue);
+let element = lv.create(selected_element);
+// hides element
+element.hide();
+// shows element
+element.show();
 ```
-* `type` ... `bar` or `circle` depending on the element to change
-* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
-* `maxValue` ... value that represents 100%
+
+### Controlling the indeterminate bars and spinners
+
+There is no way to control or stop the animation of indeterminate spinners and bars, the only way to control them is to
+remove them from the page or hide them using the `hide` function.
+
+### Controlling the determinate bars and spinners
+
+Again, to control determinate bars and spinners the element has to be assigned to variable.
+
+There is an universal `update` function, which can set or add any value to the spinner. It updates both linear and non-linear
+elements and its called directly on the variable, where is saved the element.
 
 ```javascript
-lv.fill(type, element, maxValue);
+element.update(type, value, maxValue);
 ```
-* `type` ... `bar` or `circle` depending on the element to change
-* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
-* `maxValue` ... value that represents 100%
+* `type` ... "add" or "set", if the value should be added to current or set to a new one
+* `value` ... number to add or set
+* `maxValue` ... value that represents 100% of the progress
+
+Then there are 4 functions to make updating bar easier:
 
 ```javascript
-lv.add(type, element, addValue, maxValue))
+element.fill(maxValue);
 ```
-* `type` ... `bar` or `circle` depending on the element to change
-* `element` ... element in DOM, on which should be applied the change (easiest selection by `id`)
-* `addValue` ... any real number to add or remove from present value (add ... positive numbers, remove ... negative numbers)
-* `maxValue` ... value that represents 100%
+* `maxValue` ... value that represents 100% of the progress
 
-The library has automatic detections of changes in DOM and it allows elements to be added dynamically using Javascript
-or another mean.
+```javascript
+element.reset(maxValue);
+```
+* `maxValue` ... value that represents 100% of the progress
+
+```javascript
+element.add(value, maxValue);
+```
+* `value` ... number to add to current state
+* `maxValue` ... value that represents 100% of the progress
+
+```javascript
+element.set(value, maxValue);
+```
+* `value` ... number to add or set
+* `maxValue` ... value that represents 100% of the progress
+

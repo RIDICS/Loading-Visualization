@@ -31,7 +31,6 @@ $(document).ready(function() {
     loader.initLoaderAll();
     loader.startObserving();
 
-
     for (let element of infinite) {
         $("#" + element + "_button").unbind().click(function(event) {
             event.preventDefault();
