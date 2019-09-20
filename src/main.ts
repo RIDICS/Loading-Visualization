@@ -1,45 +1,51 @@
 class lv {
     public initLoaderAll(): void {
         // iterates through everything and adds specified number of divs
-        // for(let key in this.elements) {
-        //     let elementsOfClass: HTMLCollectionOf<HTMLDivElement> = <HTMLCollectionOf<HTMLDivElement>>document.getElementsByClassName(key);
-        //     console.log(elementsOfClass);
-        //     for(let i = 0; i < elementsOfClass.length; i += 1) {
-        //         // condition if the div is empty <=> new; otherwise the divs are not added
-        //         if (!elementsOfClass.item(i).hasChildNodes()) {
-        //             this.fillElement(elementsOfClass.item(i), key, this.elements[key]);
-        //         }
-        //     }
-        // }
-
+        let divs = document.getElementsByTagName("DIV");
+        for (let i = 0; i < divs.length; i++) {
+            if (!divs[i].hasChildNodes()) {
+                lv.create(<HTMLDivElement>divs[i]);
+            }
+        }
     }
 
-    public create(element: HTMLDivElement): lv.ElementBase {
+    public static getModifyingClasses(classList: DOMTokenList, notIncludingClass: string): string[] {
+        let modifyingClasses: string[] = [];
+        for (let i = 0; i < classList.length; i++) {
+            if (classList[i] != notIncludingClass) {
+                modifyingClasses.push(classList[i]);
+            }
+        }
+        return modifyingClasses;
+    }
+
+    public static create(element: HTMLDivElement): lv.ElementBase {
         let classes: DOMTokenList = element.classList;
+        let modifyingClasses: string[] = [];
         for (let i = 0; i < classes.length; i++) {
             switch (classes[i]) {
                 case "lv-bars":
-                    return new lv.Circle(element, lv.CircleType.Bars);
+                    return new lv.Circle(element, lv.CircleType.Bars, lv.getModifyingClasses(classes, "lv-bars"));
                 case "lv-squares":
-                    return new lv.Circle(element, lv.CircleType.Squares);
+                    return new lv.Circle(element, lv.CircleType.Squares, lv.getModifyingClasses(classes, "lv-squares"));
                 case "lv-circles":
-                    return new lv.Circle(element, lv.CircleType.Circles);
+                    return new lv.Circle(element, lv.CircleType.Circles, lv.getModifyingClasses(classes, "lv-circles"));
                 case "lv-dots":
-                    return new lv.Circle(element, lv.CircleType.Dots);
+                    return new lv.Circle(element, lv.CircleType.Dots, lv.getModifyingClasses(classes, "lv-dots"));
                 case "lv-spinner":
-                    return new lv.Circle(element, lv.CircleType.Spinner);
+                    return new lv.Circle(element, lv.CircleType.Spinner, lv.getModifyingClasses(classes, "lv-spinner"));
                 case "lv-dashed":
-                    return new lv.Circle(element, lv.CircleType.Dashed);
+                    return new lv.Circle(element, lv.CircleType.Dashed, lv.getModifyingClasses(classes, "lv-dashed"));
                 case "lv-determinate_circle":
-                    return new lv.Circle(element, lv.CircleType.DeterminateCircle);
+                    return new lv.Circle(element, lv.CircleType.DeterminateCircle, lv.getModifyingClasses(classes, "lv-determinate_circle"));
                 case "lv-line":
-                    return new lv.Bar(element, lv.BarType.Line);
+                    return new lv.Bar(element, lv.BarType.Line, lv.getModifyingClasses(classes, "lv-line"));
                 case "lv-bordered_line":
-                    return new lv.Bar(element, lv.BarType.BorderedLine);
+                    return new lv.Bar(element, lv.BarType.BorderedLine, lv.getModifyingClasses(classes, "lv-bordered_line"));
                 case "lv-determinate_line":
-                    return new lv.Bar(element, lv.BarType.DeterminateLine);
+                    return new lv.Bar(element, lv.BarType.DeterminateLine, lv.getModifyingClasses(classes, "lv-determinate_line"));
                 case "lv-determinate_bordered_line":
-                    return new lv.Bar(element, lv.BarType.DeterminateBorderedLine);
+                    return new lv.Bar(element, lv.BarType.DeterminateBorderedLine, lv.getModifyingClasses(classes, "lv-determinate_bordered_line"));
             }
         }
         return null;
@@ -47,17 +53,16 @@ class lv {
     // automatically detects new elements in DOM and appends divs to them (calls function complete_divs();
     // defining what to do on change of DOM - child mutation
     private callback(mutationList, observer: MutationObserver): void {
-        mutationList.forEach(function(mutation) {
-            if (mutation.type === "childList") {
+        for (let i = 0; i < mutationList.length; i++) {
+            if (mutationList[i].type === "childList") {
                 try {
-                    if (mutation.addedNodes[0].classList.length > 0) {
+                    if (mutationList[i].addedNodes[0].classList.length > 0) {
                         // filling the node with divs when it is empty
-                        console.log(mutation.addedNodes[0]);
-                        this.create(mutation.addedNodes[0]);
+                        lv.create(mutationList[i].addedNodes[0]);
                     }
                 } catch (error) {}
             }
-        });
+        }
     };
     // initializing the observer and starting observation
     private observer: MutationObserver;
@@ -112,7 +117,7 @@ namespace lv {
         // fills all spinners with appropriate number of divs
         public initLoader(loaderElement: HTMLDivElement, description: IDescription): void {
             // manual addition on specified object
-            if (loaderElement.hasChildNodes) {
+            if (!loaderElement.hasChildNodes()) {
                 this.fillElement(loaderElement, description.className, description.divCount);
             }
         }
@@ -121,7 +126,7 @@ namespace lv {
             for (let i = 0; i < divNumber; i += 1) {
                 element.appendChild(document.createElement("DIV"));
             }
-            if (elementClass === "lv-determinate_circle" || elementClass === "lv-determninate_line" || elementClass === "lv-determinate_bordered_line") {
+            if (elementClass === "lv-determinate_circle" || elementClass === "lv-determinate_line" || elementClass === "lv-determinate_bordered_line") {
                 element.lastElementChild.innerHTML = "0";
             }
             if (!element.classList.contains(elementClass)) {
@@ -133,19 +138,22 @@ namespace lv {
     export class Bar extends ElementBase {
         private divCount: IDictionary = {};
 
-        constructor(element: HTMLDivElement, barType: BarType, classes: string = null) {
+        constructor(element: HTMLDivElement, barType: BarType, classes: string[] = null) {
             super(element);
             this.divCount[BarType.Line] = {className: "lv-line", divCount: 1};
             this.divCount[BarType.BorderedLine] = {className: "lv-bordered_line", divCount: 1};
             this.divCount[BarType.DeterminateLine] = {className: "lv-determinate_line", divCount: 2};
             this.divCount[BarType.DeterminateBorderedLine] = {className: "lv-determinate_bordered_line", divCount: 2};
             this.initLoader(element, this.divCount[barType]);
-            element.classList.add(classes);
+            for (let i = 0; i < classes.length; i++) {
+                element.classList.add(classes[i]);
+            }
         }
 
         update(type: string, newValue: number, maxValue: number): void {
             // getting current width of line from the page
             let line: HTMLDivElement = <HTMLDivElement>this.element.firstElementChild;
+            let percentage: HTMLDivElement = <HTMLDivElement>this.element.lastElementChild;
             let currentWidth: number = parseInt(line.style.width);
             // protective condition for empty line
             if (isNaN(currentWidth)) {
@@ -176,7 +184,7 @@ namespace lv {
                 }
                 line.style.width = currentWidth + "%";
                 // updating the percentage
-                this.element.lastElementChild.innerHTML = Math.round(currentWidth).toString();
+                percentage.innerHTML = Math.round(currentWidth).toString();
             }
         }
 
@@ -185,7 +193,7 @@ namespace lv {
 
         private divCount: IDictionary = {};
 
-        constructor(element: HTMLDivElement, circleType: CircleType, classes: string = null) {
+        constructor(element: HTMLDivElement, circleType: CircleType, classes: string[] = null) {
             super(element);
             this.divCount[CircleType.Bars] = {className: "lv-bars", divCount: 8};
             this.divCount[CircleType.Squares] = {className: "lv-squares", divCount: 4};
@@ -195,7 +203,9 @@ namespace lv {
             this.divCount[CircleType.Spinner] = {className: "lv-spinner", divCount: 1};
             this.divCount[CircleType.Dashed] = {className: "lv-dashed", divCount: 1};
             this.initLoader(element, this.divCount[circleType]);
-            element.classList.add(classes);
+            for (let i = 0; i < classes.length; i++) {
+                element.classList.add(classes[i]);
+            }
         }
 
         update(type: string, newValue: number, maxValue: number): void {

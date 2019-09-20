@@ -26,13 +26,12 @@ function resetFinite() {
     }
 }
 $(document).ready(function() {
+
     let loader = new lv();
-    //loader.initLoaderAll();
+    loader.initLoaderAll();
     loader.startObserving();
-    let element = document.createElement("DIV");
-    element.classList.add("lv-determinate_circle");
-    element.classList.add("lg");
-    document.body.appendChild(element);
+
+
     for (let element of infinite) {
         $("#" + element + "_button").unbind().click(function(event) {
             event.preventDefault();
@@ -67,73 +66,85 @@ $(document).ready(function() {
     $("#fill_spinner").unbind().click(function(event) {
         event.preventDefault();
         for(let spinner of spinners) {
-            lv.fill('circle', spinner, 200);
+            let circle = lv.create(spinner);
+            circle.fill(200);
         }
     });
     $("#add_spinner").unbind().click(function (event) {
        event.preventDefault();
        for(let spinner of spinners) {
-           lv.add('circle', spinner, 5, 200);
+           let circle = lv.create(spinner);
+           circle.add(5, 200);
        }
     });
     $("#remove_spinner").unbind().click(function (event) {
         event.preventDefault();
         for(let spinner of spinners) {
-            lv.add('circle', spinner, -10, 200);
+            let circle = lv.create(spinner);
+            circle.add(-10, 200);
         }
     });
     $("#reset_spinner").unbind().click(function (event) {
         event.preventDefault();
         for(let spinner of spinners) {
-            lv.reset('circle', spinner, 200);
+            let circle = lv.create(spinner);
+            circle.reset(200);
         }
     });
     $("#fill_line").unbind().click(function(event) {
         event.preventDefault();
         for(let line of lines) {
-            lv.fill('bar', line, 200);
+            let el = lv.create(line);
+            el.fill(200);
         }
     });
     $("#add_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of lines) {
-            lv.add('bar', line, 5, 200);
+            let el = lv.create(line);
+            el.add(5, 200);
         }
     });
     $("#remove_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of lines) {
-            lv.add('bar', line, -10, 200);
+            let el = lv.create(line);
+            el.add(-10, 200);
         }
     });
     $("#reset_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of lines) {
-            lv.reset('bar', line, 200);
+            let el = lv.create(line);
+            el.reset(200);
         }
     });
     $("#fill_bordered_line").unbind().click(function(event) {
         event.preventDefault();
         for(let line of borderedLines) {
-            lv.fill('bar', line, 200);
+            let el = lv.create(line);
+            el.fill(200);
         }
     });
     $("#add_bordered_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of borderedLines) {
-            lv.add('bar', line, 5, 200);
+            let el = lv.create(line);
+            el.add(5, 200);
         }
     });
     $("#remove_bordered_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of borderedLines) {
-            lv.add('bar', line, -10, 200);
+            let el = lv.create(line);
+            el.add(-10, 200);
         }
     });
     $("#reset_bordered_line").unbind().click(function (event) {
         event.preventDefault();
         for(let line of borderedLines) {
-            lv.reset('bar', line, 200);
+            let el = lv.create(line);
+            el.reset(200);
         }
     });
 });
