@@ -208,7 +208,7 @@ This can be inserted anywhere in the body of the document.
 
 ### Visibility of elements
 
-All types of elements have their `hide` and `show` functions. However, to use them it is necessary to assign them to a variable
+All types of elements have their `hide` and `show` functions. However, to use them it is necessary to assign creation of the element to a variable
 as described in the *initialization* section. All elements are visible by default.
 
 ```javascript
