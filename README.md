@@ -214,7 +214,7 @@ This can be inserted anywhere in the body of the document.
 ## Control of elements
 
 All types of elements have their `hide` and `show` functions. However, to use them it is necessary to assign them to a variable
-as described in the *initialization* section.
+as described in the *initialization* section. All elements are visible by default.
 
 ```javascript
 let element = lv.create(selected_element);
@@ -226,8 +226,7 @@ element.show();
 
 ### Controlling the indeterminate bars and spinners
 
-There is no way to control or stop the animation of indeterminate spinners and bars, the only way to control them is to
-remove them from the page or hide them using the `hide` function.
+There is no simple way provided to control or stop the animation of indeterminate spinners and bars. They can be hidden using the 'hide()' function or made visible using the `show()` function.
 
 ### Controlling the determinate bars and spinners
 
