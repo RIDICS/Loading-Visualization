@@ -121,6 +121,12 @@ var lv = /** @class */ (function () {
         ElementBase.prototype.removeLabel = function () {
             this.element.removeAttribute("data-label");
         };
+        ElementBase.prototype.showPercentage = function () {
+            this.element.setAttribute("data-percentage", "true");
+        };
+        ElementBase.prototype.hidePercentage = function () {
+            this.element.removeAttribute("data-percentage");
+        };
         /**
          * resets determinate element to 0
          * @param maxValue

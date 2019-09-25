@@ -195,12 +195,6 @@ as a `<div>` attribute. This inserts a counter either inside or next to an eleme
 turns it off if the element is too small. If the argument is omitted or set to anything else than `"true"` the percentage 
 counter will not be shown.
 
-### Changing percentages
-
-Percentages can be turned on and off even after element was added to html and shown on page. It can be done with JavaScript function 
-`.setAttribute("data-percentage", "true");` applied on selected element. Item can be selected by multiple ways, the 
-easiest is by id - `document.getElementById("id");`. To turn the percentage off use `.removeAttribute("data-percentage")`.
-
 ### Example usage
 
 This can be inserted anywhere in the body of the document.
@@ -255,6 +249,22 @@ element.removeLabel();
 ```
 
 This is possible for all element types. More about labels is described above.
+
+### Percentage control
+
+
+There are provided functions to show or hide percentages with JavaScript. They are called on the element object as well as
+`hide()`, `remove()` and `show()` functions. The functions are:
+
+```javascript
+// shows percentage
+element.showPercentage();
+// hides percentage
+element.hidePercentage();
+```
+
+This functionality applies only on determinate loading elements. The functions can be called on indeterminate elements but
+they will have no effect. More about percentages is described above.
 
 ### Controlling the indeterminate bars and spinners
 

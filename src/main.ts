@@ -127,6 +127,13 @@ namespace lv {
             this.element.removeAttribute("data-label");
         }
 
+        public showPercentage(): void {
+            this.element.setAttribute("data-percentage", "true");
+        }
+
+        public hidePercentage(): void {
+            this.element.removeAttribute("data-percentage");
+        }
         /**
          * updates determinate element
          * @param type
