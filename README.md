@@ -224,6 +224,23 @@ element.hide();
 element.show();
 ```
 
+Each element has also its `remove()` function, which removes the element from the page permanently. After calling this
+function the element cannot be shown again and it is necessary to create new element (even the `html` code of the removed
+element is permanently gone).
+
+```javascript
+// element is visible
+let element = lv.create(selected_element);
+// element is hidden
+element.hide();
+// element is visible
+element.show();
+// element is removed
+element.remove();
+// element cannot be made visible again
+element.show();
+```
+
 ### Controlling the indeterminate bars and spinners
 
 There is no way to control or stop the animation of indeterminate spinners and bars, the only way to control them is to

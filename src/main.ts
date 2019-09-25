@@ -115,6 +115,10 @@ namespace lv {
             this.element.style.display = "none";
         }
 
+        public remove(): void {
+            this.element.parentNode.removeChild(this.element);
+        }
+
         /**
          * updates determinate element
          * @param type

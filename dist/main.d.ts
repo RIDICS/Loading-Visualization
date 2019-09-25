@@ -37,6 +37,7 @@ declare namespace lv {
         constructor(element: HTMLDivElement);
         show(): void;
         hide(): void;
+        remove(): void;
         /**
          * updates determinate element
          * @param type

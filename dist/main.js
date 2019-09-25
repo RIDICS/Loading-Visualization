@@ -112,6 +112,9 @@ var lv = /** @class */ (function () {
         ElementBase.prototype.hide = function () {
             this.element.style.display = "none";
         };
+        ElementBase.prototype.remove = function () {
+            this.element.parentNode.removeChild(this.element);
+        };
         /**
          * resets determinate element to 0
          * @param maxValue
