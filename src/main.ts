@@ -119,6 +119,14 @@ namespace lv {
             this.element.parentNode.removeChild(this.element);
         }
 
+        public setLabel(labelText: string): void {
+            this.element.setAttribute("data-label", labelText);
+        }
+
+        public removeLabel(): void {
+            this.element.removeAttribute("data-label");
+        }
+
         /**
          * updates determinate element
          * @param type

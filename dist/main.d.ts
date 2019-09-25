@@ -38,6 +38,8 @@ declare namespace lv {
         show(): void;
         hide(): void;
         remove(): void;
+        setLabel(labelText: string): void;
+        removeLabel(): void;
         /**
          * updates determinate element
          * @param type

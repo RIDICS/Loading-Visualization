@@ -115,6 +115,12 @@ var lv = /** @class */ (function () {
         ElementBase.prototype.remove = function () {
             this.element.parentNode.removeChild(this.element);
         };
+        ElementBase.prototype.setLabel = function (labelText) {
+            this.element.setAttribute("data-label", labelText);
+        };
+        ElementBase.prototype.removeLabel = function () {
+            this.element.removeAttribute("data-label");
+        };
         /**
          * resets determinate element to 0
          * @param maxValue

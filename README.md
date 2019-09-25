@@ -195,14 +195,11 @@ as a `<div>` attribute. This inserts a counter either inside or next to an eleme
 turns it off if the element is too small. If the argument is omitted or set to anything else than `"true"` the percentage 
 counter will not be shown.
 
-### Changing labels and percentages
+### Changing percentages
 
-Labels can be changed even after element was added to html and shown on page. It can be done with JavaScript function 
-`.setAttribute("data-label", "new_label");` applied on selected element. Item can be selected by multiple ways, the 
-easiest is by id - `document.getElementById("id");`.
-
-The same applies on percentages but the `data-percentage` label has only two possible outcomes. When it contains `true`,
-percentages are shown, when it contains anything else or nothing, percentages are hidden.
+Percentages can be turned on and off even after element was added to html and shown on page. It can be done with JavaScript function 
+`.setAttribute("data-percentage", "true");` applied on selected element. Item can be selected by multiple ways, the 
+easiest is by id - `document.getElementById("id");`. To turn the percentage off use `.removeAttribute("data-percentage")`.
 
 ### Example usage
 
@@ -214,6 +211,8 @@ This can be inserted anywhere in the body of the document.
 ```
 
 ## Control of elements
+
+### Visibility of elements
 
 All types of elements have their `hide` and `show` functions. However, to use them it is necessary to assign them to a variable
 as described in the *initialization* section. All elements are visible by default.
@@ -242,6 +241,20 @@ element.remove();
 // element cannot be made visible again
 element.show();
 ```
+
+### Label control
+
+There are provided functions to change or remove labels with JavaScript. They are called on the element object as well as
+`hide()`, `remove()` and `show()` functions. The functions are:
+
+```javascript
+// shows label and sets it to text passed as a parameter
+element.setLabel("new_label");
+// removes label from the element
+element.removeLabel();
+```
+
+This is possible for all element types. More about labels is described above.
 
 ### Controlling the indeterminate bars and spinners
 
