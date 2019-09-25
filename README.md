@@ -49,11 +49,13 @@ shades based on **scale** variable.
 $bars_color: #4b0049; // color of the darkest bar
 $squares_color: #00064b; // color of the darkest square
 $dots_color: #004c00; // color of the darkest pulsating dot
+```
 
 Each scale variable has a range in which its value has to be to work properly. If zero is entered the color will not
 scale and all parts of the element will have the same color as defined in the color variable. The higher the number, 
 the bigger the difference between colors of the two next parts.
 
+```
 // how much will the color lighten; when x = 0, all parts will be the same color
 $bars_scale: 5;  // 0 <= x <= 14
 $squares_scale: 10;  // 0 <= x <= 33
