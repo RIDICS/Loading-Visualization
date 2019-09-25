@@ -45,20 +45,20 @@ shades of one color. To their color variable is inserted the darkest of these sh
 shades based on **scale** variable.
 
 ```scss
-// for spinners with multiple parts choose the darkest shade of chosen color you want to use, others will be lighter
+// for spinners with multiple parts choose the darkest shade of chosen color, other colors will be lighter
 $bars_color: #4b0049; // color of the darkest bar
 $squares_color: #00064b; // color of the darkest square
 $dots_color: #004c00; // color of the darkest pulsating dot
 
-// how much will the color lighten; when x = 0, all parts will be the same color
-$bars_scale: 5;  //0 <= x <= 14
-$squares_scale: 10;  // 0 <= x <= 33
-$dots_scale: 10;  // 0 <= x <= 33
-```
-
 Each scale variable has a range in which its value has to be to work properly. If zero is entered the color will not
 scale and all parts of the element will have the same color as defined in the color variable. The higher the number, 
 the bigger the difference between colors of the two next parts.
+
+// how much will the color lighten; when x = 0, all parts will be the same color
+$bars_scale: 5;  // 0 <= x <= 14
+$squares_scale: 10;  // 0 <= x <= 33
+$dots_scale: 10;  // 0 <= x <= 33
+```
 
 ## Creating elements
 
@@ -98,7 +98,7 @@ After an element is inserted into the HTML code, it has to be initialized.
 
 #### Automatic initialization
 
-This library provides method to automatically initialize new elements. This can be done by following commands:
+This library provides a method to automatically initialize new elements. This can be done by following commands:
 
 ```javascript
 let loader = new lv();
@@ -107,7 +107,7 @@ loader.startObserving();
 
 These two lines start an observer, which watches for newly created elements and automatically initializes them. However,
 if there already are some not initialized elements in the HTML code before starting the observer, the command should be 
-a little different:
+a little different to initialize them all:
 
 ```javascript
 let loader = new lv();
@@ -121,7 +121,7 @@ After setting this up all new elements are automatically initialized and shown.
 
 If the automatic initialization is not set up, it has to be done manually for each element separately. To achieve this, 
 it is necessary to select an element to initialize and pass it as a parameter to a **create** function. If hide and show
-and other functions will be used in the future, it is also necessary to assign the create function response to a variable.
+and other functions will be used in the future, it is also necessary to assign the create function to a variable.
 If not, just calling the **create** function is enough. Example manual initialization could look like this:
 
 ```javascript
@@ -141,7 +141,7 @@ let element = lv.create($("#element_id")[0]);
 
 ### Sizing
 
-There are multiple predefined sizes for each element type, which can be added to class parameter of the `div`. If there is none specified, the element will occupy whole 
+There are multiple predefined sizes for each element type, which can be added to the class parameter of the `div`. If there is none specified, the element will occupy whole 
 space of his container. In this case it is important that for elements *1.-6. indeterminate and 1. determinate* the
 container should be square, so it is not deformed.
 
@@ -190,8 +190,8 @@ determinate and indeterminate elements.
 
 This additional parameter adds a percentage counter to an element. It is configured by adding `data-percentage="true"`
 as a `<div>` attribute. This inserts a counter either inside or next to an element based on its shape or automatically
-turns it off if the element is too small. If the argument is omitted or set to *false* the percentage counter will not 
-be shown.
+turns it off if the element is too small. If the argument is omitted or set to anything else than `"true"` the percentage 
+counter will not be shown.
 
 ### Changing labels and percentages
 
@@ -243,7 +243,7 @@ element.show();
 
 ### Controlling the indeterminate bars and spinners
 
-There is no simple way provided to control or stop the animation of indeterminate spinners and bars. They can be hidden using the 'hide()' function or made visible using the `show()` function.
+There is no simple way provided to control or stop the animation of indeterminate spinners and bars. They can be hidden using the 'hide()' function, removed completely using the `remove()` function or made visible using the `show()` function.
 
 ### Controlling the determinate bars and spinners
 
