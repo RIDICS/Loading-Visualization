@@ -142,17 +142,17 @@ let element = lv.create($("#element_id")[0]);
 ### Sizing
 
 There are multiple predefined sizes for each element type, which can be added to class parameter of the `div`. If there is none specified, the element will occupy whole 
-space of his container. In this case it is important that for elements *1-6 indeterminate and 1 determinate* the
+space of his container. In this case it is important that for elements *1.-6. indeterminate and 1. determinate* the
 container should be square, so it is not deformed.
 
-The predefined sizes for elements *1-6 indeterminate and 1 determinate* are:
+The predefined sizes for elements *1.-6. indeterminate and 1. determinate* are:
 
 * `lg` -> 200x200px
 * `md` -> 100x100px
 * `sm` -> 50x50px
 * `tiny` -> 30x30px
 
-For *7-8 indeterminate and 2-3 determinate* is predefined only width, height is variable: 
+For *7.-8. indeterminate and 2.-3. determinate* is predefined only width, height is variable: 
 
 * `lg` -> 1000px
 * `md` -> 600px
