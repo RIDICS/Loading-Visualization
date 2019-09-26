@@ -122,6 +122,17 @@ loader.startObserving();
 
 After setting this up all new elements are automatically initialized and shown.
 
+Situations when is convenient or necessary to disable automatic initialization may occur.
+For these cases is provided function to accomplish it:
+
+```javascript
+let loader = new lv();
+loader.startObserving();
+
+// stops observer but it can be restarted again
+loader.stopObserving();
+```
+
 #### Manual initialization
 
 If the automatic initialization is not set up, it has to be done manually for each element separately. To achieve this, 
