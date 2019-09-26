@@ -23,6 +23,7 @@ declare class lv {
     private observer;
     constructor();
     startObserving(): void;
+    stopObserving(): void;
 }
 declare namespace lv {
     interface IDescription {

@@ -86,6 +86,9 @@ class lv {
     public startObserving() {
         this.observer.observe(document.body, {childList: true, subtree: true});
     }
+    public stopObserving() {
+        this.observer.disconnect();
+    }
 }
 namespace lv {
     interface IDictionary {

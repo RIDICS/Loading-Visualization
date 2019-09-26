@@ -96,6 +96,9 @@ var lv = /** @class */ (function () {
     lv.prototype.startObserving = function () {
         this.observer.observe(document.body, { childList: true, subtree: true });
     };
+    lv.prototype.stopObserving = function () {
+        this.observer.disconnect();
+    };
     return lv;
 }());
 (function (lv) {
