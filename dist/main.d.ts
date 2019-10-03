@@ -67,6 +67,12 @@ declare namespace lv {
          */
         add(addValue: number, maxValue: number): void;
         /**
+         * sets loading bar to passed value
+         * @param value
+         * @param maxValue
+         */
+        set(value: number, maxValue: number): void;
+        /**
          * initializes an element
          * @param loaderElement
          * @param description

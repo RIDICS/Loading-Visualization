@@ -171,6 +171,15 @@ namespace lv {
         }
 
         /**
+         * sets loading bar to passed value
+         * @param value
+         * @param maxValue
+         */
+        public set(value: number, maxValue: number): void {
+                this.update('set', value, maxValue);
+        }
+
+        /**
          * initializes an element
          * @param loaderElement
          * @param description

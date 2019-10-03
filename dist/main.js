@@ -153,6 +153,14 @@ var lv = /** @class */ (function () {
             this.update('add', addValue, maxValue);
         };
         /**
+         * sets loading bar to passed value
+         * @param value
+         * @param maxValue
+         */
+        ElementBase.prototype.set = function (value, maxValue) {
+            this.update('set', value, maxValue);
+        };
+        /**
          * initializes an element
          * @param loaderElement
          * @param description
