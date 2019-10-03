@@ -297,7 +297,7 @@
   height: 11px;
   width: 0;
   background-color: #138D75;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 .lv-determinate_bordered_line div:nth-child(2) {
   color: #138D75;

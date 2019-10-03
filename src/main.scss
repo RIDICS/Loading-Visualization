@@ -318,7 +318,7 @@ $dots_scale: 10; // 0 <= x <= 33
         height: 11px;
         width: 0;
         background-color: $determinate_bordered_line_color;
-        border-radius: 10px;
+        border-radius: 3px;
     }
     div:nth-child(2) {
         color: $determinate_bordered_line_color;
