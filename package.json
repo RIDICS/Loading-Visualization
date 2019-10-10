@@ -1,6 +1,6 @@
 {
     "name": "loading-visualization",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "CSS and JavaScript library for determinate and indeterminate loading bars and spinners",
     "license": "BSD-3-Clause",
     "author": "Jakub Rada",

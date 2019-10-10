@@ -291,6 +291,9 @@ Again, to control determinate bars and spinners the element has to be assigned t
 There is an universal `update` function, which can set or add any value to the spinner. It updates both linear and non-linear
 elements and its called directly on the variable, where is saved the element.
 
+Circular elements are supposed to receive whole number values and passing floating point numbers can lead to visual bugs,
+linear elements can receive both whole numbers and floating point numbers up to one decimal place without any problems.
+
 ```javascript
 element.update(type, value, maxValue);
 ```
