@@ -257,10 +257,8 @@ namespace lv {
             let goalWidth: number;
             if (type === "add") {
                 goalWidth = currentWidth + Math.round((newValue / maxValue) * 1000) / 10;
-                console.log(currentWidth, (newValue / maxValue) * 1000);
             } else if (type === "set") {
                 goalWidth = Math.round((newValue / maxValue) * 1000) / 10;
-                console.log(goalWidth);
             }
             // prevent overflow from both sides
             if (goalWidth > 100) {
