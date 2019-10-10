@@ -36,6 +36,7 @@ declare namespace lv {
     export abstract class ElementBase {
         protected element: HTMLDivElement;
         constructor(element: HTMLDivElement);
+        getElement(): HTMLDivElement;
         show(): void;
         hide(): void;
         remove(): void;

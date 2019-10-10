@@ -107,8 +107,11 @@ var lv = /** @class */ (function () {
      */
     var ElementBase = /** @class */ (function () {
         function ElementBase(element) {
-            this.element = element;
+            this.element = element === null ? document.createElement('div') : element;
         }
+        ElementBase.prototype.getElement = function () {
+            return this.element;
+        };
         ElementBase.prototype.show = function () {
             this.element.style.display = null;
         };
@@ -227,7 +230,7 @@ var lv = /** @class */ (function () {
             // getting current width of line from the page
             var line = this.element.firstElementChild;
             var percentage = this.element.lastElementChild;
-            var currentWidth = parseInt(line.style.width);
+            var currentWidth = parseFloat(line.style.width);
             // protective condition for empty line
             if (isNaN(currentWidth)) {
                 currentWidth = 0;
@@ -235,32 +238,41 @@ var lv = /** @class */ (function () {
             // end point of the animation
             var goalWidth;
             if (type === "add") {
-                goalWidth = currentWidth + Math.round((newValue / maxValue) * 100);
+                goalWidth = currentWidth + Math.round((newValue / maxValue) * 1000) / 10;
+                console.log(currentWidth, (newValue / maxValue) * 1000);
             }
             else if (type === "set") {
-                goalWidth = Math.round((newValue / maxValue) * 100);
+                goalWidth = Math.round((newValue / maxValue) * 1000) / 10;
+                console.log(goalWidth);
             }
             // prevent overflow from both sides
             if (goalWidth > 100) {
-                goalWidth = 100;
+                goalWidth = 100.0;
             }
             if (goalWidth < 0) {
                 goalWidth = 0;
             }
             var animation = setInterval(frame, 5);
             function frame() {
-                if (currentWidth === goalWidth) { // stopping animation when end point is reached
-                    clearInterval(animation);
-                }
-                else if (currentWidth > goalWidth) { // shortening the line
-                    currentWidth -= 0.5;
+                if (currentWidth > goalWidth) { // shortening the line
+                    if (currentWidth < goalWidth + 0.01) {
+                        clearInterval(animation);
+                    }
+                    else {
+                        currentWidth -= 0.1;
+                    }
                 }
                 else { // extending the line
-                    currentWidth += 0.5;
+                    if (currentWidth > goalWidth - 0.01) {
+                        clearInterval(animation);
+                    }
+                    else {
+                        currentWidth += 0.1;
+                    }
                 }
                 line.style.width = currentWidth + "%";
                 // updating the percentage
-                percentage.innerHTML = Math.round(currentWidth).toString();
+                percentage.innerHTML = currentWidth.toFixed(1);
             }
         };
         return Bar;
