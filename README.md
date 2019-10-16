@@ -135,18 +135,19 @@ loader.stopObserving();
 
 #### Manual initialization
 
-If the automatic initialization is not set up, it has to be done manually for each element separately. To achieve this, 
-it is necessary to select an element to initialize and pass it as a parameter to a **create** function. If hide and show
-and other functions will be used in the future, it is also necessary to assign the create function to a variable.
-If not, just calling the **create** function is enough. Example manual initialization could look like this:
+If the automatic initialization is not set up, it has to be done manually for each element separately. There are two
+ways to achieve that.
+
+First is used when the `div` element is already created but was not initialized by observer. The element is selected and
+passed as a parameter to a **create** function.
 
 ```javascript
 // with assignment to variable
 let element = lv.create(document.getElementById("element_id"));
 // without assignment to variable
 lv.create(document.getElementById("element_id"));
-``` 
-
+```
+ 
 If JQuery is used to select the element, it is necessary to add `[0]` next to it, because JQuery returns finds as a collection
 and not as element, so the element would not be initialized.
 
@@ -154,6 +155,27 @@ and not as element, so the element would not be initialized.
 // using JQuery
 let element = lv.create($("#element_id")[0]);
 ```
+
+Second way is used for creating new element. To the create function is passed null, instead of selected `div` element, 
+and string which contains all classes that specify the new element separated with single spaces. After that the element
+is not placed into the DOM yet. It has to be added by JavaScript or jQuery (see below).
+
+```javascript
+// creating new element
+let element = lv.create(null, "element_class other_classes");
+```
+
+To insert or in any way manipulate with the element is necessary to use `getElement()` method on created element, which
+returns the HTML element itself. However this returned copy can be used only in one place in the DOM! It's copies will
+not have access to any methods from the original element!
+
+```javascript
+// inserting element to document with jQuery
+$("body").append(element.getElement());
+```
+
+If hide and show and other functions will be used in the future, it is also necessary to assign the create function
+to a variable. If not, just calling the **create** function is enough.
 
 ### Sizing
 
@@ -250,6 +272,26 @@ element.remove();
 element.show();
 ```
 
+### Altering element classes
+
+On each element can be called two functions which can change classes of an object. Both take one string parameter, which
+contains all classes to be added or removed separated with single space.
+
+```javascript
+// adds classes to the element
+element.addClass("class_to_add_1 class_to_add_2");
+// removes classes from the element
+element.removeClass("class_to_remove_1 class_to_remove_2");
+```
+
+This is meant to be used for changing size of an element or space around the element without creating new element or
+selecting it with jQuery or JavaScript. 
+It can be also used to change already created element from one to another. This causes no problems with indeterminate
+loading elements, but it is not recommended to do so for determinate loading, because methods to control determinate
+loading will not work properly. Especially when changing from linear to circular element.
+
+When removing main class from element, it will no longer be visible, but it will still be present in the DOM!
+
 ### Label control
 
 There are provided functions to change or remove labels with JavaScript. They are called on the element object as well as
@@ -265,7 +307,6 @@ element.removeLabel();
 This is possible for all element types. More about labels is described above.
 
 ### Percentage control
-
 
 There are provided functions to show or hide percentages with JavaScript. They are called on the element object as well as
 `hide()`, `remove()` and `show()` functions. The functions are:

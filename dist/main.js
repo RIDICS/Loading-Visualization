@@ -42,10 +42,21 @@ var lv = /** @class */ (function () {
     };
     /**
      * decides type of passed element and returns its object
-     * @param element
+     * @param element - pass existing element or null
+     * @param classString - classes separated with one space that specifies type of element, optional, only when passing null instead of element
      */
-    lv.create = function (element) {
-        var classes = element.classList;
+    lv.create = function (element, classString) {
+        if (element === void 0) { element = null; }
+        var classes = [];
+        if (element != null) {
+            var listOfClasses = element.classList;
+            for (var i = 0; i < listOfClasses.length; i++) {
+                classes.push(listOfClasses[i]);
+            }
+        }
+        else if (classString != null) {
+            classes = classString.split(" ");
+        }
         for (var i = 0; i < classes.length; i++) {
             switch (classes[i]) {
                 case "lv-bars":
@@ -109,9 +120,6 @@ var lv = /** @class */ (function () {
         function ElementBase(element) {
             this.element = element === null ? document.createElement('div') : element;
         }
-        ElementBase.prototype.getElement = function () {
-            return this.element;
-        };
         ElementBase.prototype.show = function () {
             this.element.style.display = null;
         };
@@ -132,6 +140,34 @@ var lv = /** @class */ (function () {
         };
         ElementBase.prototype.hidePercentage = function () {
             this.element.removeAttribute("data-percentage");
+        };
+        /**
+         * adds class or classes to element
+         * @param classString - string that contains classes separated with one space
+         */
+        ElementBase.prototype.addClass = function (classString) {
+            var classList = classString.split(" ");
+            for (var i = 0; i < classList.length; i++) {
+                this.element.classList.add(classList[i]);
+            }
+        };
+        /**
+         * if element contains specified class or classes, it/they are removed
+         * @param classString - string that contains classes separated with one space
+         */
+        ElementBase.prototype.removeClass = function (classString) {
+            var classList = classString.split(" ");
+            for (var i = 0; i < classList.length; i++) {
+                if (this.element.classList.contains(classList[i])) {
+                    this.element.classList.remove(classList[i]);
+                }
+            }
+        };
+        /**
+         * returns DOM element - needed for placing or removing the element with jquery
+         */
+        ElementBase.prototype.getElement = function () {
+            return this.element;
         };
         /**
          * resets determinate element to 0
@@ -214,9 +250,9 @@ var lv = /** @class */ (function () {
             _this.divCount[BarType.BorderedLine] = { className: "lv-bordered_line", divCount: 1 };
             _this.divCount[BarType.DeterminateLine] = { className: "lv-determinate_line", divCount: 2 };
             _this.divCount[BarType.DeterminateBorderedLine] = { className: "lv-determinate_bordered_line", divCount: 2 };
-            _this.initLoader(element, _this.divCount[barType]);
+            _this.initLoader(_this.element, _this.divCount[barType]);
             for (var i = 0; i < classes.length; i++) {
-                element.classList.add(classes[i]);
+                _this.element.classList.add(classes[i]);
             }
             return _this;
         }
@@ -298,9 +334,9 @@ var lv = /** @class */ (function () {
             _this.divCount[CircleType.DeterminateCircle] = { className: "lv-determinate_circle", divCount: 4 };
             _this.divCount[CircleType.Spinner] = { className: "lv-spinner", divCount: 1 };
             _this.divCount[CircleType.Dashed] = { className: "lv-dashed", divCount: 1 };
-            _this.initLoader(element, _this.divCount[circleType]);
+            _this.initLoader(_this.element, _this.divCount[circleType]);
             for (var i = 0; i < classes.length; i++) {
-                element.classList.add(classes[i]);
+                _this.element.classList.add(classes[i]);
             }
             return _this;
         }

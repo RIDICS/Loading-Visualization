@@ -11,15 +11,19 @@ declare class lv {
     private static getModifyingClasses;
     /**
      * decides type of passed element and returns its object
-     * @param element
+     * @param element - pass existing element or null
+     * @param classString - classes separated with one space that specifies type of element, optional, only when passing null instead of element
      */
-    static create(element: HTMLDivElement): lv.ElementBase;
+    static create(element?: HTMLDivElement, classString?: string): lv.ElementBase;
     /**
      * observes for changes in DOM and creates new element's objects
      * @param mutationList
      * @param observer
      */
     private callback;
+    /**
+     * initializing the observer and starting observation
+     */
     private observer;
     constructor();
     startObserving(): void;
@@ -36,7 +40,6 @@ declare namespace lv {
     export abstract class ElementBase {
         protected element: HTMLDivElement;
         constructor(element: HTMLDivElement);
-        getElement(): HTMLDivElement;
         show(): void;
         hide(): void;
         remove(): void;
@@ -44,6 +47,20 @@ declare namespace lv {
         removeLabel(): void;
         showPercentage(): void;
         hidePercentage(): void;
+        /**
+         * adds class or classes to element
+         * @param classString - string that contains classes separated with one space
+         */
+        addClass(classString: string): void;
+        /**
+         * if element contains specified class or classes, it/they are removed
+         * @param classString - string that contains classes separated with one space
+         */
+        removeClass(classString: string): void;
+        /**
+         * returns DOM element - needed for placing or removing the element with jquery
+         */
+        getElement(): HTMLDivElement;
         /**
          * updates determinate element
          * @param type

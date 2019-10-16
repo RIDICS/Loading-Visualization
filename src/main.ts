@@ -16,7 +16,7 @@ class lv {
      * @param classList
      * @param notIncludingClass
      */
-    private static getModifyingClasses(classList: DOMTokenList, notIncludingClass: string): string[] {
+    private static getModifyingClasses(classList: Array<string>, notIncludingClass: string): string[] {
         let modifyingClasses: string[] = [];
         for (let i = 0; i < classList.length; i++) {
             if (classList[i] != notIncludingClass) {
@@ -28,10 +28,19 @@ class lv {
 
     /**
      * decides type of passed element and returns its object
-     * @param element
+     * @param element - pass existing element or null
+     * @param classString - classes separated with one space that specifies type of element, optional, only when passing null instead of element
      */
-    public static create(element: HTMLDivElement): lv.ElementBase {
-        let classes: DOMTokenList = element.classList;
+    public static create(element: HTMLDivElement = null, classString?: string): lv.ElementBase {
+        let classes : Array<string> = [];
+        if (element != null) {
+            let listOfClasses = element.classList;
+            for (let i = 0; i < listOfClasses.length; i++) {
+                classes.push(listOfClasses[i]);
+            }
+        } else if (classString != null) {
+            classes = classString.split(" ");
+        }
         for (let i = 0; i < classes.length; i++) {
             switch (classes[i]) {
                 case "lv-bars":
@@ -78,7 +87,10 @@ class lv {
             }
         }
     };
-    // initializing the observer and starting observation
+
+    /**
+     * initializing the observer and starting observation
+     */
     private observer: MutationObserver;
     constructor() {
         this.observer = new MutationObserver(this.callback);
@@ -110,10 +122,6 @@ namespace lv {
             this.element = element === null ? document.createElement('div') : element;
         }
 
-        public getElement(): HTMLDivElement {
-            return this.element;
-        }
-
         public show(): void {
             this.element.style.display = null;
         }
@@ -141,6 +149,38 @@ namespace lv {
         public hidePercentage(): void {
             this.element.removeAttribute("data-percentage");
         }
+
+        /**
+         * adds class or classes to element
+         * @param classString - string that contains classes separated with one space
+         */
+        public addClass(classString: string): void {
+            let classList = classString.split(" ");
+            for (let i = 0; i < classList.length; i++) {
+                this.element.classList.add(classList[i]);
+            }
+        }
+
+        /**
+         * if element contains specified class or classes, it/they are removed
+         * @param classString - string that contains classes separated with one space
+         */
+        public removeClass(classString: string): void {
+            let classList = classString.split(" ");
+            for (let i = 0; i < classList.length; i++) {
+                if (this.element.classList.contains(classList[i])) {
+                    this.element.classList.remove(classList[i]);
+                }
+            }
+        }
+
+        /**
+         * returns DOM element - needed for placing or removing the element with jquery
+         */
+        public getElement(): HTMLDivElement {
+            return this.element;
+        }
+
         /**
          * updates determinate element
          * @param type
@@ -232,9 +272,9 @@ namespace lv {
             this.divCount[BarType.BorderedLine] = {className: "lv-bordered_line", divCount: 1};
             this.divCount[BarType.DeterminateLine] = {className: "lv-determinate_line", divCount: 2};
             this.divCount[BarType.DeterminateBorderedLine] = {className: "lv-determinate_bordered_line", divCount: 2};
-            this.initLoader(element, this.divCount[barType]);
+            this.initLoader(this.element, this.divCount[barType]);
             for (let i = 0; i < classes.length; i++) {
-                element.classList.add(classes[i]);
+                this.element.classList.add(classes[i]);
             }
         }
 
@@ -312,9 +352,9 @@ namespace lv {
             this.divCount[CircleType.DeterminateCircle] = {className: "lv-determinate_circle", divCount: 4};
             this.divCount[CircleType.Spinner] = {className: "lv-spinner", divCount: 1};
             this.divCount[CircleType.Dashed] = {className: "lv-dashed", divCount: 1};
-            this.initLoader(element, this.divCount[circleType]);
+            this.initLoader(this.element, this.divCount[circleType]);
             for (let i = 0; i < classes.length; i++) {
-                element.classList.add(classes[i]);
+                this.element.classList.add(classes[i]);
             }
         }
 
