@@ -97,6 +97,10 @@
   height: 100%;
   width: 100%;
 }
+.lv-bars.tiniest, .lv-circles.tiniest, .lv-dots.tiniest, .lv-squares.tiniest, .lv-determinate_circle.tiniest, .lv-spinner.tiniest, .lv-dashed.tiniest {
+  height: 20px;
+  width: 20px;
+}
 .lv-bars.tiny, .lv-circles.tiny, .lv-dots.tiny, .lv-squares.tiny, .lv-determinate_circle.tiny, .lv-spinner.tiny, .lv-dashed.tiny {
   height: 30px;
   width: 30px;

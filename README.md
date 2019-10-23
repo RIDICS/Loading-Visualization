@@ -189,6 +189,7 @@ The predefined sizes for elements *1.-6. indeterminate and 1. determinate* are:
 * `md` -> 100x100px
 * `sm` -> 50x50px
 * `tiny` -> 30x30px
+* `tiniest` -> 20x20px
 
 For *7.-8. indeterminate and 2.-3. determinate* is predefined only width, height is variable: 
 
