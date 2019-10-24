@@ -1,0 +1,692 @@
+
+// positioning utilities
+.lv-mid {
+  margin-left: auto;
+  margin-right: auto;
+}
+.lv-left {
+  margin-right: auto;
+  margin-left: 0;
+}
+.lv-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.lvt-1 {
+  margin-top: 10px;
+}
+.lvt-2 {
+  margin-top: 30px;
+}
+.lvt-3 {
+  margin-top: 50px;
+}
+.lvt-4 {
+  margin-top: 80px;
+}
+.lvt-5 {
+  margin-top: 100px;
+}
+.lvb-1 {
+  margin-bottom: 10px;
+}
+.lvb-2 {
+  margin-bottom: 30px;
+}
+.lvb-3 {
+  margin-bottom: 50px;
+}
+.lvb-4 {
+  margin-bottom: 80px;
+}
+.lvb-5 {
+  margin-bottom: 100px;
+}
+.lvl-1 {
+  margin-left: 10px;
+}
+.lvl-2 {
+  margin-left: 30px;
+}
+.lvl-3 {
+  margin-left: 50px;
+}
+.lvl-4 {
+  margin-left: 80px;
+}
+.lvl-5 {
+  margin-left: 100px;
+}
+.lvr-1 {
+  margin-right: 10px;
+}
+.lvr-2 {
+  margin-right: 30px;
+}
+.lvr-3 {
+  margin-right: 50px;
+}
+.lvr-4 {
+  margin-right: 80px;
+}
+.lvr-5 {
+  margin-right: 100px;
+}
+// setting and sizing of non-line elements
+.lv-bars, .lv-circles, .lv-dots, .lv-squares, .lv-determinate_circle, .lv-spinner, .lv-dashed {
+  height: 100%;
+  width: 100%;
+  &.tiniest {
+    height: 20px;
+    width: 20px;
+  }
+  &.tiny {
+    height: 30px;
+    width: 30px;
+  }
+  &.sm {
+    height: 50px;
+    width: 50px;
+  }
+  &.md {
+    height: 100px;
+    width: 100px;
+  }
+  &.lg {
+    height: 200px;
+    width: 200px;
+  }
+  &[data-label].tiny:after {
+    padding: 0 120%;
+    margin-top: 20%;
+  }
+  &[data-label].sm:after {
+    padding: 0 120%;
+    margin-top: 35%;
+  }
+}
+// setting of line elements
+.lv-bordered_line, .lv-determinate_bordered_line {
+  width: 100%;
+  height: 21px;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.lv-line, .lv-determinate_line {
+  height: 5px;
+  width: 100%;
+  background-color: $line_background;
+}
+// basic settings of all elements created with more than one div
+.lv-bars, .lv-circles, .lv-determinate_line, .lv-bordered_line, .lv-determinate_bordered_line, .lv-dots, .lv-squares, .lv-line, .lv-spinner, .lv-determinate_circle, .lv-dashed {
+  position: relative;
+  div {
+    position: absolute;
+  }
+}
+// colors and percentages of lines
+.lv-determinate_bordered_line, .lv-determinate_line {
+  &[data-percentage="true"] div:nth-child(2) {
+    visibility: visible;
+  }
+}
+// sizing of lines
+.lv-line, .lv-determinate_line, .lv-determinate_bordered_line, .lv-bordered_line {
+  &.sm {
+    width: 300px;
+  }
+  &.md {
+    width: 600px;
+  }
+  &.lg {
+    width: 1000px;
+  }
+  &[data-label]:after {
+    content: attr(data-label);
+    display: block;
+    padding-top: 20px;
+    overflow: hidden;
+  }
+}
+// LABELS
+*[data-label] {
+  text-align: center;
+}
+.lv-spinner, .lv-circles, .lv-determinate_circle, .lv-dashed {
+  &[data-label]:after {
+    content: attr(data-label);
+    display: inline-block;
+    padding: 40% 0 40% 0;
+    overflow: hidden;
+  }
+}
+.lv-bars, .lv-squares, .lv-dots {
+  &[data-label]:after {
+    content: attr(data-label);
+    display: inline-block;
+    overflow: hidden;
+  }
+}
+.lv-squares, .lv-bars {
+  &[data-label]:after {
+    margin-top: 100%;
+  }
+}
+// DETERMINATE LINE
+.lv-determinate_line {
+  div:nth-child(1) {
+    background-color: $determinate_line_color;
+    height: 100%;
+    width: 0;
+  }
+  div:nth-child(2) {
+    color: $determinate_line_color;
+    left: 101%;
+    top: -6px;
+    visibility: hidden;
+  }
+  &[data-label]:after {
+    color: $determinate_line_color;
+  }
+}
+// INDETERMINATE CIRCLE
+.lv-spinner {
+  &[data-label]:after {
+    color: $spinner_color;
+  }
+  div {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    border: 10px solid $spinner_shadow;
+    border-top: 10px solid $spinner_color;
+    border-radius: 50%;
+    animation: lv-spinner 2s ease-in-out infinite;
+  }
+}
+// DETERMINATE CIRCLE
+.lv-determinate_circle {
+  height: 100%;
+  width: 100%;
+  &[data-label]:after {
+    color: $determinate_circle_color;
+  }
+  // background
+  div:nth-child(1) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    border: 10px solid $determinate_circle_background;
+    border-radius: 50%;
+  }
+  // overlay so its empty in the beginning
+  div:nth-child(3) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    border: 10px solid transparent;
+    border-top: 10px solid $determinate_circle_color;
+    border-radius: 50%;
+  }
+  // spinning part
+  div:nth-child(2) {
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    transform: rotate(-45deg);
+    border: 10px solid transparent;
+    border-top: 10px solid $determinate_circle_background;
+    border-radius: 50%;
+    z-index: 10;
+  }
+  // div for percentage
+  div:nth-child(4) {
+    visibility: hidden;
+  }
+  &[data-percentage="true"] {
+    div:nth-child(4) {
+      visibility: visible;
+      height: inherit;
+      width: inherit;
+      box-sizing: border-box;
+      text-align: center;
+      margin-top: 20%;
+      color: $determinate_circle_color;
+    }
+    &.sm div:nth-child(4) {
+      margin-top: 15px;
+    }
+    &.tiny div:nth-child(4) {
+      visibility: hidden;
+    }
+  }
+}
+// DASHED
+.lv-dashed {
+  &[data-label]:after {
+    color: $dashed_color;
+  }
+  div {
+    border: 12px dashed $dashed_color;
+    height: inherit;
+    width: inherit;
+    box-sizing: border-box;
+    animation: lv-dashed_animation 3s ease-in-out infinite;
+  }
+}
+/* BORDERLESS LINE ANIMATED */
+.lv-line {
+  &[data-label]:after {
+    color: $line_color;
+  }
+  div {
+    background-color: $line_color;
+    height: 100%;
+    width: 0;
+    animation: lv-line_animation 3s ease-in-out infinite;
+  }
+}
+/* DETERMINATE LINE WITH BORDER */
+.lv-determinate_bordered_line {
+  border: 5px $determinate_bordered_line_border solid;
+  &[data-label]:after {
+    color: $determinate_bordered_line_color;
+  }
+  div:nth-child(1) {
+    height: 11px;
+    width: 0;
+    background-color: $determinate_bordered_line_color;
+    border-radius: 3px;
+  }
+  div:nth-child(2) {
+    color: $determinate_bordered_line_color;
+    left: 103%;
+    top: -3px;
+    visibility: hidden;
+  }
+}
+/* LINE */
+.lv-bordered_line {
+  border: 5px solid $bordered_line_color;
+  &[data-label]:after {
+    color: $bordered_line_color;
+  }
+  div {
+    height: 5px;
+    background-color: $bordered_line_color;
+    left: 2px;
+    top: 3px;
+    border-radius: 3px;
+    animation: lv-bordered_line_animation 2s linear infinite;
+  }
+}
+/* BARS */
+.lv-bars {
+  &[data-label]:after {
+    color: $bars_color;
+  }
+  div {
+    width: 5%;
+    height: 40%;
+    top: 30%;
+    animation: lv-bar_animation 1s ease-in-out infinite;
+    &:nth-child(1) {
+      left: 12.5%;
+      background: lighten($bars_color, $bars_scale * 7);
+      animation-delay: -0.7s;
+    }
+    &:nth-child(2) {
+      left: 22.5%;
+      background: lighten($bars_color, $bars_scale * 6);
+      animation-delay: -0.6s;
+    }
+    &:nth-child(3) {
+      left: 32.5%;
+      background: lighten($bars_color, $bars_scale * 5);
+      animation-delay: -0.5s;
+    }
+    &:nth-child(4) {
+      left: 42.5%;
+      background: lighten($bars_color, $bars_scale * 4);
+      animation-delay: -0.4s;
+    }
+    &:nth-child(5) {
+      left: 52.5%;
+      background: lighten($bars_color, $bars_scale * 3);
+      animation-delay: -0.3s;
+    }
+    &:nth-child(6) {
+      left: 62.5%;
+      background: lighten($bars_color, $bars_scale * 2);
+      animation-delay: -0.2s;
+    }
+    &:nth-child(7) {
+      left: 72.5%;
+      background: lighten($bars_color, $bars_scale);
+      animation-delay: -0.1s;
+    }
+    &:nth-child(8) {
+      left: 82.5%;
+      background: $bars_color;
+    }
+  }
+}
+/* PULSATING DOTS */
+.lv-dots {
+  &[data-label]:after {
+    margin-top: 65%;
+    color: $dots_color;
+  }
+  div {
+    -webkit-transform: perspective(1000px);
+    width: 19%;
+    height: 19%;
+    top: 43.75%;
+    border-radius: 50%;
+    animation: lv-dots_pulsate_animation 1s ease-in-out infinite;
+    &:nth-child(1) {
+      left: 10%;
+      background-color: lighten($dots_color, $dots_scale * 3);
+    }
+    &:nth-child(2) {
+      left: 32.5%;
+      background-color: lighten($dots_color, $dots_scale * 2);
+      animation-delay: 0.1s;
+    }
+    &:nth-child(3) {
+      left: 55%;
+      background-color: lighten($dots_color, $dots_scale);
+      animation-delay: 0.2s;
+    }
+    &:nth-child(4) {
+      left: 77.5%;
+      background-color: $dots_color;
+      animation-delay: 0.3s;
+    }
+  }
+}
+/* CIRCLES */
+.lv-circles {
+  &[data-label]:after {
+    color: $circles_color;
+  }
+  div {
+    width: 100%;
+    height: 100%;
+    &:before {
+      content: '';
+      display: block;
+      margin: 0 auto;
+      width: 15%;
+      height: 15%;
+      border-radius: 50%;
+      background-color: $circles_color;
+      animation: lv-dots_fading_animation 1.2s infinite ease-in-out both;
+    }
+    &:nth-child(2) {
+      transform: rotate(30deg);
+    }
+    &:nth-child(2):before {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(3) {
+      transform: rotate(60deg);
+    }
+    &:nth-child(3):before {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(4) {
+      transform: rotate(90deg);
+    }
+    &:nth-child(4):before {
+      animation-delay: 0.3s;
+    }
+    &:nth-child(5) {
+      transform: rotate(120deg);
+    }
+    &:nth-child(5):before {
+      animation-delay: 0.4s;
+    }
+    &:nth-child(6) {
+      transform: rotate(150deg);
+    }
+    &:nth-child(6):before {
+      animation-delay: 0.5s;
+    }
+    &:nth-child(7) {
+      transform: rotate(180deg);
+    }
+    &:nth-child(7):before {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(8) {
+      transform: rotate(210deg);
+    }
+    &:nth-child(8):before {
+      animation-delay: 0.7s;
+    }
+    &:nth-child(9) {
+      transform: rotate(240deg);
+    }
+    &:nth-child(9):before {
+      animation-delay: 0.8s;
+    }
+    &:nth-child(10) {
+      transform: rotate(270deg);
+    }
+    &:nth-child(10):before {
+      animation-delay: 0.9s;
+    }
+    &:nth-child(11) {
+      transform: rotate(300deg);
+    }
+    &:nth-child(11):before {
+      animation-delay: 1s;
+    }
+    &:nth-child(12) {
+      transform: rotate(330deg);
+    }
+    &:nth-child(12):before {
+      animation-delay: 1.1s;
+    }
+  }
+}
+/* SQUARES */
+.lv-squares {
+  &[data-label]:after {
+    color: $squares_color;
+  }
+  div {
+    width: 40%;
+    height: 40%;
+    border-radius: 10%;
+    /* top left corner */
+    &:nth-child(1) {
+      background-color: lighten($squares_color, $squares_scale * 3);
+      top: 7%;
+      left: 7%;
+      animation: lv-square1_move 2s ease-in-out infinite;
+    }
+    /* top right corner */
+    &:nth-child(3) {
+      background-color: lighten($squares_color, $squares_scale * 2);
+      top: 7%;
+      right: 7%;
+      animation: lv-square2_move 2s ease-in-out infinite;
+    }
+    /* bottom right corner */
+    &:nth-child(2) {
+      background-color: lighten($squares_color, $squares_scale);
+      bottom: 7%;
+      right: 7%;
+      animation: lv-square3_move 2s ease-in-out infinite;
+    }
+    /* bottom left corner */
+    &:nth-child(4) {
+      background-color: $squares_color;
+      bottom: 7%;
+      left: 7%;
+      animation: lv-square4_move 2s ease-in-out infinite;
+    }
+  }
+}
+/* animations */
+@keyframes lv-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes lv-dots_fading_animation {
+  0%, 100% {
+    opacity: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+}
+@keyframes lv-square1_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(116%, 0);
+  }
+  50% {
+    transform: translate(116%, 116%);
+  }
+  75% {
+    transform: translate(0, 116%);
+  }
+}
+@keyframes lv-square2_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, 116%);
+  }
+  50% {
+    transform: translate(-116%, 116%);
+  }
+  75% {
+    transform: translate(-116%, 0);
+  }
+}
+@keyframes lv-square3_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-116%, 0);
+  }
+  50% {
+    transform: translate(-116%, -116%);
+  }
+  75% {
+    transform: translate(0, -116%);
+  }
+}
+@keyframes lv-square4_move {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(0, -116%);
+  }
+  50% {
+    transform: translate(116%, -116%);
+  }
+  75% {
+    transform: translate(116%, 0);
+  }
+}
+@keyframes lv-dots_pulsate_animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lv-line_animation {
+  0% {
+    left: 0;
+    width: 0;
+  }
+  25% {
+    left: 0;
+    width: 100%;
+  }
+  50% {
+    left: 100%;
+    width: 0;
+  }
+  75% {
+    left: 0;
+    width: 100%;
+  }
+  100% {
+    left: 0;
+    width: 0;
+  }
+}
+@keyframes lv-bordered_line_animation {
+  0% {
+    left: 1%;
+    width: 0;
+  }
+  10% {
+    left: 1%;
+    width: 20%;
+  }
+  90% {
+    left: 79%;
+    width: 20%;
+  }
+  100% {
+    width: 0;
+    left: 99%;
+  }
+}
+@keyframes lv-bar_animation {
+  0%, 100% {
+    top: 37.5%;
+    height: 25%;
+    bottom: 37.5%;
+    width: 2.5%;
+  }
+  50% {
+    top: 12.5%;
+    height: 75%;
+    bottom: 12.5%;
+    width: 5%;
+  }
+}
+@keyframes lv-dashed_animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
