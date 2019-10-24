@@ -21,7 +21,7 @@ There are two files necessary for the library to function properly and have all 
 
 ## Color configuration
 
-Colors of individual types of elements can be configured in `src/main.scss` on the top. There are multiple variables
+Colors of individual types of elements can be configured in `src/colors.scss`. There are multiple variables
 which define individual parts of an element. After making changes, the `.scss` file has to be **recompiled**. If there is
 `yarn` installed, the command `yarn gulp` can be used in the commandline in the main directory to compile it.
 
@@ -64,6 +64,9 @@ $bars_scale: 5;  // 0 <= x <= 14
 $squares_scale: 10;  // 0 <= x <= 33
 $dots_scale: 10;  // 0 <= x <= 33
 ```
+
+All other styles are specified in `src/element-styles.scss`. These two files are imported to `src/main.scss`, which is
+after compiled into `dist/main.css`. This file can be linked to `.html` file.
 
 ## Creating elements
 
