@@ -380,7 +380,6 @@
     color: $dots_color;
   }
   div {
-    -webkit-transform: perspective(1000px);
     width: 19%;
     height: 19%;
     top: 43.75%;
@@ -423,7 +422,7 @@
       height: 15%;
       border-radius: 50%;
       background-color: $circles_color;
-      animation: lv-dots_fading_animation 1.2s infinite ease-in-out both;
+      animation: lv-circles_fading_animation 1.2s infinite ease-in-out both;
     }
     &:nth-child(2) {
       transform: rotate(30deg);
@@ -544,7 +543,7 @@
     transform: rotate(360deg);
   }
 }
-@keyframes lv-dots_fading_animation {
+@keyframes lv-circles_fading_animation {
   0%, 100% {
     opacity: 0;
   }
@@ -613,7 +612,7 @@
     transform: scale(1);
   }
   50% {
-    transform: scale(0);
+    transform: scale(0.01);
   }
   100% {
     transform: scale(1);
