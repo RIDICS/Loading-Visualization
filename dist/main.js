@@ -141,6 +141,12 @@ var lv = /** @class */ (function () {
         ElementBase.prototype.hidePercentage = function () {
             this.element.removeAttribute("data-percentage");
         };
+        ElementBase.prototype.setId = function (idText) {
+            this.element.setAttribute("id", idText);
+        };
+        ElementBase.prototype.removeId = function () {
+            this.element.removeAttribute("id");
+        };
         /**
          * adds class or classes to element
          * @param classString - string that contains classes separated with one space

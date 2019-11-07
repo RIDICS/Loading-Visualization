@@ -47,6 +47,8 @@ declare namespace lv {
         removeLabel(): void;
         showPercentage(): void;
         hidePercentage(): void;
+        setId(idText: string): void;
+        removeId(): void;
         /**
          * adds class or classes to element
          * @param classString - string that contains classes separated with one space

@@ -296,6 +296,17 @@ loading will not work properly. Especially when changing from linear to circular
 
 When removing main class from element, it will no longer be visible, but it will still be present in the DOM!
 
+### ID control
+
+To set, change or remove element's ID use these functions:
+
+```javascript
+// sets or changes id of the element (don't forget, id has to be unique)
+element.setId("new_id");
+// removes id from the element
+element.removeId();
+```
+
 ### Label control
 
 There are provided functions to change or remove labels with JavaScript. They are called on the element object as well as

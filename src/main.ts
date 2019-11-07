@@ -150,6 +150,14 @@ namespace lv {
             this.element.removeAttribute("data-percentage");
         }
 
+        public setId(idText: string): void {
+            this.element.setAttribute("id", idText);
+        }
+
+        public removeId(): void {
+            this.element.removeAttribute("id");
+        }
+
         /**
          * adds class or classes to element
          * @param classString - string that contains classes separated with one space
