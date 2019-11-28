@@ -386,6 +386,7 @@
   height: 19%;
   top: 43.75%;
   border-radius: 50%;
+  transform: scale(0.01);
   animation: lv-dots_pulsate_animation 1s ease-in-out infinite;
 }
 .lv-dots div:nth-child(1) {
@@ -609,13 +610,16 @@
 }
 @keyframes lv-dots_pulsate_animation {
   0% {
-    transform: scale(1);
+    transform: scale(0.01);
+    background-color: #1ddab5;
   }
   50% {
-    transform: scale(0.01);
+    transform: scale(1);
+    background-color: #0B5345;
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.01);
+    background-color: #1ddab5;
   }
 }
 @keyframes lv-line_animation {
