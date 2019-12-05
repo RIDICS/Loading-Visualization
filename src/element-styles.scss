@@ -1,3 +1,24 @@
+@function lv-circles_perc($number) {
+  @return $number * 1/12 * 100%;
+}
+
+@mixin lv-circle_keyframes($element_number) {
+  @keyframes lv-circles_move_#{$element_number} {
+    0% {
+      opacity: ($element_number - 1) * 1/12;
+    }
+    #{lv-circles_perc($element_number - 1)} {
+      opacity: 0;
+    }
+    #{lv-circles_perc($element_number)} {
+      opacity: 1;
+    }
+    100% {
+      opacity: ($element_number - 1) * 1/12;
+    }
+  }
+}
+$lv-circles_time: 1.2s;
 
 // positioning utilities
 .lv-mid {
@@ -423,74 +444,66 @@
       height: 15%;
       border-radius: 50%;
       background-color: $circles_color;
-      animation: lv-circles_fading_animation 1.2s infinite ease-in-out both;
+    }
+    &:nth-child(1) {
+      animation: lv-circles_move_1 $lv-circles_time infinite linear;
     }
     &:nth-child(2) {
       transform: rotate(30deg);
-    }
-    &:nth-child(2):before {
-      animation-delay: 0.1s;
+      opacity: 0.08;
+      animation: lv-circles_move_2 $lv-circles_time infinite linear;
     }
     &:nth-child(3) {
       transform: rotate(60deg);
-    }
-    &:nth-child(3):before {
-      animation-delay: 0.2s;
+      opacity: 0.16;
+      animation: lv-circles_move_3 $lv-circles_time infinite linear;
     }
     &:nth-child(4) {
       transform: rotate(90deg);
-    }
-    &:nth-child(4):before {
-      animation-delay: 0.3s;
+      opacity: 0.24;
+      animation: lv-circles_move_4 $lv-circles_time infinite linear;
     }
     &:nth-child(5) {
       transform: rotate(120deg);
-    }
-    &:nth-child(5):before {
-      animation-delay: 0.4s;
+      opacity: 0.32;
+      animation: lv-circles_move_5 $lv-circles_time infinite linear;
     }
     &:nth-child(6) {
       transform: rotate(150deg);
-    }
-    &:nth-child(6):before {
-      animation-delay: 0.5s;
+      opacity: 0.4;
+      animation: lv-circles_move_6 $lv-circles_time infinite linear;
     }
     &:nth-child(7) {
       transform: rotate(180deg);
-    }
-    &:nth-child(7):before {
-      animation-delay: 0.6s;
+      opacity: 0.48;
+      animation: lv-circles_move_7 $lv-circles_time infinite linear;
     }
     &:nth-child(8) {
       transform: rotate(210deg);
-    }
-    &:nth-child(8):before {
-      animation-delay: 0.7s;
+      opacity: 0.56;
+      animation: lv-circles_move_8 $lv-circles_time infinite linear;
     }
     &:nth-child(9) {
       transform: rotate(240deg);
-    }
-    &:nth-child(9):before {
-      animation-delay: 0.8s;
+      opacity: 0.64;
+      animation: lv-circles_move_9 $lv-circles_time infinite linear;
     }
     &:nth-child(10) {
       transform: rotate(270deg);
-    }
-    &:nth-child(10):before {
-      animation-delay: 0.9s;
+      opacity: 0.72;
+      animation: lv-circles_move_10 $lv-circles_time infinite linear;
     }
     &:nth-child(11) {
       transform: rotate(300deg);
-    }
-    &:nth-child(11):before {
-      animation-delay: 1s;
+      opacity: 0.8;
+      animation: lv-circles_move_11 $lv-circles_time infinite linear;
     }
     &:nth-child(12) {
       transform: rotate(330deg);
+      opacity: 0.88;
+      animation: lv-circles_move_12 $lv-circles_time infinite linear;
     }
-    &:nth-child(12):before {
-      animation-delay: 1.1s;
-    }
+
   }
 }
 /* SQUARES */
@@ -532,6 +545,7 @@
     }
   }
 }
+
 /* animations */
 @keyframes lv-spinner {
   0% {
@@ -544,14 +558,20 @@
     transform: rotate(360deg);
   }
 }
-@keyframes lv-circles_fading_animation {
-  0%, 100% {
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-}
+
+@include lv-circle_keyframes(1);
+@include lv-circle_keyframes(2);
+@include lv-circle_keyframes(3);
+@include lv-circle_keyframes(4);
+@include lv-circle_keyframes(5);
+@include lv-circle_keyframes(6);
+@include lv-circle_keyframes(7);
+@include lv-circle_keyframes(8);
+@include lv-circle_keyframes(9);
+@include lv-circle_keyframes(10);
+@include lv-circle_keyframes(11);
+@include lv-circle_keyframes(12);
+
 @keyframes lv-square1_move {
   0%, 100% {
     transform: translate(0, 0);
