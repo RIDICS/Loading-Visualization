@@ -413,6 +413,26 @@
 .lv-circles[data-label]:after {
   color: #138D75;
 }
+.lv-circles.tiniest div:before {
+  width: 3px;
+  height: 3px;
+}
+.lv-circles.tiny div:before {
+  width: 5px;
+  height: 5px;
+}
+.lv-circles.sm div:before {
+  width: 8px;
+  height: 8px;
+}
+.lv-circles.md div:before {
+  width: 15px;
+  height: 15px;
+}
+.lv-circles.lg div:before {
+  width: 30px;
+  height: 30px;
+}
 .lv-circles div {
   width: 100%;
   height: 100%;
@@ -421,8 +441,6 @@
   content: "";
   display: block;
   margin: 0 auto;
-  width: 15%;
-  height: 15%;
   border-radius: 50%;
   background-color: #138D75;
 }

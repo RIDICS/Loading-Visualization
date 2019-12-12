@@ -20,6 +20,13 @@
 }
 $lv-circles_time: 1.2s;
 
+// size variables
+$tiniest_square_size: 20px;
+$tiny_square_size: 30px;
+$small_square_size: 50px;
+$medium_square_size: 100px;
+$large_square_size: 200px;
+
 // positioning utilities
 .lv-mid {
   margin-left: auto;
@@ -98,24 +105,24 @@ $lv-circles_time: 1.2s;
   height: 100%;
   width: 100%;
   &.tiniest {
-    height: 20px;
-    width: 20px;
+    height: $tiniest_square_size;
+    width: $tiniest_square_size;
   }
   &.tiny {
-    height: 30px;
-    width: 30px;
+    height: $tiny_square_size;
+    width: $tiny_square_size;
   }
   &.sm {
-    height: 50px;
-    width: 50px;
+    height: $small_square_size;
+    width: $small_square_size;
   }
   &.md {
-    height: 100px;
-    width: 100px;
+    height: $medium_square_size;
+    width: $medium_square_size;
   }
   &.lg {
-    height: 200px;
-    width: 200px;
+    height: $large_square_size;
+    width: $large_square_size;
   }
   &[data-label].tiny:after {
     padding: 0 120%;
@@ -433,6 +440,36 @@ $lv-circles_time: 1.2s;
   &[data-label]:after {
     color: $circles_color;
   }
+  &.tiniest {
+    div:before{
+      width: round($tiniest_square_size * 15/100);
+      height: round($tiniest_square_size * 15/100);
+    }
+  }
+  &.tiny {
+    div:before{
+      width: round($tiny_square_size * 15/100);
+      height: round($tiny_square_size * 15/100);
+    }
+  }
+  &.sm {
+    div:before{
+      width: round($small_square_size * 15/100);
+      height: round($small_square_size * 15/100);
+    }
+  }
+  &.md {
+    div:before{
+      width: round($medium_square_size * 15/100);
+      height: round($medium_square_size * 15/100);
+    }
+  }
+  &.lg {
+    div:before{
+      width: round($large_square_size * 15/100);
+      height: round($large_square_size * 15/100);
+    }
+  }
   div {
     width: 100%;
     height: 100%;
@@ -440,8 +477,8 @@ $lv-circles_time: 1.2s;
       content: '';
       display: block;
       margin: 0 auto;
-      width: 15%;
-      height: 15%;
+      //width: 16%;
+      //height: 16%;
       border-radius: 50%;
       background-color: $circles_color;
     }
