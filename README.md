@@ -5,19 +5,25 @@ directly into HTML code. The goal of this library is simple usage with a lot of 
 into the page is used one line of code, specifically inserting `div` with class names that specify its properties. 
 The library also provides JavaScript tools to manipulate with determinate loading bars and color settings.
 
+## Demo
+
+[DEMO web page with usage examples](https://ridics.github.io/Loading-Visualization)
+
 ## Installation
 
 This library is available at *GitHub* or at *npm*.
 There are two files necessary for the library to function properly and have all its functionality - **main.css** and
 **main.js**. They are both located in the `dist/` directory and they need to be linked in the html file.
 
-## npm
+There are several options how to get the library:
+* [Download the latest version](https://github.com/RIDICS/Loading-Visualization/archive/master.zip)
+* Install with [npm](https://www.npmjs.com/package/loading-visualization) `npm install loading-visualization`
+* Install with [yarn](https://yarnpkg.com/en/package/loading-visualization) `yarn add loading-visualization`
 
-[npm page with package](https://www.npmjs.com/package/loading-visualization)
+## Building the library
 
-## Demo
-
-[DEMO web page with usage examples](https://ridics.github.io/Loading-Visualization)
+* Restore all dependencies `yarn install`
+* Compile styles and JavaScript using gulp `yarn gulp`
 
 ## Color configuration
 
